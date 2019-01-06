@@ -1,4 +1,5 @@
 ﻿using System;
+using UniverseOfBookApp.Pages;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +12,7 @@ namespace UniverseOfBookApp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new SignUp();
         }
 
         protected override void OnStart()
