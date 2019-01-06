@@ -20,9 +20,9 @@
         </ResourceDictionary>
 
     </ContentPage.Resources>
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem Icon="magnifier"/>
-    </ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>-->
 
 
 
@@ -31,7 +31,7 @@
             <StackLayout BackgroundColor="LightSlateGray" Spacing="30" Padding="10">
                 <Label  Text="Ahmet Ümit"  FontAttributes="Bold" FontSize="35"/>
 
-                <!--<Image Source="http://i.dr.com.tr/pimages/Content/Uploads/ArtistImages/artist_95896.jpg" HorizontalOptions="Center" Margin="0,20,0,0" WidthRequest="100" HeightRequest="175"/>-->
+                <Image Source="ahmetumit" HorizontalOptions="Center" Margin="0,20,0,0" WidthRequest="100" HeightRequest="175"/>
 
 
 

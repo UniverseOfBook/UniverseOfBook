@@ -6,12 +6,25 @@
             BackgroundColor="#232b2b"
             >
   <!--Pages can be added as references or inline-->
-    <ContentPage Title="Home" Icon="homepage" >
-      
-        
-    </ContentPage>
+    <TabbedPage.Children>
+          <ContentPage Title="Home" Icon="homepage" >
+            
 
-    <ContentPage Title="Search" Icon="magnifier" />
-  <ContentPage Title="Flow" Icon="booksstack" />
-  <ContentPage Title="Profile" Icon="user"/>
+        </ContentPage>
+        <ContentPage Title="Search" Icon="magnifier" >
+           
+        </ContentPage>
+        <ContentPage Title="Flow" Icon="booksstack" >
+           
+
+        </ContentPage>
+         <ContentPage Title="Profile" Icon="user">
+           
+        </ContentPage>
+    </TabbedPage.Children>
+
+
+
+
+   
 </TabbedPage>
