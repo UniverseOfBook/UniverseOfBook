@@ -17,8 +17,8 @@ namespace UniverseOfBookApp.Pages
         {
             InitializeComponent();
             On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom)
-                                                             .SetBarItemColor(Color.Red)
-                                                             .SetBarSelectedItemColor(Color.Blue)
+                                                             .SetBarItemColor(Color.FromHex("#6d6d6d"))
+                                                             .SetBarSelectedItemColor(Color.FromHex("#c62828"))
                                                              .SetIsLegacyColorModeEnabled(true);
                                                           
             

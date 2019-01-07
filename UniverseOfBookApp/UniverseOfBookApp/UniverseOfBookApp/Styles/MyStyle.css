@@ -1,0 +1,20 @@
+﻿Entry {
+    font-size:20;
+    height: 50;
+}
+
+button {
+    background-color: #c62828;
+    color: #ffffff;
+    height: 46;
+    font-size: 18;
+    min-width: 100;
+}
+
+.LabelClass {
+    font-size: 16;
+}
+
+label {
+    color: #1b1b1b;
+}

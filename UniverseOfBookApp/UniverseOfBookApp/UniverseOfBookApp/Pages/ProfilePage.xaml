@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UniverseOfBookApp.Pages.ProfilePage" BackgroundColor="#ffffff">
+
+    <ContentPage.Resources>
+        <StyleSheet Source="../Styles/MyStyle.css" />
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout Margin="30">
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Image Source="defaultuser" WidthRequest="100"/>
+                <Frame OutlineColor="#6d6d6d" HorizontalOptions="EndAndExpand" CornerRadius="20">
+                    <StackLayout>
+                        <Label Text="User1" StyleClass="LabelClass" />
+                        <Label Text="Want to read: 10" StyleClass="LabelClass" />
+                        <Label Text="Read books: 10" StyleClass="LabelClass" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            
+            
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

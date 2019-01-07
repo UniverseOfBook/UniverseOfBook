@@ -16,32 +16,31 @@ namespace UniverseOfBookApp.Pages
 	{
         private SQLiteConnection connection;
         public User user;
+
 		public SignUp ()
-            
 		{
-            
 			InitializeComponent ();
-            connection = DependencyService.Get<SqlConnection>().GetConnection();
-            connection.CreateTable<User>();
+            //connection = DependencyService.Get<SqlConnection>().GetConnection();
+            //connection.CreateTable<User>();
 		}
 
         private void Submit_Clicked(object sender, EventArgs e)
         {
             if (Password.Text.Equals(PasswordAgain) )
             {
-
                 user = new User();
                 user.Email = Email.Text;
                 user.Password = Password.Text;
                 user.UserName = Name.Text;
                 user.UserAdmin =UserAdmin.Admin ;
                 connection.Insert(user);
-                
             }
-           
             //user.
+        }
 
-
+        private async void BackButtonClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new LoginPage());
         }
     }
 }

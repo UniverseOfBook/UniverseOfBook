@@ -20,7 +20,6 @@ namespace UniverseOfBookApp.Droid.ConnectionSql
     public class ConnectionSql : SqlConnection
     {
         public SQLiteConnection GetConnection()
-
         {
             string dbname = "UniverseOfBookApp.db3";    
             var document = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);

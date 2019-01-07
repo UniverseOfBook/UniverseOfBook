@@ -2,25 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UniverseOfBookApp.Pages.SignUp">
+
     <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style TargetType="Entry">
-                <Setter Property="PlaceholderColor" Value="White"/>
-                <Setter Property="TextColor" Value="White"/>
-            </Style>
-        </ResourceDictionary>
+        <StyleSheet Source="../Styles/MyStyle.css" />
     </ContentPage.Resources>
+
     <ContentPage.Content>
-        <StackLayout  BackgroundColor="#3b444b">
-            <StackLayout BackgroundColor="#3b444b" VerticalOptions="Center" >
-            <Image Source="man" HorizontalOptions="Center" />
-            <Entry x:Name="Name" Placeholder="Enter Your Name" />
-            <Entry x:Name="Email" Placeholder="Enter Your Email"/>
-            <Entry x:Name="Password" Placeholder="Password"/>
-            <Entry x:Name="PasswordAgain" Placeholder="Password Again"/>
-            <Button x:Name="Submit" Text="Submit" Clicked="Submit_Clicked" BackgroundColor="Green" BorderRadius="15" BorderColor="Blue"/>
+        <StackLayout VerticalOptions="Fill" Margin="20,50,20,20">
+            <Image Source="books" HeightRequest="300" /> <!--Our logo will be this image-->
+
+            <StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                    <Image Source="manuser.png" HeightRequest="24" />
+                    <Entry x:Name="Name" ReturnType="Next" Placeholder="Username" HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                    <Image Source="mail.png" HeightRequest="24" />
+                    <Entry x:Name="Email" Keyboard="Email" ReturnType="Next" Placeholder="Email" HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                    <Image Source="lock.png" HeightRequest="24" />
+                    <Entry x:Name="Password" IsPassword="True" Placeholder="Password" HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                    <Image Source="lock.png" HeightRequest="24" />
+                    <Entry x:Name="PasswordAgain" IsPassword="True" Placeholder="Confirm Password" HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="0,15,0,0">
+                    <Button Text="Back" Clicked="BackButtonClicked" BorderRadius="8" WidthRequest="120" BackgroundColor="#6d6d6d"/>
+                    <Button x:Name="Submit" Text="Sign up" Clicked="Submit_Clicked" BorderRadius="8" HorizontalOptions="EndAndExpand" WidthRequest="150"/>
+                </StackLayout>
             </StackLayout>
-            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

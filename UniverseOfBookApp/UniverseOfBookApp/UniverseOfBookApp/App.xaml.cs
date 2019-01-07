@@ -12,7 +12,7 @@ namespace UniverseOfBookApp
         {
             InitializeComponent();
 
-            MainPage = new HomePage();
+            MainPage = new LoginPage();
         }
 
         protected override void OnStart()

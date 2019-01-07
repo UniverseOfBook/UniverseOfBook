@@ -2,8 +2,7 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UniverseOfBookApp.Pages.HomePage"
-            BarBackgroundColor="Black"
-            BackgroundColor="#232b2b"
+            BarBackgroundColor="#ffffff"
             >
   <!--Pages can be added as references or inline-->
     <TabbedPage.Children>
