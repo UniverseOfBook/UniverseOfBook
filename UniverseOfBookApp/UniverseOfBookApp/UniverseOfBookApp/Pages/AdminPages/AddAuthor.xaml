@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UniverseOfBookApp.Pages.AdminPages.AddAuthor">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="BorderRadius" Value="20"/>
+                <Setter Property="BackgroundColor" Value="#64DD17"/>
+                <Setter Property="FontAttributes" Value="Italic"/>
+            </Style>       
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content >
+        <StackLayout VerticalOptions="Center">
+            <StackLayout Padding="10" VerticalOptions="Center"   >
+                <Image Source="writer" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Frame  CornerRadius="20" BackgroundColor="#00695C" >
+                    <StackLayout  >
+                        <Entry Placeholder="Author Name"  />
+                        <DatePicker   />
+                        <Editor  Placeholder="Author Information" HeightRequest="40"/>
+                    <Button Text="Add"  Clicked="Button_Clicked" />
+                    <Button Text="Back"  BackgroundColor="#795548"/>
+                </StackLayout>
+                </Frame>
+            </StackLayout>
+            <!--<Entry Placeholder="Author Name" PlaceholderColor="LightGray"  />-->
+       </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,12 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="UniverseOfBookApp.Pages.Book">
+             x:Class="UniverseOfBookApp.Pages.Book"
+              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin">
+    <!--<ContentPage.Resources>
+        <StyleSheet Source="../Styles/MyStyle.css" />
+    </ContentPage.Resources>-->
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout BackgroundColor="#EF5350"  Padding="10">
+                <Image Source="SucveCeza" Margin="10,10,10,10" />
+                <Frame CornerRadius="20">
+                    <StackLayout BackgroundColor="White">
+                    <StackLayout HorizontalOptions="Center" WidthRequest="100" Spacing="20">
+                        <BoxView HeightRequest="1" BackgroundColor="Gray"  />
+                       
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Spacing="200">
+                        <Label Text="Suç ve Ceza" TextColor="Black" FontSize="Large" FontAttributes="Bold" Margin="15"/>
+                        <Image Source="bookss" />
+                    </StackLayout>
+                    <Button Text="Want"  BackgroundColor="#00ACC1" Margin="5,5,5,5" BorderRadius="20" FontAttributes="Italic"/>
+                    <Label Text="Suç ve Ceza ilk kez 1866 yılında yayımlandı. O tarihten sonra da dünyanın gündeminden hiç düşmedi. Dostoyevski, hiç aceleye gelmemesi gerektiğini düşündüğü yeni bir karakter yakalamıştı. Rusya'yı, Rus halkını gözlemleyerek Raskolnikov'u onların içinden çekip almıştı. Öykü, tüm yönleriyle çürüdüğü açıkça görülen geleneksel iyilik algısının toplum tarafından nasıl göz göre göre korunduğunu anlatır. Dostoyevski'nin Suç ve Ceza'sı, insanlığa sorduğu can alıcı sorularla güncelliğini hiç yitirmeyen en büyük başyapıtlar arasında. Hala... "
+                           FontAttributes="Italic"  Margin="10,5,10,5"/>
+
+                    <controls:CircleImage Source="Dostoevsky"  HeightRequest="150" WidthRequest="150" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Label Text="Dostoyevski" HorizontalOptions="Center"/>
+                    <Label Text="Writer" TextColor="LightGray" HorizontalOptions="Center"/>
+                </StackLayout></Frame>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

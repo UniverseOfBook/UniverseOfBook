@@ -9,6 +9,7 @@ namespace UniverseOfBookApp.Model
     {
         User,Admin
     }
+    [Table("User")]
    public class User
     { 
         [PrimaryKey,AutoIncrement]
@@ -18,6 +19,7 @@ namespace UniverseOfBookApp.Model
         public string Password { get; set; }
         [NotNull]
         public string Email { get; set; }
+        
         public UserAdmin UserAdmin { get; set; }
 
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using UniverseOfBookApp.Pages;
+using UniverseOfBookApp.Pages.AdminPages;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,7 +13,7 @@ namespace UniverseOfBookApp
         {
             InitializeComponent();
 
-            MainPage = new LoginPage();
+            MainPage = new AddAuthor();
         }
 
         protected override void OnStart()
