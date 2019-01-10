@@ -1,10 +1,22 @@
 ﻿Entry {
-    font-size: 22;
+    font-size: 21;
     height: 45;
     color: #1b1b1b;
 }
 
-button {
+Picker {
+    font-size: 21;
+    height: 45;
+    color: #1b1b1b;
+}
+
+DatePicker {
+    font-size: 21;
+    height: 45;
+    color: #1b1b1b;
+}
+
+Button {
     background-color: #c62828;
     color: #ffffff;
     height: 46;
@@ -12,8 +24,12 @@ button {
     min-width: 100;
 }
 
-label {
+Label {
     color: #1b1b1b;
+}
+
+Frame {
+    background-color: #ffffff;
 }
 
 .LabelClass {

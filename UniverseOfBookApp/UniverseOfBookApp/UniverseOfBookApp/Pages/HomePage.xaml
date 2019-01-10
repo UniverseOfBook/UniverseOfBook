@@ -1,22 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            x:Class="UniverseOfBookApp.Pages.HomePage"
-            xmlns:mypages="clr-namespace:UniverseOfBookApp.Pages;assembly=UniverseOfBookApp"
-            BarBackgroundColor="#ffffff"
-            NavigationPage.HasBackButton="False">
+            x:Class="UniverseOfBookApp.Pages.HomePage">
 
-    <!-- TitleView -->
-    <NavigationPage.TitleView>
-        <ImageButton Source="settings" HorizontalOptions="Start" WidthRequest="24" Clicked="SettingsClicked" BackgroundColor="#ffffff"/>
-    </NavigationPage.TitleView>
-    
-    <!--Pages can be added as references or inline-->
-    <TabbedPage.Children>
-        <mypages:Book Title="Home" Icon="homepage" />
-        <mypages:ProfilePage Title="Search" Icon="magnifier" />
-        <mypages:ProfilePage Title="Home" Icon="booksstack" />
-        <mypages:ProfilePage Title="Profile" Icon="user" />
-    </TabbedPage.Children>
+    <ContentPage.Resources>
+        <StyleSheet Source="../Styles/MyStyle.css" />
+    </ContentPage.Resources>
 
-</TabbedPage>
+    <ContentPage.Content>
+        <Label Text="Homepage" VerticalOptions="Center"/>
+    </ContentPage.Content>
+</ContentPage>

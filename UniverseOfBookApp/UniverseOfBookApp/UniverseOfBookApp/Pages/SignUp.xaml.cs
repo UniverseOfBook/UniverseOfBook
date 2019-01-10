@@ -11,49 +11,40 @@ using UniverseOfBookApp.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace UniverseOfBookApp.Pages
-{
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SignUp : ContentPage
-	{
+namespace UniverseOfBookApp.Pages {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class SignUp : ContentPage {
 
         public UserDataAccess UserDataAccess;
         public User user;
-        
 
-		public SignUp ()
-		{
-			InitializeComponent ();
-           
-		}
+        public SignUp() {
+            InitializeComponent();
+        }
 
-        private void Submit_Clicked(object sender, EventArgs e)
-        {
+        private async void Submit_Clicked(object sender, EventArgs e) {
             //We create new user here 
-            if(Password.Text ==PasswordAgain.Text && Email.Text !=null && Name.Text != null) { 
+            if (Password.Text == PasswordAgain.Text && Email.Text != null && Name.Text != null) {
                 user = new User();
-                UserDataAccess = new UserDataAccess();   
+                UserDataAccess = new UserDataAccess();
 
                 user.Email = Email.Text;
                 user.Password = Password.Text;
                 user.UserName = Name.Text;
                 user.UserAdmin = UserAdmin.User;
-              int number=  UserDataAccess.UserInsert(user);
-                if (number > 0)
-                {
-                 DisplayAlert("Join", "Thanks for Joining us "+Name.Text, "Cancel");
+                int number = UserDataAccess.UserInsert(user);
+                if (number > 0) {
+                    await DisplayAlert("Sign Up", "Thanks for joining us " + Name.Text, "OK");
+                    await Navigation.PopAsync();
                 }
-                else
-                {
-                    DisplayAlert("Join", "Didnt add  " + Name.Text, "Cancel");
+                else {
+                    await DisplayAlert("Sign Up", "Didn't add  " + Name.Text, "OK");
                 }
-              
-           }
+            }
         }
 
-        private async void BackButtonClicked(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new LoginPage());
+        private async void BackButtonClicked(object sender, EventArgs e) {
+            await Navigation.PopAsync();
         }
     }
 }

@@ -14,38 +14,35 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="20">
-                <StackLayout>
-                    <Image Source="defaultuser" WidthRequest="150" HorizontalOptions="Center"/>
-                    <StackLayout Margin="5" Padding="0,30,0,-15">
-                        <Label Text="Name" FontAttributes="Bold" StyleClass="SettingsLabel" />
-                    </StackLayout>
-                    <Entry />
+                <Image Source="defaultuser" WidthRequest="150" HorizontalOptions="Center"/>
+                <StackLayout Margin="5" Padding="0,30,0,-15">
+                    <Label Text="Name" FontAttributes="Bold" StyleClass="SettingsLabel" />
+                </StackLayout>
+                <Entry />
 
-                    <StackLayout Margin="5" Padding="0,10,0,-15">
-                        <Label Text="Username" FontAttributes="Bold" StyleClass="SettingsLabel" />
-                    </StackLayout>
-                    <Entry />
+                <StackLayout Margin="5" Padding="0,10,0,-15">
+                    <Label Text="Username" FontAttributes="Bold" StyleClass="SettingsLabel" />
+                </StackLayout>
+                <Entry />
 
-                    <StackLayout Margin="5" Padding="0,10,0,-15">
-                        <Label Text="Email" FontAttributes="Bold" StyleClass="SettingsLabel" />
-                    </StackLayout>
-                    <Entry Text="asd"/>
+                <StackLayout Margin="5" Padding="0,10,0,-15">
+                    <Label Text="Email" FontAttributes="Bold" StyleClass="SettingsLabel" />
+                </StackLayout>
+                <Entry Text="asd"/>
 
-                    <!--when pressed color and font will be change-->
-                    <StackLayout Margin="5" Padding="0,10,0,-15">
-                        <Label Text="Gender" FontAttributes="Bold" StyleClass="SettingsLabel" />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal" >
-                        <Button Text="Male"   BackgroundColor="#ffffff" TextColor="#c62828" WidthRequest="64" HeightRequest="30" FontAttributes="Bold"/>
-                        <Button Text="Female" BackgroundColor="#ffffff" TextColor="#6d6d6d"/>
-                    </StackLayout>
+                <!--when pressed color and font will be change-->
+                <StackLayout Margin="5" Padding="0,10,0,-15">
+                    <Label Text="Gender" FontAttributes="Bold" StyleClass="SettingsLabel" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" >
+                    <Button Text="Male"   BackgroundColor="#ffffff" TextColor="#c62828" WidthRequest="64" HeightRequest="30" FontAttributes="Bold"/>
+                    <Button Text="Female" BackgroundColor="#ffffff" TextColor="#6d6d6d"/>
+                </StackLayout>
 
-                    <StackLayout Orientation="Horizontal" Padding="0,20,0,0">
-                        <Label Text="Push Notification" FontSize="18" HorizontalOptions="Start"/>
-                        <StackLayout Padding="0,-10,0,0" HorizontalOptions="EndAndExpand">
-                            <Switch  HorizontalOptions="EndAndExpand" />
-                        </StackLayout>
-                        
+                <StackLayout Orientation="Horizontal" Padding="0,20,0,0">
+                    <Label Text="Push Notification" FontSize="18" HorizontalOptions="Start"/>
+                    <StackLayout Padding="0,-10,0,0" HorizontalOptions="EndAndExpand">
+                        <Switch  HorizontalOptions="EndAndExpand" />
                     </StackLayout>
 
                 </StackLayout>

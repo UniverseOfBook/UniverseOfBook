@@ -10,8 +10,8 @@
     
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout BackgroundColor="#efefef"  Padding="10">
-                <Image Source="SucveCeza" Margin="10,10,10,10" />
+            <StackLayout BackgroundColor="#efefef" Padding="10">
+                <Image Source="SucveCeza" Margin="10" />
                 <Frame CornerRadius="20">
                     <StackLayout BackgroundColor="White">
                         <StackLayout HorizontalOptions="Center" WidthRequest="100" Spacing="20">

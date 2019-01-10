@@ -9,11 +9,14 @@ using Xamarin.Forms.Xaml;
 
 namespace UniverseOfBookApp.Pages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SettingsPage : ContentPage {
-        public SettingsPage() {
+    public partial class SearchPage : ContentPage {
+        public SearchPage() {
             InitializeComponent();
-            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.White;
         }
-       
+
+        protected override void OnAppearing() {
+            var homePage = MainTabbedPage.mainTabbedPage;
+            NavigationPage.SetHasNavigationBar(homePage, false);
+        }
     }
 }

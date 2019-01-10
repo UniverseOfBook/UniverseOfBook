@@ -24,7 +24,9 @@
     <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
 
     <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
-  </style>
+    <item name="android:statusBarColor">#ffffff</item>
+    <item name="android:windowLightStatusBar">true</item>
+    </style>
 
   <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
     <item name="colorAccent">@color/colorAccent</item>

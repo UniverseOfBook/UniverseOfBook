@@ -1,32 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="UniverseOfBookApp.Pages.AdminPages.AddAuthor">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="UniverseOfBookApp.Pages.AdminPages.AddAuthor" 
+             BackgroundColor="#efefef">
+
     <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style TargetType="Button">
-                <Setter Property="BorderRadius" Value="20"/>
-                <Setter Property="BackgroundColor" Value="#64DD17"/>
-                <Setter Property="FontAttributes" Value="Italic"/>
-                
-            </Style>       
-            <StyleSheet Source="../../Styles/MyStyle.css" />
-        </ResourceDictionary>
+        <StyleSheet Source="../../Styles/MyStyle.css" />
     </ContentPage.Resources>
-    <ContentPage.Content >
-        <StackLayout VerticalOptions="Center">
-            <StackLayout Padding="10" VerticalOptions="Center"   >
-                <Image Source="writer" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Frame  CornerRadius="20" BackgroundColor="#00695C" >
-                    <StackLayout  >
-                        <Entry Placeholder="Author Name" x:Name="AuthorName"  />
-                        <DatePicker x:Name="Date"/>
-                        <Editor  x:Name="AuthorInfo" Placeholder="Author Information" HeightRequest="40"/>
-                        <Button Text="Add"  Clicked="AddButton_Clicked" />
-                        <Button Text="Back" Clicked="BackButton_Clicked"  BackgroundColor="#795548"/>
-                    </StackLayout>
-                </Frame>
-            </StackLayout>
+
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+            <Image Source="writer" VerticalOptions="Center" HorizontalOptions="Center" />
+            <Frame CornerRadius="20">
+                <StackLayout>
+                    <Entry Placeholder="Author Name" x:Name="AuthorName" />
+                    <DatePicker x:Name="Date" />
+                    <Editor x:Name="AuthorInfo" Placeholder="Author Information" HeightRequest="40" />
+                    <Button Text="Add" BorderRadius="20" Clicked="AddButton_Clicked" />
+                    <Button Text="Back" BorderRadius="20" Clicked="BackButton_Clicked" BackgroundColor="#795548" />
+                </StackLayout>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
