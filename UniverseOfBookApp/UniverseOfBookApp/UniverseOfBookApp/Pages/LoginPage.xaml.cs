@@ -32,18 +32,18 @@ namespace UniverseOfBookApp.Pages
 
         private async void LoginButtonClicked(object sender, EventArgs e)
         {
-            userDataAccess = new UserDataAccess();
+            //userDataAccess = new UserDataAccess();
 
-            user = userDataAccess.Login(Email.Text, Password.Text);
+            //user = userDataAccess.Login(Email.Text, Password.Text);
             
-            if (user !=null)
-            {
+            //if (user !=null)
+            //{
          
-                await Navigation.PushModalAsync(new HomePage());
-            }
-            else { DisplayAlert("Warning", "Please check your Email and Password", "Cancel"); }
-           
+            //    await Navigation.PushAsync(new HomePage());
+            //}
+            //else { DisplayAlert("Warning", "Please check your Email and Password", "Cancel"); }
 
+            await Navigation.PushAsync(new HomePage());
         }
     }
 }

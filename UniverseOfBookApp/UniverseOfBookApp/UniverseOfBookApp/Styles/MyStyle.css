@@ -1,6 +1,7 @@
 ﻿Entry {
-    font-size:20;
-    height: 50;
+    font-size: 22;
+    height: 45;
+    color: #1b1b1b;
 }
 
 button {
@@ -11,10 +12,15 @@ button {
     min-width: 100;
 }
 
+label {
+    color: #1b1b1b;
+}
+
 .LabelClass {
     font-size: 16;
 }
 
-label {
-    color: #1b1b1b;
+.SettingsLabel {
+    font-size: 14;
+    color: #6d6d6d;
 }

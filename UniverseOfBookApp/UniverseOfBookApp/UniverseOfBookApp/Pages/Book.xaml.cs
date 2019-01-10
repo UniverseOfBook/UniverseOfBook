@@ -16,5 +16,11 @@ namespace UniverseOfBookApp.Pages
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private async void AuthorTapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Author());
+        }
+        
+    }
 }

@@ -2,40 +2,43 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UniverseOfBookApp.Pages.LoginPage"
-             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin">
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             NavigationPage.HasBackButton="False">
+    
     <ContentPage.Resources>
         <StyleSheet Source="../Styles/MyStyle.css" />
     </ContentPage.Resources>
-    
+
     <ContentPage.Content>
         <ScrollView>
-        <StackLayout VerticalOptions="Fill" Margin="20,50,20,20">
+            <StackLayout VerticalOptions="Fill" Margin="20,50,20,20">
                 <controls:CircleImage Source="apple" />
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
-                <Image Source="manuser.png" HeightRequest="24" />
-                <Entry Placeholder="Email" x:Name="Email" Keyboard="Email" ReturnType="Next" HorizontalOptions="FillAndExpand" />
+                    <Image Source="manuser.png" HeightRequest="24" />
+                    <Entry Placeholder="Email" x:Name="Email" Keyboard="Email" ReturnType="Next" HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                    <Image Source="lock.png" HeightRequest="24"/>
+                    <Entry Placeholder="Password" IsPassword="true" x:Name="Password" ReturnType="Done" HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+
+                <StackLayout Margin="0,-15,10,15">
+                    <Label Text="Forgot your password?" HorizontalOptions="End" FontSize="Small" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ForgotPasswordTappedAsync" NumberOfTapsRequired="1"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+                <Button Text="Login" BorderRadius="8" Clicked="LoginButtonClicked"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="10">
+                    <Label Text="Don't have an account?" />
+                    <Label Text="Sign Up" FontAttributes="Bold" FontSize="Medium">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SignupTappedAsynch" NumberOfTapsRequired="1"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
             </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
-                <Image Source="lock.png" HeightRequest="24"/>
-                <Entry Placeholder="Password" IsPassword="true" x:Name="Password" ReturnType="Done" HorizontalOptions="FillAndExpand" />
-            </StackLayout>
-            
-            <StackLayout Margin="0,-15,10,15">
-                <Label Text="Forgot your password?" HorizontalOptions="End" FontSize="Small" >
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ForgotPasswordTappedAsync" NumberOfTapsRequired="1"/>
-                    </Label.GestureRecognizers>
-                </Label>
-            </StackLayout>
-            <Button Text="Login" BorderRadius="8" Clicked="LoginButtonClicked"/>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="10">
-                <Label Text="Don't have an account?" />
-                <Label Text="Sign Up" FontAttributes="Bold" FontSize="Medium">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="SignupTappedAsynch" NumberOfTapsRequired="1"/>
-                    </Label.GestureRecognizers>
-                </Label>
-            </StackLayout>
-        </StackLayout></ScrollView>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

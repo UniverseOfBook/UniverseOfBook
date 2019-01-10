@@ -20,9 +20,7 @@
                     </StackLayout>
                 </Frame>
             </StackLayout>
-            
-            
-            
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

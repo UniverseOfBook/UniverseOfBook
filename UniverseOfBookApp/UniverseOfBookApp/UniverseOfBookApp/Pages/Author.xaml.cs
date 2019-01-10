@@ -16,5 +16,11 @@ namespace UniverseOfBookApp.Pages
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private async void SwipedToBack(object sender, SwipedEventArgs e)
+        {
+            Console.WriteLine("swipetoback");
+            await Navigation.PopAsync();
+        }
+    }
 }

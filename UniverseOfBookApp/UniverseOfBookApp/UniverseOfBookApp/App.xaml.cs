@@ -11,9 +11,14 @@ namespace UniverseOfBookApp
     {
         public App()
         {
+            Console.WriteLine("Started");
             InitializeComponent();
 
-            MainPage = new AddAuthor();
+            MainPage = new NavigationPage(new LoginPage())
+            {
+                BarBackgroundColor = Color.Transparent,
+                BarTextColor = Color.FromHex("#1b1b1b")
+            };
         }
 
         protected override void OnStart()

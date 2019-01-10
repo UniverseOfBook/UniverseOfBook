@@ -8,7 +8,9 @@
                 <Setter Property="BorderRadius" Value="20"/>
                 <Setter Property="BackgroundColor" Value="#64DD17"/>
                 <Setter Property="FontAttributes" Value="Italic"/>
+                
             </Style>       
+            <StyleSheet Source="../../Styles/MyStyle.css" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content >

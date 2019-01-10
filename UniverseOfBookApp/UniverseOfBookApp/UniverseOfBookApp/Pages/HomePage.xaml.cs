@@ -23,5 +23,10 @@ namespace UniverseOfBookApp.Pages
                                                           
             
         }
+
+        private async void SettingsClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SettingsPage());
+        }
     }
 }

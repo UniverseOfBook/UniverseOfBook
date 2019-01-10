@@ -2,36 +2,33 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UniverseOfBookApp.Pages.Author"
-             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin">
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style TargetType="Label">
-                <Setter Property="TextColor" Value="Black"/>
-               
-               
-                <Setter Property="FontAttributes" Value="Italic"/>
-                <Setter Property="HorizontalOptions" Value="Center"/>
-            </Style>
-           
             <Style TargetType="StackLayout">
                 <Setter Property="Spacing" Value="30"/>
                 <Setter Property="Padding" Value="10"/>
             </Style>
         </ResourceDictionary>
-
+        <StyleSheet Source="../Styles/MyStyle.css" />
     </ContentPage.Resources>
 
     <ContentPage.Content  >
-        <ScrollView >
-            <StackLayout Spacing="30" Padding="10" BackgroundColor="#EF5350">
-                <Label  Text="Fyodor Dostoyevsky"  FontAttributes="Bold" FontSize="35" TextColor="White"/>
-                <controls:CircleImage Source="Dostoevsky" WidthRequest="160" HeightRequest="160"/>
-                <Frame CornerRadius="20" OutlineColor="#01579B" HasShadow="True">
+
+        <StackLayout Spacing="30" Padding="10" BackgroundColor="#efefef">
+            <StackLayout.GestureRecognizers>
+                <SwipeGestureRecognizer Swiped="SwipedToBack" Direction="Down" />
+            </StackLayout.GestureRecognizers>
+
+            <Label  Text="Fyodor Dostoyevsky"  FontAttributes="Bold" FontSize="35" HorizontalOptions="Center"/>
+            <controls:CircleImage Source="Dostoevsky" WidthRequest="160" HeightRequest="160"/>
+            <Frame CornerRadius="20" HasShadow="True">
                 <StackLayout BackgroundColor="White" >
-                <Label Text="Dostoyevski, Rus Edebiyatı'nın ve Dünya Edebiyatı'nın en önemli yazarlarından biridir. Eserleri yüzyıllar boyunca en çok okunan kitaplar arasındadır." x:Name="AuthorInfo"   />
-                <StackLayout  HeightRequest="100" Orientation="Horizontal">
-                    <ScrollView Orientation="Both">
-                        <!--<ListView x:Name="AuthorList">
+                    <Label Text="Dostoyevski, Rus Edebiyatı'nın ve Dünya Edebiyatı'nın en önemli yazarlarından biridir. Eserleri yüzyıllar boyunca en çok okunan kitaplar arasındadır." x:Name="AuthorInfo"  FontAttributes="Italic" />
+                    <StackLayout  HeightRequest="100" Orientation="Horizontal">
+                        <ScrollView Orientation="Both">
+                            <!--<ListView x:Name="AuthorList">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -42,14 +39,13 @@
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-
                         </ListView>-->
-                        
-                    </ScrollView>
+                        </ScrollView>
+                    </StackLayout>
                 </StackLayout>
-                </StackLayout></Frame>
-            </StackLayout>
-        </ScrollView>
+            </Frame>
+        </StackLayout>
+
 
     </ContentPage.Content>
 </ContentPage>
