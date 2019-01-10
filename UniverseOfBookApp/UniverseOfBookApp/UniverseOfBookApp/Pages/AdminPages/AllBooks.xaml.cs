@@ -10,20 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace UniverseOfBookApp.Pages.AdminPages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AddAuthor : ContentPage
+	public partial class AllBooks : ContentPage
 	{
-		public AddAuthor ()
+		public AllBooks ()
 		{
 			InitializeComponent ();
 		}
-
-        private void AddButton_Clicked(object sender, EventArgs e)
-        {
-
-        }
-        private void BackButton_Clicked(object sender, EventArgs e)
-        {
-
-        }
-    }
+	}
 }

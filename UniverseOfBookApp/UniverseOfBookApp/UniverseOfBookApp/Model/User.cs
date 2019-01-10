@@ -9,6 +9,10 @@ namespace UniverseOfBookApp.Model
     {
         User,Admin
     }
+    public enum Gender
+    {
+        Male,Female
+    }
     [Table("User")]
    public class User
     { 
@@ -19,6 +23,9 @@ namespace UniverseOfBookApp.Model
         public string Password { get; set; }
         [NotNull]
         public string Email { get; set; }
+        public Gender Gender { get; set; }
+        public int phonenumber { get; set; }
+        public string Name { get; set; }
         
         public UserAdmin UserAdmin { get; set; }
 

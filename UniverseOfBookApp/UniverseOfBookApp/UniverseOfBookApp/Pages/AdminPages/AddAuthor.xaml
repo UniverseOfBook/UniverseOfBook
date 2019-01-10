@@ -17,15 +17,14 @@
                 <Image Source="writer" VerticalOptions="Center" HorizontalOptions="Center"/>
                 <Frame  CornerRadius="20" BackgroundColor="#00695C" >
                     <StackLayout  >
-                        <Entry Placeholder="Author Name"  />
-                        <DatePicker   />
-                        <Editor  Placeholder="Author Information" HeightRequest="40"/>
-                    <Button Text="Add"  Clicked="Button_Clicked" />
-                    <Button Text="Back"  BackgroundColor="#795548"/>
-                </StackLayout>
+                        <Entry Placeholder="Author Name" x:Name="AuthorName"  />
+                        <DatePicker x:Name="Date"/>
+                        <Editor  x:Name="AuthorInfo" Placeholder="Author Information" HeightRequest="40"/>
+                        <Button Text="Add"  Clicked="AddButton_Clicked" />
+                        <Button Text="Back" Clicked="BackButton_Clicked"  BackgroundColor="#795548"/>
+                    </StackLayout>
                 </Frame>
             </StackLayout>
-            <!--<Entry Placeholder="Author Name" PlaceholderColor="LightGray"  />-->
-       </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -13,9 +13,12 @@ namespace UniverseOfBookApp
         {
             InitializeComponent();
 
-            MainPage = new AddAuthor();
+            MainPage = new NavigationPage(new LoginPage());
         }
-
+        //public static Page GetPage()
+        //{
+        //    return new NavigationPage(new AddBook());
+        //}
         protected override void OnStart()
         {
             // Handle when your app starts

@@ -2,11 +2,67 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UniverseOfBookApp.Pages.AdminPages.AddBook">
+    <ContentPage.Resources>
+        <StyleSheet Source="../../Styles/MyStyle.css" />
+    </ContentPage.Resources>
+    
+    <ContentPage.ToolbarItems > 
+        
+        <ToolbarItem Name="Authors"  Order="Secondary" Text="Authors"  Activated="Authors_Clicked" />
+        <ToolbarItem Name="Admin"  Order="Primary" Icon="man"  Command="Admin"  />
+        <ToolbarItem Name="Users"  Order="Secondary"  Text="Users" Clicked="Users_Clicked"/>
+        <ToolbarItem Name="Books"  Order="Secondary"  Text="Books" Clicked="Books_Clicked"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <ScrollView>
+            <StackLayout VerticalOptions="Center">
+            <StackLayout Padding="10" VerticalOptions="Center"   >
+                <Image Source="writing" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Frame  CornerRadius="20" BackgroundColor="#00695C" >
+                    <StackLayout  >
+                        <Entry Placeholder="Book Name" x:Name="BookName"  />
+                        <Label Text="Publish Date"/> 
+                        <DatePicker x:Name="PublishDate"  />
+                        <Picker x:Name="PublishPick" SelectedItem="{Binding Publisher}" Title="Select Publisher">
+                            <Picker.Items>
+                                <x:String >Can</x:String>
+                                <x:String >İletisim</x:String>
+                                <x:String >Yapı Kredi</x:String>
+                                <x:String >İs Bankası</x:String>
+                                <x:String >Domingo</x:String>
+                            </Picker.Items> 
+                           
+                        </Picker>
+                        <Entry  x:Name="PageNumber" Placeholder="Page Number Of Book" />
+                        <Entry x:Name="AuthorName" Placeholder="Author Name"/>
+                        <Picker x:Name="CategoryPick" SelectedItem="{Binding Category}" Title="Select Category">
+                  
+                            <Picker.Items>
+                                <x:String >Crime</x:String>
+                                <x:String >Dram</x:String>
+                                <x:String >Biographies</x:String>
+                                <x:String >History</x:String>
+                                <x:String >Sport</x:String>
+                                <x:String >Education</x:String>
+                                <x:String >Kids</x:String>
+                                <x:String >Cooking</x:String>
+                                <x:String >Horror</x:String>
+                                <x:String >Medical</x:String>
+                                <x:String >Religion</x:String>
+                                <x:String >Romance</x:String>
+                                <x:String >Modern Classic</x:String>
+                                <x:String >Psychology</x:String>
+                                <x:String >Sciene Fiction</x:String>
+                                <x:String >Suspense Fiction</x:String>
+                            </Picker.Items>
+
+                        </Picker>
+                        <Button Text="Add" Clicked="Button_Clicked" BorderRadius="20"  />
+                        <Button Text="Back" BackgroundColor="#795548"  BorderRadius="20" Clicked="Button_Clicked_1"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

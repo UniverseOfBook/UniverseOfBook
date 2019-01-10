@@ -13,7 +13,7 @@ namespace UniverseOfBookApp.DataAccess
 
     {
         static SQLiteConnection db;
-        public const string DBname = "UniverseOfBookApp.db3";
+        //public const string DBname = "UniverseOfBookApp.db3";
 
         public UserDataAccess()
         {
@@ -37,9 +37,9 @@ namespace UniverseOfBookApp.DataAccess
         {
             db.Delete<User>(Id);
         }
-        public void UserInsert(User user)
+        public int UserInsert(User user)
         {
-            db.Insert(user);
+          return  db.Insert(user);
         }
         public void UserUpdate(User user)
         {
