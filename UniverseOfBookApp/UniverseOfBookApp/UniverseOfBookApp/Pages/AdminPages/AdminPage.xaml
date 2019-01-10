@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UniverseOfBookApp.Pages.AdminPages.AdminPage">
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout>
+                <Image Source="reading" />
+
+                <Frame BackgroundColor="DarkOrange" CornerRadius="20">
+                <StackLayout>
+                       
+                    <Button Text="ADD NEW AUTHOR" BackgroundColor="#29B6F6" BorderRadius="20" x:Name="AddAuthor" Clicked="AddAuthor_Clicked"/>
+                    <Button Text="ADD NEW BOOK" BackgroundColor="#03A9F4" BorderRadius="20" x:Name="AddBook" Clicked="AddBook_Clicked" />
+                    <Button Text="SEE ALL USERS" BackgroundColor="#039BE5" BorderRadius="20" x:Name="SeeUser"  Clicked="SeeUser_Clicked"  />
+                    <Button Text="SEE ALL BOOKS" BackgroundColor="#0288D1" BorderRadius="20" x:Name="SeeBook" Clicked="SeeBook_Clicked"/>
+                    <Button Text="SEE ALL AUTHOR" BackgroundColor="#0277BD" BorderRadius="20" x:Name="SeeAuthor" Clicked="SeeAuthor_Clicked"/>
+                </StackLayout></Frame>
+
+            <Button Text="EXİT"  BorderRadius="20" HorizontalOptions="End" VerticalOptions="End" BackgroundColor="Red" x:Name="Exit" Clicked="Exit_Clicked"/>
+        </StackLayout></ScrollView>
+    </ContentPage.Content>
+</ContentPage>

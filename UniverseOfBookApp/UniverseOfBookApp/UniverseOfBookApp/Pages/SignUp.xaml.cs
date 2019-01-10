@@ -38,9 +38,16 @@ namespace UniverseOfBookApp.Pages
                 user.Password = Password.Text;
                 user.UserName = Name.Text;
                 user.UserAdmin = UserAdmin.User;
-                UserDataAccess.UserInsert(user);
-                
-                DisplayAlert("Join", "Thanks for Joining us "+Name.Text, "Cancel");
+              int number=  UserDataAccess.UserInsert(user);
+                if (number > 0)
+                {
+                 DisplayAlert("Join", "Thanks for Joining us "+Name.Text, "Cancel");
+                }
+                else
+                {
+                    DisplayAlert("Join", "Didnt add  " + Name.Text, "Cancel");
+                }
+              
            }
         }
 
