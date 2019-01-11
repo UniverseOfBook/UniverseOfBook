@@ -14,7 +14,7 @@ namespace UniverseOfBookApp.Pages {
     public partial class LoginPage : ContentPage {
 
         public UserDataAccess userDataAccess;
-        public User user;
+        public UserClass user;
 
         public LoginPage() {
             InitializeComponent();

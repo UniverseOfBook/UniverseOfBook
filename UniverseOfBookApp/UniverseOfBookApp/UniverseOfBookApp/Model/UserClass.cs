@@ -14,20 +14,21 @@ namespace UniverseOfBookApp.Model
         Male,Female
     }
     [Table("User")]
-   public class User
+   public class UserClass
     { 
         [PrimaryKey,AutoIncrement]
         public int userId { get; set; }
+        [Unique,NotNull]
         public string UserName { get; set; }
         [NotNull]
         public string Password { get; set; }
-        [NotNull]
+        [NotNull,Unique]
         public string Email { get; set; }
         public Gender Gender { get; set; }
         public int phonenumber { get; set; }
         public string Name { get; set; }
         
-        public UserAdmin UserAdmin { get; set; }
+        public UserAdmin useradmin { get; set; }
 
     }
 

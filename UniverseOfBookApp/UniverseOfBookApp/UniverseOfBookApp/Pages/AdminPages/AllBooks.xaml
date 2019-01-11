@@ -2,13 +2,50 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UniverseOfBookApp.Pages.AdminPages.AllBooks">
+    <ContentPage.Resources>
+        <StyleSheet Source="../../Styles/MyStyle.css" />
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-       
-       
+            <ScrollView>
+                <StackLayout Padding="0,30,0,10">
+
+                    <Label Text="Books" HorizontalOptions="Center" FontAttributes="Italic" FontSize="20"/>
+                    <Frame CornerRadius="20" Padding="15,20,15,20">
+                        <ScrollView>
+                            <StackLayout>
+
+                                <ListView  x:Name="listView" ItemsSource="{Binding .}" SelectedItem="{Binding Books}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout Orientation="Horizontal" Spacing="200">
+                                                    <StackLayout>
+                                                        <Label Text="{Binding BookName}"/>
+                                                        <Label Text="{Binding AuthorName}"/>
+                                                    </StackLayout>
+                                                    <Image Source="man" HorizontalOptions="EndAndExpand" />
+
+                                                </StackLayout>
+                                            </ViewCell>
+                                            <!--<TextCell Text="{Binding UserName}" Detail="{Binding phonenumber}" />-->
+
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
+                        </ScrollView>
+
+                    </Frame>
+                    <StackLayout>
+
+                        <Button Text="Delete" x:Name="DeleteBook" CornerRadius="20" Clicked="DeleteBook_Clicked"/>
+                        <Button Text="Delete All Books" x:Name="AllBooksDelete" CornerRadius="20"  Clicked="AllBooksDelete_Clicked" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+
+
         </StackLayout>
        
     </ContentPage.Content>

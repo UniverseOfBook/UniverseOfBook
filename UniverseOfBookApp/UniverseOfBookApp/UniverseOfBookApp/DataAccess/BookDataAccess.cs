@@ -17,29 +17,33 @@ namespace UniverseOfBookApp.DataAccess
         public BookDataAccess()
         {
             db = DependencyService.Get<SqlConnection>().GetConnection();
-            db.CreateTable<Book>();
+            db.CreateTable<BookClass>();
         }
-        public List<Book> GetAllBook()
+        public List<BookClass> GetAllBook()
         {
-            return (from book in db.Table<Book>() select book).ToList();
+            return (from book in db.Table<BookClass>() select book).ToList();
         }
-        public Book GetBook(int Id)
+        public BookClass GetBook(int Id)
         {
-            return db.Table<Book>().FirstOrDefault(i => i.BookID == Id);
+            return db.Table<BookClass>().FirstOrDefault(i => i.BookID == Id);
+        }
+        public int DeleteBookName(String Bookname)
+        {
+            return db.Table<BookClass>().Delete(x => x.BookName == Bookname);
         }
         public void DeleteAllBook()
         {
-            db.DeleteAll<Book>();
+            db.DeleteAll<BookClass>();
         }
         public void DeleteBook(int Id)
         {
-            db.Delete<Book>(Id);
+            db.Delete<BookClass>(Id);
         }
-        public void BookInsert(Book book)
+        public int BookInsert(BookClass book)
         {
-            db.Insert(book);
+          return  db.Insert(book);
         }
-        public void BookUpdate(Book book)
+        public void BookUpdate(BookClass book)
         {
             db.Update(book);
         }

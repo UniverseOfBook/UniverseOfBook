@@ -14,8 +14,8 @@ namespace UniverseOfBookApp.Pages.AdminPages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Alluser : ContentPage
 	{
-        public UserDataAccess userDataAccess;
-        public User user;
+        public UserDataAccess userDataAccess = new UserDataAccess();
+        public UserClass user;
 
 		public Alluser ()
 		{
@@ -24,21 +24,37 @@ namespace UniverseOfBookApp.Pages.AdminPages
             //Click();
 
             //
-            List<User> users = new List<User>();
-            userDataAccess = new UserDataAccess();
+            List<UserClass> users = new List<UserClass>();
+            
             users = userDataAccess.GetAllUsers().ToList();
 
             listView.BindingContext = users;
             
 
         }
-       //public void Click()
-       // {
 
-       //     user = new User();
-       // user.Name  = userDataAccess.GetUser(2).Name;
-       //     Debug.WriteLine(user.Name);
-       // }
+        private void DeleteUser_Clicked(object sender, EventArgs e)
+        {
 
-	}
+        }
+
+        private async void AllUserDelete_Clicked(object sender, EventArgs e)
+        {
+            
+            var answer = await DisplayAlert("Question?", "Would you like to delete all users ?", "Yes", "No");
+            if (answer)
+            {
+              userDataAccess.DeleteAllUser();
+            }
+            
+        }
+        //public void Click()
+        // {
+
+        //     user = new User();
+        // user.Name  = userDataAccess.GetUser(2).Name;
+        //     Debug.WriteLine(user.Name);
+        // }
+
+    }
 }
