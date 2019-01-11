@@ -14,7 +14,7 @@ namespace UniverseOfBookApp.Pages {
     public partial class LoginPage : ContentPage {
 
         public UserDataAccess userDataAccess;
-        public User user;
+        public UserClass user;
 
         public LoginPage() {
             InitializeComponent();
@@ -34,7 +34,7 @@ namespace UniverseOfBookApp.Pages {
 
             if (user != null)
             {
-                if (user.UserAdmin == UserAdmin.Admin)
+                if (user.useradmin == UserAdmin.Admin)
                 {
 
                     Navigation.InsertPageBefore(new AdminPage(), this);

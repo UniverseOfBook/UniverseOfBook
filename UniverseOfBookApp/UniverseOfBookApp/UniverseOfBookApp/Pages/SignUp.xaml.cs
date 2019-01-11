@@ -16,7 +16,7 @@ namespace UniverseOfBookApp.Pages {
     public partial class SignUp : ContentPage {
 
         public UserDataAccess UserDataAccess;
-        public User user;
+        public UserClass user;
 
         public SignUp() {
             InitializeComponent();
@@ -25,13 +25,13 @@ namespace UniverseOfBookApp.Pages {
         private async void Submit_Clicked(object sender, EventArgs e) {
             //We create new user here 
             if (Password.Text == PasswordAgain.Text && Email.Text != null && Name.Text != null) {
-                user = new User();
+                user = new UserClass();
                 UserDataAccess = new UserDataAccess();
 
                 user.Email = Email.Text;
                 user.Password = Password.Text;
                 user.UserName = Name.Text;
-                user.UserAdmin = UserAdmin.User;
+                user.useradmin = UserAdmin.User;
                 int number = UserDataAccess.UserInsert(user);
                 if (number > 0) {
                     await DisplayAlert("Sign Up", "Thanks for joining us " + Name.Text, "OK");

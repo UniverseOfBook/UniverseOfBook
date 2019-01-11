@@ -14,16 +14,17 @@ namespace UniverseOfBookApp.Model
         Can,Iletisim,IsBankası,YapıKredi,Domingo
     }
     [Table("Book")]
-    public class Book 
+    public class BookClass 
     {
         [PrimaryKey,AutoIncrement]
         public int BookID { get; set; }
-        [NotNull,MaxLength(30)]
+        [NotNull,MaxLength(30),Unique]
         public string BookName { get; set; }
         public DateTime PublishDate { get; set; }
         public Publishers Publishers { get; set; }
         public int PageNumber { get; set; }
-        public int AuthorID { get; set; }
+        public string AuthorName { get; set; }
+       
         public CategoryEnum Category { get; set; }
         public string bookphoto { get; set; }
         

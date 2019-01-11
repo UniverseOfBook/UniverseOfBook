@@ -38,8 +38,8 @@
             </Frame>
             <StackLayout>
                 
-                <Button Text="Delete" x:Name="DeleteUser" CornerRadius="20"/>
-                <Button Text="Delete All Users" x:Name="AllUserDelete" CornerRadius="20" />
+                <Button Text="Delete" x:Name="DeleteUser" CornerRadius="20" Clicked="DeleteUser_Clicked"/>
+                <Button Text="Delete All Users" x:Name="AllUserDelete" CornerRadius="20" Clicked="AllUserDelete_Clicked" />
             </StackLayout>
         </StackLayout>
         </ScrollView>

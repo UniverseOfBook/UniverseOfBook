@@ -18,38 +18,45 @@ namespace UniverseOfBookApp.DataAccess
         public UserDataAccess()
         {
             db = DependencyService.Get<SqlConnection>().GetConnection();
-            db.CreateTable<User>();
+            db.CreateTable<UserClass>();
         }
 
-        public List<User> GetAllUsers()
+        public List<UserClass> GetAllUsers()
         {
-            return (from user in db.Table<User>() select user).ToList();
+            return (from user in db.Table<UserClass>() where user.useradmin==UserAdmin.User select user ).ToList();
         }
-        public User GetUser(int Id)
+        public UserClass GetUser(int Id)
         {
-            return db.Table<User>().FirstOrDefault(i => i.userId == Id);
+            return db.Table<UserClass>().FirstOrDefault(i => i.userId == Id);
         }
         public void DeleteAllUser()
         {
-            db.DeleteAll<User>();
+            //List<User> users = new List<User>();
+            //users = GetAllUsers();
+            //db.DeleteAll<User>();
+            db.Table<UserClass>().Delete(x => x.useradmin == UserAdmin.User);
+        }
+        public int DeleteUserName (String UserName)
+        {
+            return db.Table<UserClass>().Delete(x => x.UserName == UserName);
         }
         public void DeleteUser(int Id)
         {
-            db.Delete<User>(Id);
+            db.Delete<UserClass>(Id);
         }
-        public int UserInsert(User user)
+        public int UserInsert(UserClass user)
         {
           return  db.Insert(user);
         }
-        public void UserUpdate(User user)
+        public void UserUpdate(UserClass user)
         {
             db.Update(user);
         }
 
-        public User Login(string Email,string password)
+        public UserClass Login(string Email,string password)
         {
 
-            return db.Table<User>().FirstOrDefault(x => x.Email == Email && x.Password == password);
+            return db.Table<UserClass>().FirstOrDefault(x => x.Email == Email && x.Password == password);
             
         }
     }

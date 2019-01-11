@@ -6,11 +6,11 @@ using System.Text;
 namespace UniverseOfBookApp.Model
 {
     [Table("Author")]
-   public class Author
+   public class AuthorClass
     {
         [PrimaryKey,AutoIncrement]
         public int AuthorID { get; set; }
-        [NotNull]
+        [NotNull,Unique]
         public string AuthorName { get; set; }
         public DateTime AuthorDate { get; set; }
         public string AuthorPhoto { get; set; }

@@ -38,7 +38,11 @@
                             </Picker.Items>
                         </Picker>
                         <Entry  x:Name="PageNumber" Placeholder="Page Number Of Book" />
-                        <Entry x:Name="AuthorName" Placeholder="Author Name"/>
+
+                        <Picker x:Name="AuthorPick" SelectedItem="{Binding Category}" Title="Select Author">
+                            
+                        </Picker>
+                        <!--<Entry x:Name="authorname" Placeholder="Author Name"/>-->
                         <Picker x:Name="CategoryPick" SelectedItem="{Binding Category}" Title="Select Category">
                             <Picker.Items>
                                 <x:String >Crime</x:String>

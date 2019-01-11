@@ -2,11 +2,49 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UniverseOfBookApp.Pages.AdminPages.AllAuthor">
+    <ContentPage.Resources>
+        <StyleSheet Source="../../Styles/MyStyle.css" />
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <ScrollView>
+                <StackLayout Padding="0,30,0,10">
+
+                    <Label Text="Authors" HorizontalOptions="Center" FontAttributes="Italic" FontSize="20"/>
+                    <Frame CornerRadius="20" Padding="15,20,15,20">
+                        <ScrollView>
+                            <StackLayout>
+
+                                <ListView  x:Name="listView" ItemsSource="{Binding .}" SelectedItem="{Binding Author}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout Orientation="Horizontal" Spacing="200">
+                                                    <StackLayout>
+                                                        <Label Text="{Binding AuthorName}"/>
+                                                        <Label Text="{Binding AuthorDescription}"/>
+                                                    </StackLayout>
+                                                    <Image Source="man" HorizontalOptions="EndAndExpand" />
+
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
+                        </ScrollView>
+
+                    </Frame>
+                    <StackLayout>
+
+                        <Button Text="Delete" x:Name="DeleteAuthor" CornerRadius="20" Clicked="DeleteAuthor_Clicked"/>
+                        <Button Text="Delete All Authors" x:Name="AllAuthorDelete" CornerRadius="20" Clicked="AllAuthorDelete_Clicked" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+
+
         </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>
