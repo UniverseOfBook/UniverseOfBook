@@ -32,6 +32,12 @@ Frame {
     background-color: #ffffff;
 }
 
+SearchBar {
+    color: #1b1b1b;
+    height: 46;
+    font-size: 18;
+}
+
 .LabelClass {
     font-size: 16;
 }

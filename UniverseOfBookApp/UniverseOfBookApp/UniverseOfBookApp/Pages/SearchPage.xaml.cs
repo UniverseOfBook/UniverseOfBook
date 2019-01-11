@@ -15,8 +15,9 @@ namespace UniverseOfBookApp.Pages {
         }
 
         protected override void OnAppearing() {
-            var homePage = MainTabbedPage.mainTabbedPage;
-            NavigationPage.SetHasNavigationBar(homePage, false);
+            var mainTabbedPage = MainTabbedPage.mainTabbedPage;
+            if (mainTabbedPage != null)
+                NavigationPage.SetHasNavigationBar(mainTabbedPage, false);
         }
     }
 }

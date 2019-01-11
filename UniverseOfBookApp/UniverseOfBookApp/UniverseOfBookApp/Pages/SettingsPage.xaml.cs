@@ -14,6 +14,10 @@ namespace UniverseOfBookApp.Pages {
             InitializeComponent();
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.White;
         }
-       
+
+        private void SignOutButtonClicked(object sender, EventArgs e) {
+            App.UserEmail = "";
+            Application.Current.MainPage = new LoginPage();
+        }
     }
 }

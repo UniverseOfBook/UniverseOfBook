@@ -44,8 +44,9 @@
                     <StackLayout Padding="0,-10,0,0" HorizontalOptions="EndAndExpand">
                         <Switch  HorizontalOptions="EndAndExpand" />
                     </StackLayout>
-
                 </StackLayout>
+
+                <Button Text="Sign Out" BackgroundColor="#6d6d6d" FontSize="16" BorderRadius="8" Clicked="SignOutButtonClicked" WidthRequest="110" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

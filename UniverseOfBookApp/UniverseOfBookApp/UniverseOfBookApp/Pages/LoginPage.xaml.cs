@@ -32,22 +32,20 @@ namespace UniverseOfBookApp.Pages {
             userDataAccess = new UserDataAccess();
             user = userDataAccess.Login(Email.Text, Password.Text);
 
-            if (user != null)
-            {
-                if (user.UserAdmin == UserAdmin.Admin)
-                {
+            if (user != null) {
+                if (user.UserAdmin == UserAdmin.Admin) {
 
                     Navigation.InsertPageBefore(new AdminPage(), this);
                     await Navigation.PopAsync();
                 }
-                else
-                {
-
+                else {
+                    App.UserEmail = Email.Text;
+                    await DisplayAlert("Warning", App.UserEmail, "Cancel");
                     Navigation.InsertPageBefore(new MainTabbedPage(), this);
                     await Navigation.PopAsync();
                 }
             }
-            else { DisplayAlert("Warning", "Please check your Email and Password", "Cancel"); }
+            else { await DisplayAlert("Warning", "Please check your Email and Password", "Cancel"); }
 
             //Navigation.InsertPageBefore(new MainTabbedPage(), this);
             //await Navigation.PopAsync();

@@ -8,6 +8,7 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <Label Text="Homepage" VerticalOptions="Center"/>
+        <StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
