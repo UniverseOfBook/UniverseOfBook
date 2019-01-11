@@ -29,24 +29,28 @@ namespace UniverseOfBookApp.Pages {
         }
 
         private async void LoginButtonClicked(object sender, EventArgs e) {
-            //userDataAccess = new UserDataAccess();
-            //user = userDataAccess.Login(Email.Text, Password.Text);
+            userDataAccess = new UserDataAccess();
+            user = userDataAccess.Login(Email.Text, Password.Text);
 
-            //if (user != null)
-            //{
-            //    if (user.UserAdmin == UserAdmin.Admin)
-            //    {
-            //        await Navigation.PushAsync(new AdminPage());
-            //    }
-            //    else
-            //    {
-            //        await Navigation.PushModalAsync(new HomePage());
-            //    }
-            //}
-            //else { DisplayAlert("Warning", "Please check your Email and Password", "Cancel"); }
-            
-            Navigation.InsertPageBefore(new MainTabbedPage(), this);
-            await Navigation.PopAsync();
+            if (user != null)
+            {
+                if (user.UserAdmin == UserAdmin.Admin)
+                {
+
+                    Navigation.InsertPageBefore(new AdminPage(), this);
+                    await Navigation.PopAsync();
+                }
+                else
+                {
+
+                    Navigation.InsertPageBefore(new MainTabbedPage(), this);
+                    await Navigation.PopAsync();
+                }
+            }
+            else { DisplayAlert("Warning", "Please check your Email and Password", "Cancel"); }
+
+            //Navigation.InsertPageBefore(new MainTabbedPage(), this);
+            //await Navigation.PopAsync();
         }
     }
 }

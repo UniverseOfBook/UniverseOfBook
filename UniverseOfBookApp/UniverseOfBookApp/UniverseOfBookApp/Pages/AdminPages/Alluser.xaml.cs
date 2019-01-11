@@ -25,9 +25,12 @@ namespace UniverseOfBookApp.Pages.AdminPages
 
             //
             List<User> users = new List<User>();
+            userDataAccess = new UserDataAccess();
             users = userDataAccess.GetAllUsers().ToList();
 
             listView.BindingContext = users;
+            
+
         }
        //public void Click()
        // {
