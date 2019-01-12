@@ -22,10 +22,22 @@ namespace UniverseOfBookApp.Pages.AdminPages
             List<BookClass> bookClasses = new List<BookClass>();
             bookClasses = bookDataAccess.GetAllBook().ToList();
             listView.BindingContext = bookClasses;
-		}
+            
+        }
 
-        private void DeleteBook_Clicked(object sender, EventArgs e)
+        private async void DeleteBook_Clicked(object sender, EventArgs e)
         {
+           
+            var answer = await DisplayAlert("Question?", "Would you like to delete?", "Yes", "No");
+            if (answer)
+            {
+              BookClass bookClass = new BookClass();
+            bookClass = (BookClass)listView.SelectedItem;
+            bookDataAccess.DeleteBookName(bookClass.BookName);
+
+            }
+            Navigation.InsertPageBefore(new AllBooks(), this);
+            await Navigation.PopAsync();
 
         }
 

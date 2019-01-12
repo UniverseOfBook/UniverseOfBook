@@ -25,6 +25,7 @@ namespace UniverseOfBookApp.Pages.AdminPages
             author.AuthorDate = Date.Date;
             author.AuthorName = AuthorName.Text;
             author.AuthorDescription = AuthorInfo.Text;
+            author.AuthorPhoto = AuthorPhoto.Text;
 
            int i= DataAccess.AuthorInsert(author);
             if (i > 0)

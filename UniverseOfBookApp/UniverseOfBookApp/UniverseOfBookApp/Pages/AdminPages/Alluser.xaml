@@ -24,7 +24,7 @@
                                     <Label Text="{Binding UserName}"/>
                                     <Label Text="{Binding phonenumber}"/>
                                 </StackLayout>
-                                <Image Source="man" HorizontalOptions="EndAndExpand" />
+                                <Image Source="{Binding UserPhoto}" HorizontalOptions="EndAndExpand" />
                                
                             </StackLayout>
                         </ViewCell>
