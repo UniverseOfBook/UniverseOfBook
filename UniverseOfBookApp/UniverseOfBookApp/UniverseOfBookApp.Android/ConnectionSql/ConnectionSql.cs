@@ -13,6 +13,8 @@ using UniverseOfBookApp.DependencyConnection;
 
 using SQLite;
 using UniverseOfBookApp.Droid.ConnectionSql;
+using Java.Nio.FileNio;
+using System.IO;
 
 [assembly: Xamarin.Forms.Dependency(typeof(ConnectionSql))]
 namespace UniverseOfBookApp.Droid.ConnectionSql
@@ -21,10 +23,14 @@ namespace UniverseOfBookApp.Droid.ConnectionSql
     {
         public SQLiteConnection GetConnection()
         {
-            string dbname = "UniverseOfBookApp.db3";    
+            string dbname = "UniverseOfBookApp.db3";
+  
             var document = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             var path = System.IO.Path.Combine(document, dbname);
             var db = new SQLiteConnection(path);
+            Console.WriteLine(path);
+            if (!File.Exists(path)) File.Create(path);
+         
             return db;
 
         }

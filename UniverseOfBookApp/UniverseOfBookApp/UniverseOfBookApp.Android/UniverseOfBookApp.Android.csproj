@@ -78,8 +78,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Charm-Bold.ttf" />
-    <AndroidAsset Include="Assets\Charm-Regular.ttf" />
+    <AndroidAsset Include="Assets\Satisfy-Regular.ttf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml">
@@ -159,9 +158,6 @@
     <AndroidResource Include="Resources\drawable\apple.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\OFL.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\bookss.png" />
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +183,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\xml\file_paths.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\LICENSE.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

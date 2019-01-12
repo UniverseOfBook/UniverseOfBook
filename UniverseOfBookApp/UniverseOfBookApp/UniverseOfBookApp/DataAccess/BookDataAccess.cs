@@ -23,6 +23,14 @@ namespace UniverseOfBookApp.DataAccess
         {
             return (from book in db.Table<BookClass>() select book).ToList();
         }
+        public BookClass GetBookByName(string BookName)
+        {
+            return db.Table<BookClass>().FirstOrDefault(i => i.BookName == BookName);
+        }
+        public List<String> GetBookByAuthor(string AuthorName)
+        {
+            return (from book in db.Table<BookClass>() where book.AuthorName==AuthorName select book.BookName).ToList();
+        }
         public BookClass GetBook(int Id)
         {
             return db.Table<BookClass>().FirstOrDefault(i => i.BookID == Id);
