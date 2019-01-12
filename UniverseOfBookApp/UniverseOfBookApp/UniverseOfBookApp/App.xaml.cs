@@ -22,22 +22,20 @@ namespace UniverseOfBookApp {
             Console.WriteLine("Started");
             InitializeComponent();
 
-            //if (UserEmail == "") {
-            //    MainPage = new NavigationPage(new LoginPage()) {
-            //        BarBackgroundColor = Color.FromHex("#efefef"),
-            //        BarTextColor = Color.FromHex("#1b1b1b")
-            //    };
-            //}
-            //else {
-            //    MainPage = new NavigationPage(new MainTabbedPage()) {
-            //        BarBackgroundColor = Color.FromHex("#efefef"),
-            //        BarTextColor = Color.FromHex("#1b1b1b")
-            //    };
-            //}
+            if (UserEmail == "") {
+                MainPage = new NavigationPage(new LoginPage()) {
+                    BarBackgroundColor = Color.FromHex("#efefef"),
+                    BarTextColor = Color.FromHex("#1b1b1b")
+                };
+            }
+            else {
+                MainPage = new NavigationPage(new MainTabbedPage()) {
+                    BarBackgroundColor = Color.FromHex("#efefef"),
+                    BarTextColor = Color.FromHex("#1b1b1b")
+                };
+            }
 
-            
-
-            MainPage = new NavigationPage(new LoginPage());
+            //MainPage = new NavigationPage(new LoginPage());
         }
 
 

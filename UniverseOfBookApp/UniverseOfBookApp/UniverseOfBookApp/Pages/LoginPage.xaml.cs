@@ -40,7 +40,6 @@ namespace UniverseOfBookApp.Pages {
                 }
                 else {
                     App.UserEmail = Email.Text;
-                    await DisplayAlert("Warning", App.UserEmail, "Cancel");
                     Navigation.InsertPageBefore(new MainTabbedPage(), this);
                     await Navigation.PopAsync();
                 }

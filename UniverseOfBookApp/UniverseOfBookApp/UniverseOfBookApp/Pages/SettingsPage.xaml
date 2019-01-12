@@ -14,7 +14,8 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="20">
-                <Image Source="defaultuser" WidthRequest="150" HorizontalOptions="Center"/>
+                <Image Source="defaultuser" WidthRequest="150" HorizontalOptions="Center" x:Name="profilePhoto"/>
+                <Button Text="Change Photo" HorizontalOptions="Center" Clicked="UploadPhotoClicked"/>
                 <StackLayout Margin="5" Padding="0,30,0,-15">
                     <Label Text="Name" FontAttributes="Bold" StyleClass="SettingsLabel" />
                 </StackLayout>

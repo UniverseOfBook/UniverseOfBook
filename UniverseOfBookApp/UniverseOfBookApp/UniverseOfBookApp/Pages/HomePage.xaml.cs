@@ -14,11 +14,22 @@ namespace UniverseOfBookApp.Pages {
         
         public HomePage() {
             InitializeComponent();
+
+            DataAccess.BookDataAccess bookDataAccess = new DataAccess.BookDataAccess();
+            List<Model.BookClass> allBooks = bookDataAccess.GetAllBook().ToList();
+
+            for (int i = 0; i < allBooks.Count; i++) {
+                string url = allBooks[i].bookphoto;
+                Console.WriteLine(url);
+                Image bookImage = new Image { Source=url };
+                BooksStacklayout.Children.Add(bookImage);
+            }
         }
 
         protected override void OnAppearing() {
             var homePage = MainTabbedPage.mainTabbedPage;
-            NavigationPage.SetHasNavigationBar(homePage, false);
+            if (homePage != null)
+                NavigationPage.SetHasNavigationBar(homePage, false);
         }
     }
 }

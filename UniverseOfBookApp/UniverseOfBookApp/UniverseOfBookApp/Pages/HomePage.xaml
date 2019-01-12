@@ -1,14 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            x:Class="UniverseOfBookApp.Pages.HomePage">
+            x:Class="UniverseOfBookApp.Pages.HomePage"
+             BackgroundColor="#ffffff">
 
     <ContentPage.Resources>
         <StyleSheet Source="../Styles/MyStyle.css" />
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Margin="20">
+                <Label Text="Discover Books" FontSize="20"/>
+                <ScrollView Orientation="Horizontal">
+                    <StackLayout Orientation="Horizontal" x:Name="BooksStacklayout" Spacing="10" Padding="10">
+                        
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
