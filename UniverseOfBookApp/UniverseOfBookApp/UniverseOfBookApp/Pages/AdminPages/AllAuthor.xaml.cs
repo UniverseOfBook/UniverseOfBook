@@ -21,15 +21,22 @@ namespace UniverseOfBookApp.Pages.AdminPages
             List<AuthorClass> authorClasses = new List<AuthorClass>();
             authorClasses = authorDataAccess.GetAllAuthor().ToList();
             listView.BindingContext = authorClasses;
-		}
+            listView.IsRefreshing = false;
+        }
         
         private  async void DeleteAuthor_Clicked(object sender, EventArgs e)
         {
             var answer = await DisplayAlert("Question?", "Would you like to delete?", "Yes", "No");
             if (answer)
             {
-                authorDataAccess.DeleteAllAuthor();
+                AuthorClass author = new AuthorClass();
+               author  = (AuthorClass)listView.SelectedItem;
+                authorDataAccess.DeleteAuthorName(author.AuthorName);
+                
             }
+            Navigation.InsertPageBefore(new AllAuthor(), this);
+            await Navigation.PopAsync();
+
         }
 
         private async void AllAuthorDelete_Clicked(object sender, EventArgs e)

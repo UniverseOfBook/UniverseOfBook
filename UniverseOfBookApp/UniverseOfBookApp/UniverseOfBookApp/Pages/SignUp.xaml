@@ -30,6 +30,10 @@
                         <Image Source="lock.png" HeightRequest="24" />
                         <Entry x:Name="PasswordAgain" IsPassword="True" Placeholder="Confirm Password" HorizontalOptions="FillAndExpand" />
                     </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                        <Image Source="photo" HeightRequest="24" />
+                        <Entry x:Name="userPhoto"   Placeholder="Your Profile Picture" HorizontalOptions="FillAndExpand" />
+                    </StackLayout>
                     <StackLayout Orientation="Horizontal" Margin="0,15,0,0">
                         <Button Text="Back" Clicked="BackButtonClicked" BorderRadius="8" WidthRequest="120" BackgroundColor="#6d6d6d"/>
                         <Button x:Name="Submit" Text="Sign up" Clicked="Submit_Clicked" BorderRadius="8" HorizontalOptions="EndAndExpand" WidthRequest="150"/>

@@ -29,13 +29,25 @@ namespace UniverseOfBookApp.Pages.AdminPages
             users = userDataAccess.GetAllUsers().ToList();
 
             listView.BindingContext = users;
-            
+           
 
         }
 
-        private void DeleteUser_Clicked(object sender, EventArgs e)
+        private async void DeleteUser_Clicked(object sender, EventArgs e)
         {
+           
+            var answer = await DisplayAlert("Question?", "Would you like to delete?", "Yes", "No");
+            if (answer)
+            {
+                UserClass user = new UserClass();
 
+            user =(UserClass) listView.SelectedItem;
+            
+            userDataAccess.DeleteUserName(user.UserName);
+
+            }
+            Navigation.InsertPageBefore(new Alluser(), this);
+            await Navigation.PopAsync();
         }
 
         private async void AllUserDelete_Clicked(object sender, EventArgs e)
@@ -46,7 +58,7 @@ namespace UniverseOfBookApp.Pages.AdminPages
             {
               userDataAccess.DeleteAllUser();
             }
-            
+           
         }
         //public void Click()
         // {

@@ -4,9 +4,15 @@ using System.Text;
 
 namespace UniverseOfBookApp.Model
 {
+    public enum ReadWant
+    {
+        Read,Want
+    }
    public class UserBook
     {
-        public int Bookid { get; set; }
-        public int Userid { get; set; }
+        public string BookName { get; set; }
+        public string UserName { get; set; }
+        public ReadWant ReadWant { get; set; }
+
     }
 }

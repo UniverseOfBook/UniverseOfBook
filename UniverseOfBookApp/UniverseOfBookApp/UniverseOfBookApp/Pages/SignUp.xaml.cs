@@ -32,6 +32,7 @@ namespace UniverseOfBookApp.Pages {
                 user.Password = Password.Text;
                 user.UserName = Name.Text;
                 user.useradmin = UserAdmin.User;
+                
                 int number = UserDataAccess.UserInsert(user);
                 if (number > 0) {
                     await DisplayAlert("Sign Up", "Thanks for joining us " + Name.Text, "OK");

@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="UniverseOfBookApp.Pages.AdminPages.AllBooks">
+             x:Class="UniverseOfBookApp.Pages.AdminPages.AllBooks"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin">
     <ContentPage.Resources>
         <StyleSheet Source="../../Styles/MyStyle.css" />
     </ContentPage.Resources>
@@ -22,7 +23,8 @@
                                                         <Label Text="{Binding BookName}"/>
                                                         <Label Text="{Binding AuthorName}"/>
                                                     </StackLayout>
-                                                    <Image Source="man" HorizontalOptions="EndAndExpand" />
+                                                    <controls:CircleImage Source="{Binding bookphoto}" HorizontalOptions="EndAndExpand" />
+
                                                 </StackLayout>
                                             </ViewCell>
                                             <!--<TextCell Text="{Binding UserName}" Detail="{Binding phonenumber}" />-->

@@ -27,7 +27,7 @@ namespace UniverseOfBookApp.Model
         public Gender Gender { get; set; }
         public int phonenumber { get; set; }
         public string Name { get; set; }
-        
+        public string UserPhoto { get; set; }
         public UserAdmin useradmin { get; set; }
 
     }

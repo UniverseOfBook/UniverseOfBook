@@ -16,6 +16,7 @@
                     <Entry Placeholder="Author Name" x:Name="AuthorName" />
                     <DatePicker x:Name="Date" />
                     <Editor x:Name="AuthorInfo" Placeholder="Author Information" HeightRequest="40" />
+                    <Entry x:Name="AuthorPhoto" Placeholder="Author Photo" />
                     <Button Text="Add" BorderRadius="20" Clicked="AddButton_Clicked" />
                     <Button Text="Back" BorderRadius="20" Clicked="BackButton_Clicked" BackgroundColor="#795548" />
                 </StackLayout>

@@ -23,13 +23,13 @@ namespace UniverseOfBookApp.DataAccess
         {
             return (from UserBook in db.Table<UserBook>() select UserBook).ToList();
         }
-        public UserBook GetBook(int Id)
+        public UserBook GetBook(string bookname)
         {
-            return db.Table<UserBook>().FirstOrDefault(i => i.Bookid == Id);
+            return db.Table<UserBook>().FirstOrDefault(i => i.BookName == bookname);
         }
-        public UserBook GetBookUser(int Id)
+        public UserBook GetBookUser(string UserName)
         {
-            return db.Table<UserBook>().FirstOrDefault(i => i.Userid == Id);
+            return db.Table<UserBook>().FirstOrDefault(i => i.UserName == UserName);
         }
         
         public void DeleteUserBook(int Id)
