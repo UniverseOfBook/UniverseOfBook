@@ -39,7 +39,7 @@ namespace UniverseOfBookApp.Pages {
                 Image bookImage = new Image { HeightRequest = 300, Source = bookClass[a].bookphoto };
                 var tapGestureRecognizer = new TapGestureRecognizer();
                 tapGestureRecognizer.Tapped += (s, e) => {
-                    ImageTapped(bookClass[a].BookName);
+                    ImageTapped(bookImage.Source.ToString().Replace("Uri: ", ""));
                 };
                 bookImage.GestureRecognizers.Add(tapGestureRecognizer);
                 if (column == 0) {
@@ -54,8 +54,10 @@ namespace UniverseOfBookApp.Pages {
             }
         }
 
-        public async void ImageTapped(string bookName) {
-            //await Navigation.PushAsync(new Book());
+        public async void ImageTapped(string bookSource) {
+            BookDataAccess bookDataAccess = new BookDataAccess();
+            BookClass bookName = bookDataAccess.GetBookBySource(bookSource);
+            await Navigation.PushAsync(new Book(bookName.BookName));
         }
 
     }

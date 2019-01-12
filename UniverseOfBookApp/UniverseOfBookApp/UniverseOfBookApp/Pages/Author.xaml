@@ -10,34 +10,30 @@
                 <Setter Property="Spacing" Value="30"/>
                 <Setter Property="Padding" Value="10"/>
             </Style>
-            <Style TargetType="Label">
-                <Setter Property="Font" Value="Satisfy-Regular.ttf#Satisfy"/>
-            </Style>
         </ResourceDictionary>
         <StyleSheet Source="../Styles/MyStyle.css" />
     </ContentPage.Resources>
 
     <ContentPage.Content  >
+        <ScrollView>
+            <StackLayout Spacing="30" Padding="10" BackgroundColor="#efefef">
+                <StackLayout.GestureRecognizers>
+                    <SwipeGestureRecognizer Swiped="SwipedToBack" Direction="Down" />
+                </StackLayout.GestureRecognizers>
 
-        <StackLayout Spacing="30" Padding="10" BackgroundColor="#efefef">
-            <StackLayout.GestureRecognizers>
-                <SwipeGestureRecognizer Swiped="SwipedToBack" Direction="Down" />
-            </StackLayout.GestureRecognizers>
-
-            <Label    FontAttributes="Bold" FontSize="35" HorizontalOptions="Center" x:Name="AuthorNAME"/>
-            <controls:CircleImage  WidthRequest="160" HeightRequest="160" x:Name="AuthorImage"/>
-            <Frame CornerRadius="20" HasShadow="True">
-                <StackLayout BackgroundColor="White" >
-                    <Label  x:Name="AuthorInfo" FontSize="20" FontAttributes="Italic" />
-                    <StackLayout  HeightRequest="100" Orientation="Horizontal" x:Name="MyStackLayout">
+                <Label FontAttributes="Bold" FontSize="35" HorizontalOptions="Center" x:Name="AuthorNAME" Font="Satisfy-Regular.ttf#Satisfy,30"/>
+                <controls:CircleImage  WidthRequest="160" HeightRequest="160" x:Name="AuthorImage"/>
+                <Frame CornerRadius="20" HasShadow="True">
+                    <StackLayout BackgroundColor="White" >
+                        <Label  x:Name="AuthorInfo" FontSize="20" FontAttributes="Italic" Font="Satisfy-Regular.ttf#Satisfy,18"/>
                         <ScrollView Orientation="Both">
-                          
+                            <StackLayout  HeightRequest="100" Orientation="Horizontal" x:Name="MyStackLayout">
+                           
+                            </StackLayout>
                         </ScrollView>
                     </StackLayout>
-                </StackLayout>
-            </Frame>
-        </StackLayout>
-
-
+                </Frame>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -23,10 +23,16 @@ namespace UniverseOfBookApp.Pages {
 
                 for (int i = 0; i < allBooks.Count; i++) {
                     string url = allBooks[i].bookphoto;
-                    Console.WriteLine(url);
                     Image bookImage = new Image { Source = url };
+                    var tapGestureRecognizer = new TapGestureRecognizer();
+                    
+                    tapGestureRecognizer.Tapped += (s, e) => {
+                        ImageTapped(bookImage.Source.ToString().Replace("Uri: ", ""));
+                    };
+                    bookImage.GestureRecognizers.Add(tapGestureRecognizer);
                     BooksStacklayout.Children.Add(bookImage);
                 }
+                
             }
             catch (Exception ex) {
                 Debug.WriteLine(ex.Message);
@@ -42,6 +48,12 @@ namespace UniverseOfBookApp.Pages {
             var homePage = MainTabbedPage.mainTabbedPage;
             if (homePage != null)
                 NavigationPage.SetHasNavigationBar(homePage, false);
+        }
+
+        public async void ImageTapped(string bookSource) {
+            BookDataAccess bookDataAccess = new BookDataAccess();
+            BookClass bookName = bookDataAccess.GetBookBySource(bookSource);
+            await Navigation.PushAsync(new Book(bookName.BookName));
         }
     }
 }

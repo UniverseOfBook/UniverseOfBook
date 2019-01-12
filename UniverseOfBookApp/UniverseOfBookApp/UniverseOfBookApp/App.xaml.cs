@@ -31,7 +31,7 @@ namespace UniverseOfBookApp {
                 };
             }
             else {
-                MainPage = new NavigationPage(new AdminPage()) {
+                MainPage = new NavigationPage(new MainTabbedPage()) {
                     BarBackgroundColor = Color.FromHex("#efefef"),
                     BarTextColor = Color.FromHex("#1b1b1b")
                 };
