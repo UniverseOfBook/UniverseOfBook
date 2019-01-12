@@ -14,18 +14,23 @@
                     <Frame CornerRadius="20" Padding="10,20,10,20" HeightRequest="500">
                         <ScrollView>
                             <StackLayout>
-                                <ListView  x:Name="listView" ItemsSource="{Binding .}" SelectedItem="{Binding Author}">
+                                <ListView  x:Name="listView" ItemsSource="{Binding .}" SelectedItem="{Binding Author}" RowHeight="100">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
-                                                <StackLayout Orientation="Horizontal" Spacing="200" Padding="5">
-                                                    <StackLayout>
-                                                        <Label Text="{Binding AuthorName}"/>
-                                                        <Label Text="{Binding AuthorDescription}"/>
-                                                    </StackLayout>
-                                                    <controls:CircleImage Source="{Binding AuthorPhoto}" HorizontalOptions="EndAndExpand" />
-
-                                                </StackLayout>
+                                                <Grid HorizontalOptions="FillAndExpand" Margin="5">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*" />
+                                                        <RowDefinition Height="*" />
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="3*" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Text="{Binding AuthorName}" FontAttributes="Bold" FontSize="15" Grid.Row="0" Grid.Column="0"/>
+                                                    <Label Text="Author" FontSize="15" VerticalOptions="End" Grid.Row="1" Grid.Column="0"/>
+                                                    <controls:CircleImage Source="{Binding AuthorPhoto}" WidthRequest="100" HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+                                                </Grid>
                                             </ViewCell>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>

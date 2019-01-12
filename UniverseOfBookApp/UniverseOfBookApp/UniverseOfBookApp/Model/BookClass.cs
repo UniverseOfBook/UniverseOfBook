@@ -7,11 +7,11 @@ namespace UniverseOfBookApp.Model
 {
     public enum CategoryEnum
     {
-        Crime,Dram, Biographies, History, Sport, Education, Kids, Cooking, Horror, Medical, Religion, Romance, ModernClassic,Psychology, ScieneFiction, Suspensefiction
+        Crime,Dram, Biographies, History, Sport, Education, Kids, Cooking, Horror, Medical, Religion, Romance, ModernClassic,Psychology, ScieneFiction, SuspenseFiction, Fantastic
     }
     public enum Publishers
     {
-        Can,Iletisim,IsBankası,YapıKredi,Domingo
+        Can,Iletisim,IsBankası,YapıKredi,Domingo,Ithaki
     }
     [Table("Book")]
     public class BookClass 

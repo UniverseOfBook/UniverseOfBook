@@ -27,6 +27,9 @@ namespace UniverseOfBookApp.DataAccess
         {
             return db.Table<BookClass>().FirstOrDefault(i => i.BookID == Id);
         }
+        public List<BookClass> GetAllBookByCategory(CategoryEnum category) {
+            return (from book in db.Table<BookClass>() where book.Category == category select book).ToList();
+        }
         public int DeleteBookName(String Bookname)
         {
             return db.Table<BookClass>().Delete(x => x.BookName == Bookname);

@@ -14,18 +14,24 @@
                     <Frame CornerRadius="20" Padding="10,20,10,20" HeightRequest="500">
                         <ScrollView>
                             <StackLayout>
-                                <ListView  x:Name="listView" ItemsSource="{Binding .}" SelectedItem="{Binding Books}">
+                                <ListView  x:Name="listView" ItemsSource="{Binding .}" SelectedItem="{Binding Books}" RowHeight="100">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
-                                                <StackLayout Orientation="Horizontal" Spacing="200" Padding="5">
-                                                    <StackLayout>
-                                                        <Label Text="{Binding BookName}"/>
-                                                        <Label Text="{Binding AuthorName}"/>
-                                                    </StackLayout>
-                                                    <controls:CircleImage Source="{Binding bookphoto}" HorizontalOptions="EndAndExpand" />
-
-                                                </StackLayout>
+                                                <Grid HorizontalOptions="FillAndExpand" Margin="5">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*" />
+                                                        <RowDefinition Height="*" />
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="3*" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Text="{Binding BookName}"  FontSize="17" FontAttributes="Bold"
+                                                           Grid.Row="0" Grid.Column="0"/>
+                                                    <Label Text="{Binding AuthorName}" FontSize="15" VerticalOptions="End" Grid.Row="1" Grid.Column="0"/>
+                                                    <Image Source="{Binding bookphoto}" HorizontalOptions="End" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+                                                </Grid>
                                             </ViewCell>
                                             <!--<TextCell Text="{Binding UserName}" Detail="{Binding phonenumber}" />-->
                                         </DataTemplate>

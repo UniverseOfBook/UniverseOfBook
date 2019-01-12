@@ -53,8 +53,8 @@ namespace UniverseOfBookApp.Pages.AdminPages
             book.PublishDate = PublishDate.Date;
             string publish= PublishPick.SelectedItem.ToString();
             book.BookName = BookName.Text;
-           CategoryEnum category=(CategoryEnum) Enum.Parse(typeof(CategoryEnum),CategoryPick.SelectedItem.ToString());
-            Publishers publishers = (Publishers)Enum.Parse(typeof(Publishers), PublishPick.SelectedItem.ToString());
+           CategoryEnum category=(CategoryEnum) Enum.Parse(typeof(CategoryEnum),CategoryPick.SelectedItem.ToString().Replace(" ", ""));
+            Publishers publishers = (Publishers)Enum.Parse(typeof(Publishers), PublishPick.SelectedItem.ToString().Replace(" ", ""));
             book.Category = category;
             book.Publishers = publishers;
             book.bookphoto = BookPhoto.Text;

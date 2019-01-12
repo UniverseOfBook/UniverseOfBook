@@ -5,18 +5,50 @@
              BackgroundColor="#ffffff">
 
     <ContentPage.Resources>
-        <StyleSheet Source="../Styles/MyStyle.css" />
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="#1b1b1b" />
+            </Style>
+            
+            <Style TargetType="Button">
+                <Setter Property="BorderRadius" Value="10" />
+                <Setter Property="HeightRequest" Value="60" />
+                <Setter Property="BackgroundColor" Value="#c62828" />
+                <Setter Property="TextColor" Value="#ffffff" />
+                <Setter Property="FontSize" Value="18" />
+            </Style>
+        </ResourceDictionary>
     </ContentPage.Resources>
 
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="20">
-                <Label Text="Discover Books" FontSize="20"/>
+                <Label Text="Discover Books" FontSize="22"/>
                 <ScrollView Orientation="Horizontal">
                     <StackLayout Orientation="Horizontal" x:Name="BooksStacklayout" Spacing="10" Padding="10">
                         
                     </StackLayout>
                 </ScrollView>
+                <Label Text="Categories" FontSize="22" Margin="0,20,0,10"/>
+                <StackLayout Spacing="10">
+                    <Button Text="Crime" Clicked="CategoryButtonClicked" />
+                    <Button Text="Dram" Clicked="CategoryButtonClicked" />
+                    <Button Text="Biographies" Clicked="CategoryButtonClicked" />
+                    <Button Text="History" Clicked="CategoryButtonClicked" />
+                    <Button Text="Sport" Clicked="CategoryButtonClicked" />
+                    <Button Text="Education" Clicked="CategoryButtonClicked" />
+                    <Button Text="Kids" Clicked="CategoryButtonClicked" />
+                    <Button Text="Cooking" Clicked="CategoryButtonClicked" />
+                    <Button Text="Horror" Clicked="CategoryButtonClicked" />
+                    <Button Text="Medical" Clicked="CategoryButtonClicked" />
+                    <Button Text="Religion" Clicked="CategoryButtonClicked" />
+                    <Button Text="Romance" Clicked="CategoryButtonClicked" />
+                    <Button Text="Modern" Clicked="CategoryButtonClicked" />
+                    <Button Text="Psychology" Clicked="CategoryButtonClicked" />
+                    <Button Text="Sciene Fiction" Clicked="CategoryButtonClicked" />
+                    <Button Text="Suspense Fiction" Clicked="CategoryButtonClicked" />
+                    <Button Text="Fantastic" Clicked="CategoryButtonClicked" />
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
