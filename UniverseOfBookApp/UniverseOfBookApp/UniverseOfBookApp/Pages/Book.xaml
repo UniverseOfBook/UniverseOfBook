@@ -6,12 +6,18 @@
     
     <ContentPage.Resources>
         <StyleSheet Source="../Styles/MyStyle.css" />
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="Margin" Value="5,5,5,5"   />
+                <Setter Property="BorderRadius" Value="20"/>
+            </Style>       
+        </ResourceDictionary>
     </ContentPage.Resources>
     
     <ContentPage.Content>
         <ScrollView>
             <StackLayout BackgroundColor="#efefef" Padding="10">
-                <Image Source="SucveCeza" Margin="10" />
+                <Image  Margin="10" x:Name="Bookphoto"/>
                 <Frame CornerRadius="20">
                     <StackLayout BackgroundColor="White">
                         <StackLayout HorizontalOptions="Center" WidthRequest="100" Spacing="20">
@@ -19,19 +25,22 @@
                         </StackLayout>
 
                         <StackLayout Orientation="Horizontal" Spacing="200">
-                            <Label Text="Suç ve Ceza" FontSize="22" FontAttributes="Bold" Margin="15"/>
+                            <Label x:Name="Bookname"  FontAttributes="Bold" Margin="15" Font="Satisfy-Regular.ttf#Satisfy,30"/>
                             <Image Source="bookss" />
                         </StackLayout>
 
-                        <Button Text="Want" Margin="5,5,5,5" BorderRadius="20" />
-                        <Label Text="Suç ve Ceza ilk kez 1866 yılında yayımlandı. O tarihten sonra da dünyanın gündeminden hiç düşmedi. Dostoyevski, hiç aceleye gelmemesi gerektiğini düşündüğü yeni bir karakter yakalamıştı. Rusya'yı, Rus halkını gözlemleyerek Raskolnikov'u onların içinden çekip almıştı. Öykü, tüm yönleriyle çürüdüğü açıkça görülen geleneksel iyilik algısının toplum tarafından nasıl göz göre göre korunduğunu anlatır. Dostoyevski'nin Suç ve Ceza'sı, insanlığa sorduğu can alıcı sorularla güncelliğini hiç yitirmeyen en büyük başyapıtlar arasında. Hala... "
-                           FontAttributes="Italic"  Margin="10,5,10,5"/>
+                        <Button Text="Want"  />
+                        <Button Text="Read" />
+                        <Label x:Name="BookDescription"  Font="Satisfy-Regular.ttf#Satisfy,22"  Margin="10,5,10,5"/>
                         <StackLayout>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="AuthorTapped" />
                             </StackLayout.GestureRecognizers>
-                            <controls:CircleImage Source="Dostoevsky"  HeightRequest="150" WidthRequest="150" HorizontalOptions="Center" VerticalOptions="Center"/>
-                            <Label Text="Dostoyevski" HorizontalOptions="Center"/>
+                            <controls:CircleImage x:Name="AuthorPhoto"  HeightRequest="150" WidthRequest="150" HorizontalOptions="Center" VerticalOptions="Center" >
+                               
+                                
+                            </controls:CircleImage>
+                            <Label x:Name="AuthorName" HorizontalOptions="Center"/>
                             <Label Text="Writer" HorizontalOptions="Center"/>
                         </StackLayout>
 

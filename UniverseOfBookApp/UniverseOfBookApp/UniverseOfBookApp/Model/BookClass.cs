@@ -22,6 +22,7 @@ namespace UniverseOfBookApp.Model
         public string BookName { get; set; }
         public DateTime PublishDate { get; set; }
         public Publishers Publishers { get; set; }
+        public string Description { get; set; }
         public int PageNumber { get; set; }
         public string AuthorName { get; set; }
         public CategoryEnum Category { get; set; }

@@ -10,6 +10,9 @@
                 <Setter Property="Spacing" Value="30"/>
                 <Setter Property="Padding" Value="10"/>
             </Style>
+            <Style TargetType="Label">
+                <Setter Property="Font" Value="Satisfy-Regular.ttf#Satisfy"/>
+            </Style>
         </ResourceDictionary>
         <StyleSheet Source="../Styles/MyStyle.css" />
     </ContentPage.Resources>
@@ -21,25 +24,14 @@
                 <SwipeGestureRecognizer Swiped="SwipedToBack" Direction="Down" />
             </StackLayout.GestureRecognizers>
 
-            <Label  Text="Fyodor Dostoyevsky"  FontAttributes="Bold" FontSize="35" HorizontalOptions="Center"/>
-            <controls:CircleImage Source="Dostoevsky" WidthRequest="160" HeightRequest="160"/>
+            <Label    FontAttributes="Bold" FontSize="35" HorizontalOptions="Center" x:Name="AuthorNAME"/>
+            <controls:CircleImage  WidthRequest="160" HeightRequest="160" x:Name="AuthorImage"/>
             <Frame CornerRadius="20" HasShadow="True">
                 <StackLayout BackgroundColor="White" >
-                    <Label Text="Dostoyevski, Rus Edebiyatı'nın ve Dünya Edebiyatı'nın en önemli yazarlarından biridir. Eserleri yüzyıllar boyunca en çok okunan kitaplar arasındadır." x:Name="AuthorInfo"  FontAttributes="Italic" />
-                    <StackLayout  HeightRequest="100" Orientation="Horizontal">
+                    <Label  x:Name="AuthorInfo" FontSize="20" FontAttributes="Italic" />
+                    <StackLayout  HeightRequest="100" Orientation="Horizontal" x:Name="MyStackLayout">
                         <ScrollView Orientation="Both">
-                            <!--<ListView x:Name="AuthorList">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <Grid>
-                                            <Image x:Name="ImagineOfAuthor" Source="{Binding AuthorPhoto}"/>
-                                            <Label x:Name="AuthorName" Text="{Binding AuthorName}"/>
-                                        </Grid>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>-->
+                          
                         </ScrollView>
                     </StackLayout>
                 </StackLayout>
