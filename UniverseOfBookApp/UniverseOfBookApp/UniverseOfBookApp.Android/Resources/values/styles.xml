@@ -26,7 +26,10 @@
     <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
     <item name="android:statusBarColor">#ffffff</item>
     <item name="android:windowLightStatusBar">true</item>
-    </style>
+    <item name="android:colorActivatedHighlight">@color/colorAccent</item>
+    <item name="android:textColorHighlight">#ffffff</item>
+
+  </style>
 
   <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
     <item name="colorAccent">@color/colorAccent</item>

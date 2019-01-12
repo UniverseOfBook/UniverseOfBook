@@ -33,7 +33,7 @@ namespace UniverseOfBookApp.Pages {
             user = userDataAccess.Login(Email.Text, Password.Text);
 
             if (user != null) {
-                if (user.UserAdmin == UserAdmin.Admin) {
+                if (user.useradmin == UserAdmin.Admin) {
 
                     Navigation.InsertPageBefore(new AdminPage(), this);
                     await Navigation.PopAsync();

@@ -8,45 +8,38 @@
     <ContentPage.Content>
         <StackLayout>
             <ScrollView>
-                <StackLayout Padding="0,30,0,10">
-
-                    <Label Text="Books" HorizontalOptions="Center" FontAttributes="Italic" FontSize="20"/>
-                    <Frame CornerRadius="20" Padding="15,20,15,20">
+                <StackLayout Padding="20,30,20,10" BackgroundColor="#efefef">
+                    <Label Text="Books" HorizontalOptions="Center" FontAttributes="Italic" FontSize="24"/>
+                    <Frame CornerRadius="20" Padding="10,20,10,20" HeightRequest="500">
                         <ScrollView>
                             <StackLayout>
-
                                 <ListView  x:Name="listView" ItemsSource="{Binding .}" SelectedItem="{Binding Books}">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
-                                                <StackLayout Orientation="Horizontal" Spacing="200">
+                                                <StackLayout Orientation="Horizontal" Spacing="200" Padding="5">
                                                     <StackLayout>
                                                         <Label Text="{Binding BookName}"/>
                                                         <Label Text="{Binding AuthorName}"/>
                                                     </StackLayout>
                                                     <Image Source="man" HorizontalOptions="EndAndExpand" />
-
                                                 </StackLayout>
                                             </ViewCell>
                                             <!--<TextCell Text="{Binding UserName}" Detail="{Binding phonenumber}" />-->
-
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
                             </StackLayout>
                         </ScrollView>
-
                     </Frame>
-                    <StackLayout>
-
+                    <StackLayout Margin="0,10,0,0">
                         <Button Text="Delete" x:Name="DeleteBook" CornerRadius="20" Clicked="DeleteBook_Clicked"/>
                         <Button Text="Delete All Books" x:Name="AllBooksDelete" CornerRadius="20"  Clicked="AllBooksDelete_Clicked" />
                     </StackLayout>
                 </StackLayout>
             </ScrollView>
 
-
         </StackLayout>
-       
+
     </ContentPage.Content>
 </ContentPage>
