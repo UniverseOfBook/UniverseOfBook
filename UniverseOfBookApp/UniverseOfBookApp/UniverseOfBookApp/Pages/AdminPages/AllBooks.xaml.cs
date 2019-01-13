@@ -15,6 +15,7 @@ namespace UniverseOfBookApp.Pages.AdminPages
 	{
 
         BookDataAccess bookDataAccess = new BookDataAccess();
+        UserBookDataAccess UserBookDataAccess = new UserBookDataAccess();
         
 		public AllBooks ()
 		{
@@ -34,6 +35,11 @@ namespace UniverseOfBookApp.Pages.AdminPages
               BookClass bookClass = new BookClass();
             bookClass = (BookClass)listView.SelectedItem;
             bookDataAccess.DeleteBookName(bookClass.BookName);
+             List<UserBook> userBooks=UserBookDataAccess.GetUserBook(bookClass.BookName, App.UserEmail);
+                for (int i = 0; i < userBooks.Count; i++)
+                {
+                    UserBookDataAccess.DeleteBookName(userBooks[i]);
+                }
 
             }
             Navigation.InsertPageBefore(new AllBooks(), this);

@@ -50,7 +50,15 @@ namespace UniverseOfBookApp.DataAccess
         {
             db.Delete<UserBook>(Id);
         }
-       
+        public List<UserBook> GetUserBook(String Bookname, String Email)
+        {
+            return (from book in db.Table<UserBook>() where book.Email == Email && book.BookName == Bookname select book).ToList();
+        }
+        public int DeleteBookName(UserBook userBook)
+        {
+
+            return db.Delete<UserBook>(userBook);
+        }
         public void UserInsert(UserBook userBook)
         {
             db.Insert(userBook);
