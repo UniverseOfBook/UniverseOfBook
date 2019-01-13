@@ -53,6 +53,8 @@ namespace UniverseOfBookApp.DataAccess
         {
             db.Delete<BookClass>(Id);
         }
+
+        
         public int BookInsert(BookClass book)
         {
           return  db.Insert(book);

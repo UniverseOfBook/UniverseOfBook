@@ -11,8 +11,10 @@ namespace UniverseOfBookApp.Model
    public class UserBook
     {
         public string BookName { get; set; }
-        public string UserName { get; set; }
+        public string Email { get; set; }
         public ReadWant ReadWant { get; set; }
+        public DateTime dateTime { get; set; }
+        
 
     }
 }
