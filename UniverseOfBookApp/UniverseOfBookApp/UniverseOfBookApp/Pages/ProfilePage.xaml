@@ -9,28 +9,45 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout Margin="20">
-
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                <Image Source="defaultuser" WidthRequest="100"/>
-                <Frame HorizontalOptions="EndAndExpand" CornerRadius="20">
-                    <StackLayout>
+        <StackLayout Margin="20,0,20,20">
+            
+            <Frame CornerRadius="10" Margin="0,0,0,30">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Image Source="defaultuser" WidthRequest="100"/>
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand"  WidthRequest="200" Margin="20,0,0,0">
                         <Label StyleClass="LabelClass" x:Name="userName"/>
-                        <Label StyleClass="LabelClass" x:Name="wantLabel"/>
-                        <Label StyleClass="LabelClass" x:Name="readLabel" />
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Want Books: " FontAttributes="Bold" StyleClass="LabelClass"/>
+                            <Label StyleClass="LabelClass" x:Name="wantLabel"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Read Books: " FontAttributes="Bold" StyleClass="LabelClass"/>
+                            <Label StyleClass="LabelClass" x:Name="readLabel" />
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+
+            <ScrollView>
+                <Frame CornerRadius="10">
+                    <StackLayout>
+                        <StackLayout Margin="0,0,0,10">
+                            <Label Text="Want books" FontSize="24" FontAttributes="Bold" Margin="0,0,0,-15"/>
+                            <Grid x:Name="wantGrid" ColumnSpacing="10" RowSpacing="10">
+
+                            </Grid>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Label Text="Read books" FontSize="24" FontAttributes="Bold" Margin="0,0,0,-15"/>
+                            <Grid x:Name="readGrid" ColumnSpacing="10" RowSpacing="10">
+
+                            </Grid>
+                        </StackLayout>
+
                     </StackLayout>
                 </Frame>
-            </StackLayout>
-
-            <StackLayout>
-                <Grid x:Name="wantGrid" ColumnSpacing="10" RowSpacing="10">
-
-                </Grid>
-
-                <Grid x:Name="readGrid" ColumnSpacing="10" RowSpacing="10">
-
-                </Grid>
-            </StackLayout>
+            </ScrollView>
 
         </StackLayout>
     </ContentPage.Content>

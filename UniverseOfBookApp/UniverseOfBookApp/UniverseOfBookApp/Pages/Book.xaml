@@ -38,7 +38,6 @@
                             </StackLayout.GestureRecognizers>
                             <controls:CircleImage x:Name="AuthorPhoto"  HeightRequest="150" WidthRequest="150" HorizontalOptions="Center" VerticalOptions="Center" >
                                
-                                
                             </controls:CircleImage>
                             <Label x:Name="AuthorName" HorizontalOptions="Center"/>
                             <Label Text="Writer" HorizontalOptions="Center"/>

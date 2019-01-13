@@ -25,7 +25,7 @@ namespace UniverseOfBookApp.Pages {
 
         private void SignOutButtonClicked(object sender, EventArgs e) {
             App.UserEmail = "";
-            Application.Current.MainPage = new LoginPage();
+            Application.Current.MainPage = new NavigationPage(new LoginPage());
         }
 
         private async void UploadPhotoClicked(object sender, EventArgs e) {

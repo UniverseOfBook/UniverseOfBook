@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UniverseOfBookApp.DataAccess;
 using UniverseOfBookApp.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -42,7 +43,10 @@ namespace UniverseOfBookApp.Pages {
             userBook.Email = App.UserEmail;
             userBook.dateTime = DateTime.Now;
             userBook.ReadWant = ReadWant.Want;
-            
+            UserBookDataAccess userBookDataAccess = new UserBookDataAccess();
+            userBookDataAccess.UserInsert(userBook);
+
+            DisplayAlert("Want Book", "You added this book to want list", "OK");
         }
 
         private void ReadButton_Clicked(object sender, EventArgs e)
@@ -52,6 +56,10 @@ namespace UniverseOfBookApp.Pages {
             userBook.Email = App.UserEmail;
             userBook.dateTime = DateTime.Now;
             userBook.ReadWant = ReadWant.Read;
+            UserBookDataAccess userBookDataAccess = new UserBookDataAccess();
+            userBookDataAccess.UserInsert(userBook);
+
+            DisplayAlert("Read Book", "You added this book to read list", "OK");
         }
     }
 }

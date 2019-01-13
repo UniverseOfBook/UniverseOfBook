@@ -39,7 +39,7 @@ namespace UniverseOfBookApp.Pages {
                     await Navigation.PopAsync();
                 }
                 else {
-                    //App.UserEmail = Email.Text;
+                    App.UserEmail = Email.Text;
                     Navigation.InsertPageBefore(new MainTabbedPage(), this);
                     await Navigation.PopAsync();
                 }
