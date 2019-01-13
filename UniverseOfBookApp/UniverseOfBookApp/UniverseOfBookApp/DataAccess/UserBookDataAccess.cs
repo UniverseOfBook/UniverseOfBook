@@ -18,7 +18,7 @@ namespace UniverseOfBookApp.DataAccess
             db = DependencyService.Get<SqlConnection>().GetConnection();
             db.CreateTable<UserBook>();
         }
-
+       
         public List<UserBook> GetAllBook()
         {
             return (from UserBook in db.Table<UserBook>() select UserBook).ToList();
