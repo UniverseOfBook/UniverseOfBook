@@ -49,7 +49,7 @@ namespace UniverseOfBookApp {
             string bookName = "Değiştirilmiş Karbon";
             string authorName = "Richard K. Morgan";
             int pageNumber = 496;
-            CategoryEnum categoryEnum = CategoryEnum.ScieneFiction;
+            CategoryEnum categoryEnum = CategoryEnum.ScienceFiction;
             Publishers publishers = Publishers.Ithaki;
             string bookUrl = "https://i.dr.com.tr/cache/600x600-0/originals/0001740861001-1.jpg";
 

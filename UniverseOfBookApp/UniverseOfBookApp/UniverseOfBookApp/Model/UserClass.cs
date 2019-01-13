@@ -25,7 +25,7 @@ namespace UniverseOfBookApp.Model
         [NotNull,Unique]
         public string Email { get; set; }
         public Gender Gender { get; set; }
-        public int phonenumber { get; set; }
+        public string phonenumber { get; set; }
         public string Name { get; set; }
         public string UserPhoto { get; set; }
         public UserAdmin useradmin { get; set; }

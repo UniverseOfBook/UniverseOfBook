@@ -5,7 +5,8 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
-
+using UniverseOfBookApp.DataAccess;
+using UniverseOfBookApp.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,6 +15,7 @@ namespace UniverseOfBookApp.Pages {
     public partial class ForgotPasswordPage : ContentPage {
         public ForgotPasswordPage() {
             InitializeComponent();
+            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.White;
         }
 
         private async void BackButtonClicked(object sender, EventArgs e) {
@@ -22,11 +24,20 @@ namespace UniverseOfBookApp.Pages {
 
         private async void SubmitButtonClicked(object sender, EventArgs e) {
 
+            UserDataAccess userDataAccess = new UserDataAccess();
+            UserClass userClass = userDataAccess.GetUserByEmail(emailEntry.Text);
+
+            if (userClass == null) {
+                await DisplayAlert("No user", "There is no user in that email, please check your email", "OK");
+                return;
+            }
+
             string mailSender = "kitapevreni26@gmail.com";
-            string password = "";
-            string toMail = "";
+            string password = "Xamarinkitap26";
+            string toMail = userClass.Email;
             string subject = "Forgotten Password";
-            string body = "password";
+            string body = "Your password is " + userClass.Password;
+
             try {
                 var mail = new MailMessage();
                 var smtpServer = new SmtpClient("smtp.gmail.com", 587);

@@ -31,10 +31,11 @@
                         <Picker x:Name="PublishPick" SelectedItem="{Binding Publisher}" Title="Select Publisher">
                             <Picker.Items>
                                 <x:String >Can</x:String>
-                                <x:String >İletisim</x:String>
+                                <x:String >Iletisim</x:String>
                                 <x:String >Yapı Kredi</x:String>
-                                <x:String >İs Bankası</x:String>
+                                <x:String >Is Bankası</x:String>
                                 <x:String >Domingo</x:String>
+                                <x:String >Ithaki</x:String>
                             </Picker.Items>
                         </Picker>
                         <Entry  x:Name="PageNumber" Placeholder="Page Number Of Book" />
@@ -59,7 +60,7 @@
                                 <x:String >Romance</x:String>
                                 <x:String >Modern Classic</x:String>
                                 <x:String >Psychology</x:String>
-                                <x:String >Sciene Fiction</x:String>
+                                <x:String >Science Fiction</x:String>
                                 <x:String >Suspense Fiction</x:String>
                             </Picker.Items>
                         </Picker>

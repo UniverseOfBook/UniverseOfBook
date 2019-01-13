@@ -16,37 +16,49 @@ namespace UniverseOfBookApp.Pages {
         DataAccess.UserBookDataAccess UserBookDataAccess = new DataAccess.UserBookDataAccess();
         DataAccess.BookDataAccess BookDataAccess = new DataAccess.BookDataAccess();
         BookClass book;
+
         public ActivityPage() {
             InitializeComponent();
             List<UserBook> userBooks = UserBookDataAccess.GetAllBookUser(App.UserEmail);
-            for (int i = 0; i < userBooks.Count; i++)
-            {
-                
+            for (int i = 0; i < userBooks.Count; i++) {
                 book = BookDataAccess.GetBookByName(userBooks[i].BookName);
-                Label label = new Label();
-                label.Text = (userBooks[i].ReadWant).ToString();
-                MyStackLayout.Children.Add(label);
-                Label label1 = new Label();
-                label1.Text = book.BookName;
-                MyStackLayout.Children.Add(label1);
-                Image bookImage = new Image { Source = book.bookphoto };
-                MyStackLayout.Children.Add(bookImage);
+
+                Frame frame = new Frame() { CornerRadius=10 };
+                StackLayout stackLayout = new StackLayout();
+
+                Label label1 = new Label() { FontSize = 18, HorizontalOptions = LayoutOptions.Start };
+                label1.Text = "Time added: " + userBooks[i].dateTime.ToString("dd/MM/yyyy");
+                stackLayout.Children.Add(label1);
+
+                Label label = new Label() { FontSize=20, HorizontalOptions=LayoutOptions.Start};
+                if((userBooks[i].ReadWant).ToString() == "Read") {
+                    label.Text = "Want to read this book";
+                }
+                else {
+                    label.Text = "Want this book";
+                }
+                
+                stackLayout.Children.Add(label);
+
+                Image bookImage = new Image { Source = book.bookphoto, HorizontalOptions = LayoutOptions.Start };
+                stackLayout.Children.Add(bookImage);
+
+                frame.Content = stackLayout;
+                MyStackLayout.Children.Add(frame);
+
                 var tapGestureRecognizer = new TapGestureRecognizer();
                 tapGestureRecognizer.Tapped += (s, e) => {
                     ImageTapped(bookImage.Source.ToString().Replace("Uri: ", ""));
                 };
                 bookImage.GestureRecognizers.Add(tapGestureRecognizer);
-
-
             }
-
         }
-        public async void ImageTapped(string bookSource)
-        {
-           
+
+        public async void ImageTapped(string bookSource) {
             BookClass bookName = BookDataAccess.GetBookBySource(bookSource);
             await Navigation.PushAsync(new Book(bookName.BookName));
         }
+
         protected override void OnAppearing() {
             var homePage = MainTabbedPage.mainTabbedPage;
             NavigationPage.SetHasNavigationBar(homePage, false);

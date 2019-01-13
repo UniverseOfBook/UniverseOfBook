@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="UniverseOfBookApp.Pages.SettingsPage" BackgroundColor="#ffffff">
+             x:Class="UniverseOfBookApp.Pages.SettingsPage" BackgroundColor="#ffffff"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin">
 
     <ContentPage.Resources>
         <StyleSheet Source="../Styles/MyStyle.css" />
@@ -14,52 +15,45 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="20">
-                <Image Source="defaultuser" WidthRequest="150" HorizontalOptions="Center" x:Name="profilePhoto"/>
+                <controls:CircleImage Source="defaultuser" WidthRequest="200" HorizontalOptions="Center" x:Name="profilePhoto"/>
 
                 <StackLayout Margin="5" Padding="0,30,0,-15" >
-                     <Label Text="Your Photo Source" Margin="5"  x:Name="UserPhotoSource"/>
+                     <Label Text="Your Photo Source (URL)" Margin="5" />
                 </StackLayout>
-                <Entry/>
+                <Entry x:Name="UserPhotoSource"/>
 
                 <StackLayout Margin="5" Padding="0,10,0,-15">
-                    <Label Text="Phone Number" FontAttributes="Bold" StyleClass="SettingsLabel" x:Name="PhoneNumber" />
+                    <Label Text="Phone Number" FontAttributes="Bold" StyleClass="SettingsLabel"  />
                 </StackLayout>
-                <Entry />
-
+                <Entry x:Name="PhoneNumber"/>
 
                 <StackLayout Margin="5" Padding="0,10,0,-15">
-                    <Label Text="Name" FontAttributes="Bold" StyleClass="SettingsLabel" x:Name="NameUser" />
+                    <Label Text="Name" FontAttributes="Bold" StyleClass="SettingsLabel"  />
                 </StackLayout>
-                <Entry />
+                <Entry x:Name="NameUser"/>
 
                 <StackLayout Margin="5" Padding="0,10,0,-15">
                     <Label Text="Username" FontAttributes="Bold" StyleClass="SettingsLabel" />
                 </StackLayout>
-                <Entry />
+                <Entry x:Name="userNameLabel" IsEnabled="False"/>
 
                 <StackLayout Margin="5" Padding="0,10,0,-15">
                     <Label Text="Email" FontAttributes="Bold" StyleClass="SettingsLabel" />
                 </StackLayout>
-                <Entry Text="asd"/>
+                <Entry x:Name="emailLabel" IsEnabled="False"/>
 
                 <!--when pressed color and font will be change-->
                 <StackLayout Margin="5" Padding="0,10,0,-15">
                     <Label Text="Gender" FontAttributes="Bold" StyleClass="SettingsLabel"  x:Name="UserGender"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" >
-                    <Button Text="Male"   BackgroundColor="#ffffff" TextColor="#6d6d6d" WidthRequest="64" HeightRequest="30" FontAttributes="Bold" x:Name="MaleButton"  Clicked="MaleButton_Clicked"/>
+                    <Button Text="Male"   BackgroundColor="#ffffff" TextColor="#6d6d6d" WidthRequest="64" HeightRequest="30" x:Name="MaleButton"  Clicked="MaleButton_Clicked"/>
                     <Button Text="Female" BackgroundColor="#ffffff" TextColor="#6d6d6d" x:Name="FemaleButton" Clicked="FemaleButton_Clicked"/>
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal" Padding="0,20,0,0">
-                    <Label Text="Push Notification" FontSize="18" HorizontalOptions="Start"/>
-                    <StackLayout Padding="0,-10,0,0" HorizontalOptions="EndAndExpand">
-                        <Switch  HorizontalOptions="EndAndExpand" />
-                    </StackLayout>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Button Text="Submit" BackgroundColor="Green" FontSize="16" BorderRadius="8" x:Name="SubmitButton" Clicked="SubmitButton_Clicked" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
-                    <Button Text="Sign Out" BackgroundColor="#6d6d6d" FontSize="16" BorderRadius="8" Clicked="SignOutButtonClicked" WidthRequest="110" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
+                <StackLayout Orientation="Horizontal" Margin="0,20,0,0">
+                    <Button Text="Submit" BackgroundColor="#c62828" FontSize="18" BorderRadius="8" x:Name="SubmitButton" Clicked="SubmitButton_Clicked" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
+                    <Button Text="Sign Out" BackgroundColor="#6d6d6d" FontSize="18" BorderRadius="8" Clicked="SignOutButtonClicked" WidthRequest="110" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
                 </StackLayout>
                 
             </StackLayout>

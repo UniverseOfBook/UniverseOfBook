@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UniverseOfBookApp.Pages.ProfilePage"
-             BackgroundColor="#efefef">
+             BackgroundColor="#efefef"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin">
 
     <ContentPage.Resources>
         <StyleSheet Source="../Styles/MyStyle.css" />
@@ -10,10 +11,10 @@
 
     <ContentPage.Content>
         <StackLayout Margin="20,0,20,20">
-            
+
             <Frame CornerRadius="10" Margin="0,0,0,30">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                    <Image Source="defaultuser" WidthRequest="100"/>
+                    <controls:CircleImage Source="defaultuser" WidthRequest="100" x:Name="ProfilePhotoImage"/>
                     <StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand"  WidthRequest="200" Margin="20,0,0,0">
                         <Label StyleClass="LabelClass" x:Name="userName"/>
                         <StackLayout Orientation="Horizontal">
@@ -31,20 +32,27 @@
             <ScrollView>
                 <Frame CornerRadius="10">
                     <StackLayout>
-                        <StackLayout Margin="0,0,0,10">
-                            <Label Text="Want books" FontSize="24" FontAttributes="Bold" Margin="0,0,0,-15"/>
-                            <Grid x:Name="wantGrid" ColumnSpacing="10" RowSpacing="10">
+                        <StackLayout x:Name="GridStacklayout">
+                            <StackLayout Margin="0,0,0,10">
+                                <Label Text="Want books" FontSize="24" FontAttributes="Bold" Margin="0,0,0,-15"/>
+                                <Grid x:Name="wantGrid" ColumnSpacing="5">
 
-                            </Grid>
+                                </Grid>
+                            </StackLayout>
+
+                            <StackLayout>
+                                <Label Text="Read books" FontSize="24" FontAttributes="Bold" Margin="0,0,0,-15"/>
+                                <Grid x:Name="readGrid" ColumnSpacing="5">
+
+                                </Grid>
+                            </StackLayout>
+
                         </StackLayout>
 
-                        <StackLayout>
-                            <Label Text="Read books" FontSize="24" FontAttributes="Bold" Margin="0,0,0,-15"/>
-                            <Grid x:Name="readGrid" ColumnSpacing="10" RowSpacing="10">
-
-                            </Grid>
+                        <StackLayout x:Name="NoBookStacklayout" HorizontalOptions="Center">
+                            <Label Text="You didn't read or want any book" Font="20"/>
+                            <Image Source="library" WidthRequest="200" />
                         </StackLayout>
-
                     </StackLayout>
                 </Frame>
             </ScrollView>

@@ -16,12 +16,35 @@ namespace UniverseOfBookApp.Pages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SettingsPage : ContentPage {
         DataAccess.UserDataAccess userDataAccess = new DataAccess.UserDataAccess();
-       
-        MediaFile file;
 
         public SettingsPage() {
             InitializeComponent();
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.White;
+            
+            UserClass userClass = userDataAccess.GetUserByEmail(App.UserEmail);
+            if (userClass.UserPhoto.Replace("File: ", "") != "" || userClass.UserPhoto.Replace("Uri: ", "") != "") {
+                if (userClass.UserPhoto.StartsWith("File"))
+                    profilePhoto.Source = userClass.UserPhoto.Replace("File: ", "");
+                else
+                    profilePhoto.Source = userClass.UserPhoto.Replace("Uri: ", "");
+            }
+            if(userClass.Gender == Gender.Male) {
+                MaleButton.TextColor = Color.FromHex("#c62828");
+                MaleButton.FontAttributes = FontAttributes.Bold;
+            }
+            else {
+                FemaleButton.TextColor = Color.FromHex("#c62828");
+                FemaleButton.FontAttributes = FontAttributes.Bold;
+            }
+            if (userClass.UserPhoto.StartsWith("File"))
+                UserPhotoSource.Text = userClass.UserPhoto.Replace("File: ", "");
+            else
+                UserPhotoSource.Text = userClass.UserPhoto.Replace("Uri: ", "");
+
+            PhoneNumber.Text = userClass.phonenumber;
+            NameUser.Text = userClass.Name;
+            userNameLabel.Text = userClass.UserName;
+            emailLabel.Text = userClass.Email;
         }
 
         private void SignOutButtonClicked(object sender, EventArgs e) {
@@ -29,49 +52,15 @@ namespace UniverseOfBookApp.Pages {
             Application.Current.MainPage = new NavigationPage(new LoginPage());
         }
 
-        private async void UploadPhotoClicked(object sender, EventArgs e) {
-            await CrossMedia.Current.Initialize();
-            try {
-                file = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions {
-                    PhotoSize = Plugin.Media.Abstractions.PhotoSize.Medium
-                });
-                if (file == null)
-                    return;
-                profilePhoto.Source = ImageSource.FromStream(() => {
-                    var imageStram = file.GetStream();
-                    return imageStram;
-                });
-                await StoreImages(file.GetStream());
-            }
-            catch (Exception ex) {
-                Debug.WriteLine(ex.Message);
-            }
-
-            await StoreImages(file.GetStream());
-        }
-
-        public async Task<string> StoreImages(Stream imageStream) {
-
-            DataAccess.UserDataAccess userDataAccess = new DataAccess.UserDataAccess();
-            Model.UserClass user = userDataAccess.GetUserByEmail(App.UserEmail);
-
-            var stroageImage = await new FirebaseStorage("universeofbook-60c2f.appspot.com")
-                .Child("UsersPhoto")
-                .Child(user.Email)
-                .PutAsync(imageStream);
-            string imgurl = stroageImage;
-            return imgurl;
-        }
-
         private void SubmitButton_Clicked(object sender, EventArgs e)
         {
             UserClass userClass = userDataAccess.GetUserByEmail(App.UserEmail);
             userClass.Name = NameUser.Text;
-            userClass.phonenumber =Int32.Parse(PhoneNumber.Text);
+            userClass.phonenumber = PhoneNumber.Text;
           
-            if(UserPhotoSource != null)
+            if(UserPhotoSource.Text != "")
             {
-                profilePhoto.Source = UserPhotoSource.Text;
+             profilePhoto.Source = UserPhotoSource.Text;
              userClass.UserPhoto = (profilePhoto.Source).ToString();
             }
             userDataAccess.UserUpdate(userClass);
@@ -81,17 +70,29 @@ namespace UniverseOfBookApp.Pages {
         private void MaleButton_Clicked(object sender, EventArgs e)
         {
             UserClass userClass = userDataAccess.GetUserByEmail(App.UserEmail);
+            if (userClass.Gender == Gender.Male)
+                return;
             userClass.Gender = Gender.Male;
             userDataAccess.UserUpdate(userClass);
             MaleButton.TextColor =Color.FromHex("#c62828");
+            MaleButton.FontAttributes = FontAttributes.Bold;
+
+            FemaleButton.TextColor = Color.FromHex("#6d6d6d");
+            FemaleButton.FontAttributes = FontAttributes.None;
         }
 
         private void FemaleButton_Clicked(object sender, EventArgs e)
         {
             UserClass userClass = userDataAccess.GetUserByEmail(App.UserEmail);
-            userClass.Gender = Gender.Male;
+            if (userClass.Gender == Gender.Female)
+                return;
+            userClass.Gender = Gender.Female;
             userDataAccess.UserUpdate(userClass);
             FemaleButton.TextColor= Color.FromHex("#c62828");
+            FemaleButton.FontAttributes = FontAttributes.Bold;
+
+            MaleButton.TextColor = Color.FromHex("#6d6d6d");
+            MaleButton.FontAttributes = FontAttributes.None;
         }
     }
 }

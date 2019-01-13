@@ -11,22 +11,42 @@ using Xamarin.Forms.Xaml;
 namespace UniverseOfBookApp.Pages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilePage : ContentPage {
+
+        int wantBookCount;
+        int readBookCount;
+
         public ProfilePage() {
             InitializeComponent();
             UserDataAccess userDataAccess = new UserDataAccess();
             UserBookDataAccess userBookDataAccess = new UserBookDataAccess();
             UserClass userClass = userDataAccess.GetUserByEmail(App.UserEmail);
             userName.Text = userClass.UserName;
-            wantLabel.Text = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWant.Want).ToString();
-            readLabel.Text = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWant.Read).ToString();
+            wantBookCount = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWant.Want);
+            readBookCount = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWant.Read);
+            wantLabel.Text = wantBookCount.ToString();
+            readLabel.Text = readBookCount.ToString();
+
+            if (userClass.UserPhoto.StartsWith("File"))
+                ProfilePhotoImage.Source = userClass.UserPhoto.Replace("File: ", "");
+            else
+                ProfilePhotoImage.Source = userClass.UserPhoto.Replace("Uri: ", "");
 
             wantGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
             wantGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
             readGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
             readGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
 
-            getAllBooksToProfilePage(wantGrid, ReadWant.Want);
-            getAllBooksToProfilePage(readGrid, ReadWant.Read);
+            if(wantBookCount == 0 && readBookCount == 0) {
+                GridStacklayout.IsVisible = false;
+                NoBookStacklayout.IsVisible = true;
+            }
+            else {
+                GridStacklayout.IsVisible = true;
+                NoBookStacklayout.IsVisible = false;
+                getAllBooksToProfilePage(wantGrid, ReadWant.Want);
+                getAllBooksToProfilePage(readGrid, ReadWant.Read);
+            }
+            
         }
 
         public void getAllBooksToProfilePage(Grid grid, ReadWant readWant) {
@@ -77,18 +97,24 @@ namespace UniverseOfBookApp.Pages {
         }
 
         public void UpdateBooks() {
-            Console.WriteLine("UpdateBook");
-            wantGrid.Children.Clear();
-            readGrid.Children.Clear();
-            //Console.WriteLine("UpdateBook: " + wantGrid.RowDefinitions.Count + " " + readGrid.RowDefinitions.Count);
-            for (int a = wantGrid.RowDefinitions.Count-1; a > 0; a--) {
-                wantGrid.RowDefinitions.RemoveAt(a);
+            if (wantBookCount == 0 && readBookCount == 0) {
+                GridStacklayout.IsVisible = false;
+                NoBookStacklayout.IsVisible = true;
             }
-            for (int a = readGrid.RowDefinitions.Count - 1; a > 0; a--) {
-                readGrid.RowDefinitions.RemoveAt(a);
+            else {
+                GridStacklayout.IsVisible = true;
+                NoBookStacklayout.IsVisible = false;
+                wantGrid.Children.Clear();
+                readGrid.Children.Clear();
+                for (int a = wantGrid.RowDefinitions.Count - 1; a > 0; a--) {
+                    wantGrid.RowDefinitions.RemoveAt(a);
+                }
+                for (int a = readGrid.RowDefinitions.Count - 1; a > 0; a--) {
+                    readGrid.RowDefinitions.RemoveAt(a);
+                }
+                getAllBooksToProfilePage(wantGrid, ReadWant.Want);
+                getAllBooksToProfilePage(readGrid, ReadWant.Read);
             }
-            getAllBooksToProfilePage(wantGrid, ReadWant.Want);
-            getAllBooksToProfilePage(readGrid, ReadWant.Read);
         }
     }
 }

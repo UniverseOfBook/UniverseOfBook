@@ -7,7 +7,7 @@ namespace UniverseOfBookApp.Model
 {
     public enum CategoryEnum
     {
-        Crime,Dram, Biographies, History, Sport, Education, Kids, Cooking, Horror, Medical, Religion, Romance, ModernClassic,Psychology, ScieneFiction, SuspenseFiction, Fantastic
+        Crime,Dram, Biographies, History, Sport, Education, Kids, Cooking, Horror, Medical, Religion, Romance, ModernClassic,Psychology, ScienceFiction, SuspenseFiction, Fantastic
     }
     public enum Publishers
     {
