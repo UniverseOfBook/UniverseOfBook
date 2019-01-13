@@ -39,63 +39,51 @@ namespace UniverseOfBookApp.Pages {
             await Navigation.PushAsync(new Author(AuthorName.Text));
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
-        {
+        private void Button_Clicked(object sender, EventArgs e) {
             Button button = (Button)sender;
-            List<UserBook> userBooks = UserBookDataAccess.GetAllBookUser(App.UserEmail);
+            BookDataAccess bookDataAccess = new BookDataAccess();
+            BookClass bookClass = bookDataAccess.GetBookBySource(Bookphoto.Source.ToString().Replace("Uri: ", ""));
+            List<UserBook> userBooks = UserBookDataAccess.GetBookByEmailAndBookName(App.UserEmail, bookClass.BookName);
 
-            for (int i = 0; i < userBooks.Count; i++)
-            {
-                 if (userBooks[i].BookName == Bookname.Text)
-                {
-                    if(userBooks[i].ReadWant==ReadWant.Want)
-                    {
-                        if (button.Text == "Read") { 
-                        userBooks[i].ReadWant = ReadWant.Read;
-                        userBooks[i].dateTime = DateTime.Now;
-                        UserBookDataAccess.BookUserUpdate(userBooks[i]);
-                        }
-                        else
-                        {
-                            DisplayAlert("Warning", "You already add this book in your Want List", "Ok");
-                            break;
-                        }
+            if (userBooks.Count != 0) {
+                if (userBooks[0].ReadWant == ReadWant.Want) {
+                    if (button.Text == "Read") {
+                        userBooks[0].ReadWant = ReadWant.Read;
+                        userBooks[0].dateTime = DateTime.Now;
+                        UserBookDataAccess.BookUserUpdate(userBooks[0]);
+                        DisplayAlert("Read Book", "You added this book to Read List", "Ok");
                     }
-                    else
-                    {
-                        if (button.Text == "Want")
-                        {
-                            userBooks[i].ReadWant = ReadWant.Want;
-                            userBooks[i].dateTime = DateTime.Now;
-                            UserBookDataAccess.BookUserUpdate(userBooks[i]);
-                        }
-                        else
-                        {
-                            DisplayAlert("Warning", "You already add this book in your Read List", "Ok");
-                            break;
-                        }
+                    else {
+                        DisplayAlert("Warning", "You already add this book in your Want List", "Ok");
                     }
-
                 }
-                else
-                {
-                    UserBook userBook = new UserBook();
-                    userBook.BookName = Bookname.Text;
-                    userBook.Email = App.UserEmail;
-                    userBook.dateTime = DateTime.Now;
-                    if (button.Text == "Want")
-                        userBook.ReadWant = ReadWant.Want;
-                    else
-                        userBook.ReadWant = ReadWant.Read;
-                    UserBookDataAccess.UserInsert(userBook);
+                else {
+                    if (button.Text == "Want") {
+                        userBooks[0].ReadWant = ReadWant.Want;
+                        userBooks[0].dateTime = DateTime.Now;
+                        UserBookDataAccess.BookUserUpdate(userBooks[0]);
+                        DisplayAlert("Want Book", "You added this book to Want List", "Ok");
+                    }
+                    else {
+                        DisplayAlert("Warning", "You already add this book in your Read List", "Ok");
+                    }
                 }
-                
-
             }
-          
-         
+            else {
+                UserBook userBook = new UserBook();
+                userBook.BookName = Bookname.Text;
+                userBook.Email = App.UserEmail;
+                userBook.dateTime = DateTime.Now;
+                if (button.Text == "Want") {
+                    DisplayAlert("Want Book", "You added this book to Want List", "Ok");
+                    userBook.ReadWant = ReadWant.Want;
+                }
+                else {
+                    DisplayAlert("Want Book", "You added this book to Want List", "Ok");
+                    userBook.ReadWant = ReadWant.Read;
+                }
+                UserBookDataAccess.UserInsert(userBook);
+            }
         }
-
-        
     }
 }

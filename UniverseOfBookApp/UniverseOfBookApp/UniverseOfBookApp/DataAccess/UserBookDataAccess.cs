@@ -7,64 +7,58 @@ using UniverseOfBookApp.DependencyConnection;
 using UniverseOfBookApp.Model;
 using Xamarin.Forms;
 
-namespace UniverseOfBookApp.DataAccess
-{
-   public class UserBookDataAccess
-    {
+namespace UniverseOfBookApp.DataAccess {
+    public class UserBookDataAccess {
         static SQLiteConnection db;
 
-        public UserBookDataAccess()
-        {
+        public UserBookDataAccess() {
             db = DependencyService.Get<SqlConnection>().GetConnection();
             db.CreateTable<UserBook>();
         }
-       
-        public List<UserBook> GetAllBook()
-        {
+
+        public List<UserBook> GetAllBook() {
             return (from UserBook in db.Table<UserBook>() select UserBook).ToList();
         }
-        public UserBook GetBook(string bookname)
-        {
+
+        public UserBook GetBook(string bookname) {
             return db.Table<UserBook>().FirstOrDefault(i => i.BookName == bookname);
         }
-        public int GetUserReadorWantCountBook(string Email,ReadWant readWant)
-        {
+
+        public int GetUserReadorWantCountBook(string Email, ReadWant readWant) {
             List<UserBook> userBooks = (from book in db.Table<UserBook>() where book.Email == Email && book.ReadWant == readWant select book).ToList();
             return userBooks.Count;
         }
-        public List<String> GetUserReadorWantBook(string Email, ReadWant readWant)
-        {
+
+        public List<String> GetUserReadorWantBook(string Email, ReadWant readWant) {
 
             return (from book in db.Table<UserBook>() where book.Email == Email && book.ReadWant == readWant orderby book.dateTime descending select book.BookName).ToList();
         }
-         public List<UserBook> GetAllBookUser(string email)
-        {
+
+        public List<UserBook> GetAllBookUser(string email) {
             return (from book in db.Table<UserBook>() where book.Email == email orderby book.dateTime descending select book).ToList();
         }
-        public UserBook GetBookUser(string Email)
-        {
-            return db.Table<UserBook>().FirstOrDefault(i => i.Email == Email); 
+
+        public List<UserBook> GetBookByEmailAndBookName(string email, string bookname) {
+            return (from book in db.Table<UserBook>() where book.Email == email && book.BookName == bookname select book).ToList();
         }
-        
-        public void DeleteUserBook(int Id)
-        {
+
+        public UserBook GetBookUser(string Email) {
+            return db.Table<UserBook>().FirstOrDefault(i => i.Email == Email);
+        }
+
+        public void DeleteUserBook(int Id) {
             db.Delete<UserBook>(Id);
         }
-        public List<UserBook> GetUserBook(String Bookname, String Email)
-        {
-            return (from book in db.Table<UserBook>() where book.Email == Email && book.BookName == Bookname select book).ToList();
-        }
-        public int DeleteBookName(UserBook userBook)
-        {
 
-            return db.Delete<UserBook>(userBook);
+        public int DeleteBookName(string email) {
+            return db.Table<UserBook>().Delete(x => x.Email == email);
         }
-        public void UserInsert(UserBook userBook)
-        {
+
+        public void UserInsert(UserBook userBook) {
             db.Insert(userBook);
         }
-        public void BookUserUpdate(UserBook userBook)
-        {
+
+        public void BookUserUpdate(UserBook userBook) {
             db.Update(userBook);
         }
     }

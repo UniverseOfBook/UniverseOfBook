@@ -11,18 +11,15 @@ using Xamarin.Forms.Xaml;
 namespace UniverseOfBookApp.Pages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilePage : ContentPage {
-
-        int wantBookCount;
-        int readBookCount;
-
+        
         public ProfilePage() {
             InitializeComponent();
             UserDataAccess userDataAccess = new UserDataAccess();
             UserBookDataAccess userBookDataAccess = new UserBookDataAccess();
             UserClass userClass = userDataAccess.GetUserByEmail(App.UserEmail);
             userName.Text = userClass.UserName;
-            wantBookCount = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWant.Want);
-            readBookCount = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWant.Read);
+            int wantBookCount = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWant.Want);
+            int readBookCount = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWant.Read);
             wantLabel.Text = wantBookCount.ToString();
             readLabel.Text = readBookCount.ToString();
 
@@ -101,6 +98,10 @@ namespace UniverseOfBookApp.Pages {
         }
 
         public void UpdateBooks() {
+            UserBookDataAccess userBookDataAccess = new UserBookDataAccess();
+            int wantBookCount = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWant.Want);
+            int readBookCount = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWant.Read);
+
             if (wantBookCount == 0 && readBookCount == 0) {
                 GridStacklayout.IsVisible = false;
                 NoBookStacklayout.IsVisible = true;

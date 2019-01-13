@@ -29,6 +29,8 @@ namespace UniverseOfBookApp.Pages.AdminPages {
                 UserClass user = new UserClass();
                 user = (UserClass)listView.SelectedItem;
                 userDataAccess.DeleteUserName(user.UserName);
+                UserBookDataAccess userBookDataAccess = new UserBookDataAccess();
+                userBookDataAccess.DeleteBookName(user.Email);
                 App.UserEmail = "";
             }
             Navigation.InsertPageBefore(new Alluser(), this);

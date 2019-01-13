@@ -35,16 +35,10 @@ namespace UniverseOfBookApp.Pages.AdminPages
               BookClass bookClass = new BookClass();
             bookClass = (BookClass)listView.SelectedItem;
             bookDataAccess.DeleteBookName(bookClass.BookName);
-             List<UserBook> userBooks=UserBookDataAccess.GetUserBook(bookClass.BookName, App.UserEmail);
-                for (int i = 0; i < userBooks.Count; i++)
-                {
-                    UserBookDataAccess.DeleteBookName(userBooks[i]);
-                }
-
             }
+
             Navigation.InsertPageBefore(new AllBooks(), this);
             await Navigation.PopAsync();
-
         }
 
         private async void AllBooksDelete_Clicked(object sender, EventArgs e)
