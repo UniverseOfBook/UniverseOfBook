@@ -13,13 +13,23 @@
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                 <Image Source="defaultuser" WidthRequest="100"/>
-                <Frame OutlineColor="#6d6d6d" HorizontalOptions="EndAndExpand" CornerRadius="20">
+                <Frame HorizontalOptions="EndAndExpand" CornerRadius="20">
                     <StackLayout>
-                        <Label Text="User1" StyleClass="LabelClass" />
-                        <Label Text="Want to read: 10" StyleClass="LabelClass" />
-                        <Label Text="Read books: 10" StyleClass="LabelClass" />
+                        <Label StyleClass="LabelClass" x:Name="userName"/>
+                        <Label StyleClass="LabelClass" x:Name="wantLabel"/>
+                        <Label StyleClass="LabelClass" x:Name="readLabel" />
                     </StackLayout>
                 </Frame>
+            </StackLayout>
+
+            <StackLayout>
+                <Grid x:Name="wantGrid" ColumnSpacing="10" RowSpacing="10">
+
+                </Grid>
+
+                <Grid x:Name="readGrid" ColumnSpacing="10" RowSpacing="10">
+
+                </Grid>
             </StackLayout>
 
         </StackLayout>

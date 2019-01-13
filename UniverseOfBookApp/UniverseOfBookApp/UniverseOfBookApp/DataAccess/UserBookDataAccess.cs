@@ -27,9 +27,9 @@ namespace UniverseOfBookApp.DataAccess
         {
             return db.Table<UserBook>().FirstOrDefault(i => i.BookName == bookname);
         }
-        public UserBook GetBookUser(string UserName)
+        public UserBook GetBookUser(string Email)
         {
-            return db.Table<UserBook>().FirstOrDefault(i => i.UserName == UserName);
+            return db.Table<UserBook>().FirstOrDefault(i => i.Email == Email);
         }
         
         public void DeleteUserBook(int Id)
