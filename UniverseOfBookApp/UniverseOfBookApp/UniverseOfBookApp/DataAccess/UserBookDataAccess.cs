@@ -37,10 +37,13 @@ namespace UniverseOfBookApp.DataAccess
 
             return (from book in db.Table<UserBook>() where book.Email == Email && book.ReadWant == readWant orderby book.dateTime descending select book.BookName).ToList();
         }
-
+         public List<UserBook> GetAllBookUser(string email)
+        {
+            return (from book in db.Table<UserBook>() where book.Email == email orderby book.dateTime descending select book).ToList();
+        }
         public UserBook GetBookUser(string Email)
         {
-            return db.Table<UserBook>().FirstOrDefault(i => i.Email == Email);
+            return db.Table<UserBook>().FirstOrDefault(i => i.Email == Email); 
         }
         
         public void DeleteUserBook(int Id)
