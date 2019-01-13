@@ -13,6 +13,8 @@ namespace UniverseOfBookApp.Pages {
 
         DataAccess.BookDataAccess BookDataAccess = new DataAccess.BookDataAccess();
         DataAccess.AuthorDataAccess author = new DataAccess.AuthorDataAccess();
+        DataAccess.UserDataAccess UserDataAccess = new DataAccess.UserDataAccess();
+
 
         public Book() {
             InitializeComponent();
@@ -31,6 +33,25 @@ namespace UniverseOfBookApp.Pages {
 
         private async void AuthorTapped(object sender, EventArgs e) {
             await Navigation.PushAsync(new Author(AuthorName.Text));
+        }
+
+        private void WantButton_Clicked(object sender, EventArgs e)
+        {
+            UserBook userBook = new UserBook();
+            userBook.BookName = Bookname.Text;
+            userBook.Email = App.UserEmail;
+            userBook.dateTime = DateTime.Now;
+            userBook.ReadWant = ReadWant.Want;
+            
+        }
+
+        private void ReadButton_Clicked(object sender, EventArgs e)
+        {
+            UserBook userBook = new UserBook();
+            userBook.BookName = Bookname.Text;
+            userBook.Email = App.UserEmail;
+            userBook.dateTime = DateTime.Now;
+            userBook.ReadWant = ReadWant.Read;
         }
     }
 }

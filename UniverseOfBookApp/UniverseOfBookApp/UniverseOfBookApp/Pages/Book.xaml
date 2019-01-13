@@ -29,8 +29,8 @@
                             <Image Source="bookss" />
                         </StackLayout>
 
-                        <Button Text="Want"  />
-                        <Button Text="Read" />
+                        <Button Text="Want" x:Name="WantButton" Clicked="WantButton_Clicked" />
+                        <Button Text="Read" x:Name="ReadButton" Clicked="ReadButton_Clicked"/>
                         <Label x:Name="BookDescription"  Font="Satisfy-Regular.ttf#Satisfy,22"  Margin="10,5,10,5"/>
                         <StackLayout>
                             <StackLayout.GestureRecognizers>

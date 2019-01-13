@@ -9,9 +9,15 @@ using Xamarin.Forms.Xaml;
 
 namespace UniverseOfBookApp.Pages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+
+
     public partial class ActivityPage : ContentPage {
+
+        DataAccess.UserBookDataAccess UserBookDataAccess = new DataAccess.UserBookDataAccess();
         public ActivityPage() {
             InitializeComponent();
+
+
         }
 
         protected override void OnAppearing() {
