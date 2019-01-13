@@ -2952,10 +2952,10 @@ namespace UniverseOfBookApp.Droid
 			public const int ic_vol_type_tv_light = 2130837779;
 			
 			// aapt resource value: 0x7f020114
-			public const int library = 2130837780;
+			public const int @lock = 2130837780;
 			
 			// aapt resource value: 0x7f020115
-			public const int @lock = 2130837781;
+			public const int Logo = 2130837781;
 			
 			// aapt resource value: 0x7f020116
 			public const int magnifier = 2130837782;
@@ -4257,8 +4257,8 @@ namespace UniverseOfBookApp.Droid
 			// aapt resource value: 0x7f0d016e
 			public const int Animation_Design_BottomSheetDialog = 2131558766;
 			
-			// aapt resource value: 0x7f0d0191
-			public const int AppCompatDialogStyle = 2131558801;
+			// aapt resource value: 0x7f0d0192
+			public const int AppCompatDialogStyle = 2131558802;
 			
 			// aapt resource value: 0x7f0d00a9
 			public const int Base_AlertDialog_AppCompat = 2131558569;
@@ -4761,14 +4761,14 @@ namespace UniverseOfBookApp.Droid
 			// aapt resource value: 0x7f0d000e
 			public const int CardView_Light = 2131558414;
 			
-			// aapt resource value: 0x7f0d0192
-			public const int DrawerArrowStyle = 2131558802;
-			
-			// aapt resource value: 0x7f0d018f
-			public const int MainTheme = 2131558799;
+			// aapt resource value: 0x7f0d0193
+			public const int DrawerArrowStyle = 2131558803;
 			
 			// aapt resource value: 0x7f0d0190
-			public const int MainTheme_Base = 2131558800;
+			public const int MainTheme = 2131558800;
+			
+			// aapt resource value: 0x7f0d0191
+			public const int MainTheme_Base = 2131558801;
 			
 			// aapt resource value: 0x7f0d002d
 			public const int Platform_AppCompat = 2131558445;
@@ -5447,6 +5447,9 @@ namespace UniverseOfBookApp.Droid
 			
 			// aapt resource value: 0x7f0d000a
 			public const int Widget_MediaRouter_MediaRouteButton = 2131558410;
+			
+			// aapt resource value: 0x7f0d018f
+			public const int splashscreen = 2131558799;
 			
 			static Style()
 			{
