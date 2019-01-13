@@ -4,8 +4,9 @@
 
   
     <style name="splashscreen" parent="Theme.AppCompat.Light.NoActionBar">
-       <item name="android:windowBackground">@drawable/Logo</item>
-      
+    <item name="android:windowBackground">@drawable/Logo</item>
+    <item name="android:statusBarColor">#ffffff</item>
+      <item name="android:windowLightStatusBar">true</item>
     <item name="android:windowNoTitle">true</item>
     <item name="android:windowIsTranslucent">false</item>
     <item name="android:windowIsFloating">false</item>

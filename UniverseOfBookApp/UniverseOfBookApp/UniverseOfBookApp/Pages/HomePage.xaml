@@ -45,7 +45,7 @@
                     <Button Text="Romance" Clicked="CategoryButtonClicked" />
                     <Button Text="Modern" Clicked="CategoryButtonClicked" />
                     <Button Text="Psychology" Clicked="CategoryButtonClicked" />
-                    <Button Text="Sciene Fiction" Clicked="CategoryButtonClicked" />
+                    <Button Text="Science Fiction" Clicked="CategoryButtonClicked" />
                     <Button Text="Suspense Fiction" Clicked="CategoryButtonClicked" />
                     <Button Text="Fantastic" Clicked="CategoryButtonClicked" />
                 </StackLayout>

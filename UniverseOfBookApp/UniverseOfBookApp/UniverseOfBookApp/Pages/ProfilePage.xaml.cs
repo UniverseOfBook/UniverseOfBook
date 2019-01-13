@@ -26,10 +26,14 @@ namespace UniverseOfBookApp.Pages {
             wantLabel.Text = wantBookCount.ToString();
             readLabel.Text = readBookCount.ToString();
 
-            if (userClass.UserPhoto.StartsWith("File"))
-                ProfilePhotoImage.Source = userClass.UserPhoto.Replace("File: ", "");
-            else
-                ProfilePhotoImage.Source = userClass.UserPhoto.Replace("Uri: ", "");
+
+            if(userClass.UserPhoto != "" && userClass.UserPhoto != null) {
+                if (userClass.UserPhoto.StartsWith("File"))
+                    ProfilePhotoImage.Source = userClass.UserPhoto.Replace("File: ", "");
+                else
+                    ProfilePhotoImage.Source = userClass.UserPhoto.Replace("Uri: ", "");
+            }
+            
 
             wantGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
             wantGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });

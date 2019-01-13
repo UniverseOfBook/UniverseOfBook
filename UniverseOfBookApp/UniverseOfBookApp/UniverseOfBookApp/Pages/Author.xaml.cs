@@ -16,11 +16,13 @@ namespace UniverseOfBookApp.Pages {
         public Author() {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, true);
+            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
         }
 
         public Author(string name) {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, true);
+            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
             AuthorClass authorClass = new AuthorClass();
             authorClass = authorData.GetAuthorbyName(name);
             AuthorImage.Source = authorClass.AuthorPhoto;

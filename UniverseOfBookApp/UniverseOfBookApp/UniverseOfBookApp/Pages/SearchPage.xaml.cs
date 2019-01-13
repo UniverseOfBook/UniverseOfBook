@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UniverseOfBookApp.DataAccess;
 using UniverseOfBookApp.DependencyConnection;
 using UniverseOfBookApp.Model;
 using Xamarin.Forms;
@@ -24,28 +25,30 @@ namespace UniverseOfBookApp.Pages {
                 NavigationPage.SetHasNavigationBar(mainTabbedPage, false);
         }
 
-        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
-        {
-         if(e.NewTextValue != null)
-            {
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e) {
+            if (e.NewTextValue != null) {
                 Searching(e.NewTextValue);
             }
         }
-        private void Searching(string text)
-        {
+
+        private void Searching(string text) {
             BookClass bookClass = new BookClass();
-
-            bookClass= bookDataAccess.GetBookByName(text);
+            bookClass = bookDataAccess.GetBookByName(text);
+            if (bookClass == null) {
+                searchImage.IsVisible = false;
+                search.IsVisible = true;
+                return;
+            }
             search.IsVisible = false;
-            Image image = new Image();
-            image.Source = bookClass.bookphoto;
-            StackL.Children.Add(image);
-            
-
+            searchImage.Source = bookClass.bookphoto;
+            searchImage.IsVisible = true;
         }
-        private void SearchBar_SearchButtonPressed(object sender, EventArgs e)
-        {
-           
+
+        private async void ImageTapped(object sender, EventArgs e) {
+            Image image1 = (Image)sender;
+            BookDataAccess bookDataAccess = new BookDataAccess();
+            BookClass bookName = bookDataAccess.GetBookBySource(image1.Source.ToString().Replace("Uri: ", ""));
+            await Navigation.PushAsync(new Book(bookName.BookName));
         }
     }
 }

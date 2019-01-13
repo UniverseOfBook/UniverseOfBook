@@ -20,10 +20,12 @@ namespace UniverseOfBookApp.Pages {
 
         public Book() {
             InitializeComponent();
+            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
         }
 
         public Book(string name) {
             InitializeComponent();
+            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
             BookClass book = BookDataAccess.GetBookByName(name);
             Bookphoto.Source = book.bookphoto;
             Bookname.Text = book.BookName;

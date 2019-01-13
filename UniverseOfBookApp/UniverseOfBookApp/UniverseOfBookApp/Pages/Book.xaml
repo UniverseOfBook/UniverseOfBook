@@ -24,9 +24,9 @@
                             <BoxView HeightRequest="1" BackgroundColor="Gray"  />
                         </StackLayout>
 
-                        <StackLayout Orientation="Horizontal" Spacing="200">
-                            <Label x:Name="Bookname"  FontAttributes="Bold" Margin="15" Font="Satisfy-Regular.ttf#Satisfy,30"/>
-                            <Image Source="bookss" />
+                        <StackLayout Orientation="Horizontal">
+                            <Label x:Name="Bookname"  FontAttributes="Bold" HorizontalOptions="StartAndExpand" Margin="15" Font="Satisfy-Regular.ttf#Satisfy,30"/>
+                            <Image Source="bookss" HorizontalOptions="End"/>
                         </StackLayout>
 
                         <Button Text="Want"  Clicked="Button_Clicked" />

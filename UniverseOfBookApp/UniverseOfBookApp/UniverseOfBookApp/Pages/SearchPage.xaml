@@ -9,9 +9,13 @@
     
     <ContentPage.Content>
         <StackLayout >
-            <SearchBar Placeholder="Search books, authors or publishers..."  HorizontalOptions="StartAndExpand" SearchCommand="{Binding SearchCommand}" WidthRequest="800"  SearchButtonPressed="SearchBar_SearchButtonPressed"/>
+            <SearchBar Placeholder="Search books" TextChanged="SearchBar_TextChanged"  HorizontalOptions="StartAndExpand" SearchCommand="{Binding SearchCommand}" WidthRequest="800" />
             <StackLayout Margin="20" x:Name="StackL">
-
+                <Image x:Name="searchImage" HeightRequest="300" IsVisible="False" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ImageTapped" />
+                    </Image.GestureRecognizers>
+                </Image>
             </StackLayout >
             <Image Source="search.png" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="250" Margin="0,0,0,80" x:Name="search"/>
         </StackLayout>
