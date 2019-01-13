@@ -15,9 +15,20 @@
         <ScrollView>
             <StackLayout Margin="20">
                 <Image Source="defaultuser" WidthRequest="150" HorizontalOptions="Center" x:Name="profilePhoto"/>
-                <Button Text="Change Photo" HorizontalOptions="Center" Clicked="UploadPhotoClicked"/>
-                <StackLayout Margin="5" Padding="0,30,0,-15">
-                    <Label Text="Name" FontAttributes="Bold" StyleClass="SettingsLabel" />
+
+                <StackLayout Margin="5" Padding="0,30,0,-15" >
+                     <Label Text="Your Photo Source" Margin="5"  x:Name="UserPhotoSource"/>
+                </StackLayout>
+                <Entry/>
+
+                <StackLayout Margin="5" Padding="0,10,0,-15">
+                    <Label Text="Phone Number" FontAttributes="Bold" StyleClass="SettingsLabel" x:Name="PhoneNumber" />
+                </StackLayout>
+                <Entry />
+
+
+                <StackLayout Margin="5" Padding="0,10,0,-15">
+                    <Label Text="Name" FontAttributes="Bold" StyleClass="SettingsLabel" x:Name="NameUser" />
                 </StackLayout>
                 <Entry />
 
@@ -33,11 +44,11 @@
 
                 <!--when pressed color and font will be change-->
                 <StackLayout Margin="5" Padding="0,10,0,-15">
-                    <Label Text="Gender" FontAttributes="Bold" StyleClass="SettingsLabel" />
+                    <Label Text="Gender" FontAttributes="Bold" StyleClass="SettingsLabel"  x:Name="UserGender"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" >
-                    <Button Text="Male"   BackgroundColor="#ffffff" TextColor="#c62828" WidthRequest="64" HeightRequest="30" FontAttributes="Bold"/>
-                    <Button Text="Female" BackgroundColor="#ffffff" TextColor="#6d6d6d"/>
+                    <Button Text="Male"   BackgroundColor="#ffffff" TextColor="#6d6d6d" WidthRequest="64" HeightRequest="30" FontAttributes="Bold" x:Name="MaleButton"  Clicked="MaleButton_Clicked"/>
+                    <Button Text="Female" BackgroundColor="#ffffff" TextColor="#6d6d6d" x:Name="FemaleButton" Clicked="FemaleButton_Clicked"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" Padding="0,20,0,0">
@@ -46,8 +57,11 @@
                         <Switch  HorizontalOptions="EndAndExpand" />
                     </StackLayout>
                 </StackLayout>
-
-                <Button Text="Sign Out" BackgroundColor="#6d6d6d" FontSize="16" BorderRadius="8" Clicked="SignOutButtonClicked" WidthRequest="110" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Submit" BackgroundColor="Green" FontSize="16" BorderRadius="8" x:Name="SubmitButton" Clicked="SubmitButton_Clicked" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
+                    <Button Text="Sign Out" BackgroundColor="#6d6d6d" FontSize="16" BorderRadius="8" Clicked="SignOutButtonClicked" WidthRequest="110" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
+                </StackLayout>
+                
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
