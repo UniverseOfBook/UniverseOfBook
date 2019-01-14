@@ -24,7 +24,8 @@ namespace UniverseOfBookApp.Pages.AdminPages
 
         private void Exit_Clicked(object sender, EventArgs e)
         {
-
+            App.UserEmail = "";
+            Application.Current.MainPage = new NavigationPage(new LoginPage());
         }
 
         private async void  AddAuthor_Clicked(object sender, EventArgs e)

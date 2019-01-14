@@ -23,14 +23,12 @@ namespace UniverseOfBookApp.Pages {
             wantLabel.Text = wantBookCount.ToString();
             readLabel.Text = readBookCount.ToString();
 
-
             if(userClass.UserPhoto != "" && userClass.UserPhoto != null) {
                 if (userClass.UserPhoto.StartsWith("File"))
                     ProfilePhotoImage.Source = userClass.UserPhoto.Replace("File: ", "");
                 else
                     ProfilePhotoImage.Source = userClass.UserPhoto.Replace("Uri: ", "");
             }
-            
 
             wantGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
             wantGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
@@ -94,6 +92,16 @@ namespace UniverseOfBookApp.Pages {
             var homePage = MainTabbedPage.mainTabbedPage;
             NavigationPage.SetHasNavigationBar(homePage, true);
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
+
+            UserDataAccess userDataAccess = new UserDataAccess();
+            UserClass userClass = userDataAccess.GetUserByEmail(App.UserEmail);
+
+            if (userClass.UserPhoto != "" && userClass.UserPhoto != null) {
+                if (userClass.UserPhoto.StartsWith("File"))
+                    ProfilePhotoImage.Source = userClass.UserPhoto.Replace("File: ", "");
+                else
+                    ProfilePhotoImage.Source = userClass.UserPhoto.Replace("Uri: ", "");
+            }
             UpdateBooks();
         }
 
@@ -101,6 +109,8 @@ namespace UniverseOfBookApp.Pages {
             UserBookDataAccess userBookDataAccess = new UserBookDataAccess();
             int wantBookCount = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWant.Want);
             int readBookCount = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWant.Read);
+            wantLabel.Text = wantBookCount.ToString();
+            readLabel.Text = readBookCount.ToString();
 
             if (wantBookCount == 0 && readBookCount == 0) {
                 GridStacklayout.IsVisible = false;

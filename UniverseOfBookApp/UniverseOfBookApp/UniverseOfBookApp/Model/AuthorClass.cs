@@ -8,8 +8,6 @@ namespace UniverseOfBookApp.Model
     [Table("Author")]
    public class AuthorClass
     {
-        [PrimaryKey,AutoIncrement]
-        public int AuthorID { get; set; }
         [NotNull,Unique]
         public string AuthorName { get; set; }
         public DateTime AuthorDate { get; set; }

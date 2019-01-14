@@ -62,6 +62,8 @@
                                 <x:String >Psychology</x:String>
                                 <x:String >Science Fiction</x:String>
                                 <x:String >Suspense Fiction</x:String>
+                                <x:String >Fantastic</x:String>
+                                
                             </Picker.Items>
                         </Picker>
                         <Entry x:Name="BookPhoto" Placeholder="Book Photo"/>

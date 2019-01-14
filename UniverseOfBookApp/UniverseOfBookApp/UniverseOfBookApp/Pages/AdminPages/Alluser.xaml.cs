@@ -17,6 +17,7 @@ namespace UniverseOfBookApp.Pages.AdminPages {
 
         public Alluser() {
             InitializeComponent();
+            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
             List<UserClass> users = new List<UserClass>();
             users = userDataAccess.GetAllUsers().ToList();
             listView.BindingContext = users;

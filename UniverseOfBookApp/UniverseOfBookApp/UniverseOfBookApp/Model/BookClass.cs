@@ -16,8 +16,6 @@ namespace UniverseOfBookApp.Model
     [Table("Book")]
     public class BookClass 
     {
-        [PrimaryKey,AutoIncrement]
-        public int BookID { get; set; }
         [NotNull,MaxLength(30),Unique]
         public string BookName { get; set; }
         public DateTime PublishDate { get; set; }

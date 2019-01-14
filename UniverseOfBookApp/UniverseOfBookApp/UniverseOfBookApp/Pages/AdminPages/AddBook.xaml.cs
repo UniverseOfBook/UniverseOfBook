@@ -18,7 +18,7 @@ namespace UniverseOfBookApp.Pages.AdminPages
         public AddBook()
         {
             InitializeComponent();
-
+            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
             List<String> authors = new List<String>();
             authors = AuthorData.Authors();
             for(int i = 0; i < authors.Count; i++)

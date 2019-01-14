@@ -50,7 +50,7 @@ namespace UniverseOfBookApp.Pages {
                     if (button.Text == "Read") {
                         userBooks[0].ReadWant = ReadWant.Read;
                         userBooks[0].dateTime = DateTime.Now;
-                        UserBookDataAccess.BookUserUpdate(userBooks[0]);
+                        UserBookDataAccess.BookUserUpdateReadOrWant(userBooks[0]);
                         DisplayAlert("Read Book", "You added this book to Read List", "Ok");
                     }
                     else {
@@ -61,7 +61,7 @@ namespace UniverseOfBookApp.Pages {
                     if (button.Text == "Want") {
                         userBooks[0].ReadWant = ReadWant.Want;
                         userBooks[0].dateTime = DateTime.Now;
-                        UserBookDataAccess.BookUserUpdate(userBooks[0]);
+                        UserBookDataAccess.BookUserUpdateReadOrWant(userBooks[0]);
                         DisplayAlert("Want Book", "You added this book to Want List", "Ok");
                     }
                     else {
@@ -79,7 +79,7 @@ namespace UniverseOfBookApp.Pages {
                     userBook.ReadWant = ReadWant.Want;
                 }
                 else {
-                    DisplayAlert("Want Book", "You added this book to Want List", "Ok");
+                    DisplayAlert("Read Book", "You added this book to Read List", "Ok");
                     userBook.ReadWant = ReadWant.Read;
                 }
                 UserBookDataAccess.UserInsert(userBook);

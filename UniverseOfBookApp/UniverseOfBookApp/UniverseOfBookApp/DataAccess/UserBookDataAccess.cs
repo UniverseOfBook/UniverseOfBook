@@ -61,5 +61,10 @@ namespace UniverseOfBookApp.DataAccess {
         public void BookUserUpdate(UserBook userBook) {
             db.Update(userBook);
         }
+
+        public void BookUserUpdateReadOrWant(UserBook userBook) {
+            db.Table<UserBook>().Delete(x => x.BookName == userBook.BookName && x.Email == userBook.Email);
+            UserInsert(userBook);
+        }
     }
 }

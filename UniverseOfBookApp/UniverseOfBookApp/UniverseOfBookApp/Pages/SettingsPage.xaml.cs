@@ -17,15 +17,19 @@ namespace UniverseOfBookApp.Pages {
         public SettingsPage() {
             InitializeComponent();
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.White;
-            
+
             UserClass userClass = userDataAccess.GetUserByEmail(App.UserEmail);
-            if (userClass.UserPhoto.Replace("File: ", "") != "" || userClass.UserPhoto.Replace("Uri: ", "") != "") {
-                if (userClass.UserPhoto.StartsWith("File"))
-                    profilePhoto.Source = userClass.UserPhoto.Replace("File: ", "");
-                else
-                    profilePhoto.Source = userClass.UserPhoto.Replace("Uri: ", "");
+
+            if ((userClass.UserPhoto != (null))) {
+                if (userClass.UserPhoto.Replace("File: ", "") != "" || userClass.UserPhoto.Replace("Uri: ", "") != "") {
+                    if (userClass.UserPhoto.StartsWith("File"))
+                        profilePhoto.Source = userClass.UserPhoto.Replace("File: ", "");
+                    else
+                        profilePhoto.Source = userClass.UserPhoto.Replace("Uri: ", "");
+                }
             }
-            if(userClass.Gender == Gender.Male) {
+
+            if (userClass.Gender == Gender.Male) {
                 MaleButton.TextColor = Color.FromHex("#c62828");
                 MaleButton.FontAttributes = FontAttributes.Bold;
             }
@@ -33,10 +37,12 @@ namespace UniverseOfBookApp.Pages {
                 FemaleButton.TextColor = Color.FromHex("#c62828");
                 FemaleButton.FontAttributes = FontAttributes.Bold;
             }
-            if (userClass.UserPhoto.StartsWith("File"))
-                UserPhotoSource.Text = userClass.UserPhoto.Replace("File: ", "");
-            else
-                UserPhotoSource.Text = userClass.UserPhoto.Replace("Uri: ", "");
+            if ((userClass.UserPhoto != (null))) {
+                if (userClass.UserPhoto.StartsWith("File"))
+                    UserPhotoSource.Text = userClass.UserPhoto.Replace("File: ", "");
+                else
+                    UserPhotoSource.Text = userClass.UserPhoto.Replace("Uri: ", "");
+            }
 
             PhoneNumber.Text = userClass.phonenumber;
             NameUser.Text = userClass.Name;

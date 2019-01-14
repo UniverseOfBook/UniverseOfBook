@@ -20,6 +20,7 @@ namespace UniverseOfBookApp.Pages.AdminPages
 		public AllBooks ()
 		{
 			InitializeComponent ();
+            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
             List<BookClass> bookClasses = new List<BookClass>();
             bookClasses = bookDataAccess.GetAllBook().ToList();
             listView.BindingContext = bookClasses;

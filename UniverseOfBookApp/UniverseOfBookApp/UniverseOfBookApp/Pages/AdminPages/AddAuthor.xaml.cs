@@ -17,7 +17,8 @@ namespace UniverseOfBookApp.Pages.AdminPages
 		public AddAuthor ()
 		{
 			InitializeComponent ();
-		}
+            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
+        }
 
         private void AddButton_Clicked(object sender, EventArgs e)
         {

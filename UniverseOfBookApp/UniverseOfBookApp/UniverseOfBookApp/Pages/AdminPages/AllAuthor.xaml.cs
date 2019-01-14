@@ -18,6 +18,7 @@ namespace UniverseOfBookApp.Pages.AdminPages
 		public AllAuthor ()
 		{
 			InitializeComponent ();
+            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
             List<AuthorClass> authorClasses = new List<AuthorClass>();
             authorClasses = authorDataAccess.GetAllAuthor().ToList();
             listView.BindingContext = authorClasses;

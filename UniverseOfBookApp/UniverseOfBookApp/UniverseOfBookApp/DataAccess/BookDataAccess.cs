@@ -35,10 +35,7 @@ namespace UniverseOfBookApp.DataAccess
         public BookClass GetBookBySource(string bookPhoto) {
             return db.Table<BookClass>().FirstOrDefault(i => i.bookphoto == bookPhoto);
         }
-        public BookClass GetBook(int Id)
-        {
-            return db.Table<BookClass>().FirstOrDefault(i => i.BookID == Id);
-        }
+
         public List<BookClass> GetAllBookByCategory(CategoryEnum category) {
             return (from book in db.Table<BookClass>() where book.Category == category select book).ToList();
         }

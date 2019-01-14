@@ -36,10 +36,7 @@ namespace UniverseOfBookApp.DataAccess
         {
             return db.Table<AuthorClass>().Delete(x => x.AuthorName == AuthorName);
         }
-        public AuthorClass GetAuthor(int Id)
-        {
-            return db.Table<AuthorClass>().FirstOrDefault(i => i.AuthorID == Id);
-        }
+
         public AuthorClass GetAuthorbyName(String name)
         {
             return db.Table<AuthorClass>().FirstOrDefault(i => i.AuthorName ==name);
