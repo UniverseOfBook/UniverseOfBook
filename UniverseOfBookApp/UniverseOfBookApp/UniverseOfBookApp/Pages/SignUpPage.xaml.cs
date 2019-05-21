@@ -25,12 +25,20 @@ namespace UniverseOfBookApp.Pages {
             //We create new user here 
             if (Password.Text == PasswordAgain.Text && Email.Text != null && Name.Text != null) {
                 UserDataAccess = new UserDataAccess();
-
+                String text="";
+                if(userPhoto == null) {
+                    text = "@drawable/defaultuser";
+                }
+                else {
+                    text = userPhoto.Text;
+                }
                 user = new User {
                     Email = Email.Text,
                     Password = Password.Text,
                     UserName = Name.Text,
-                    UserType = UserAdmin.User
+                    UserType = UserAdmin.User,
+                    UserPhoto = text
+
                 };
 
                 int number = UserDataAccess.AddUser(user);
@@ -41,6 +49,7 @@ namespace UniverseOfBookApp.Pages {
                 else {
                     await DisplayAlert("Sign Up", "Didn't add  " + Name.Text, "OK");
                 }
+                await Navigation.PopAsync();
             }
         }
 
