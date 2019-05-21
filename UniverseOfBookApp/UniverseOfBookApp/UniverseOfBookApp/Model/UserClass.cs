@@ -3,34 +3,28 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace UniverseOfBookApp.Model
-{
-    public enum UserAdmin
-    {
-        User,Admin
+namespace UniverseOfBookApp.Model {
+    public enum UserAdmin {
+        User, Admin
     }
-    public enum Gender
-    {
-        Male,Female
+    public enum Gender {
+        Male, Female
     }
     [Table("User")]
-   public class UserClass
-    { 
-        [PrimaryKey,AutoIncrement]
-        public int userId { get; set; }
-        [Unique,NotNull]
+    public class UserClass {
+        [PrimaryKey, AutoIncrement]
+        public int UserId { get; set; }
+        [Unique, NotNull]
         public string UserName { get; set; }
         [NotNull]
         public string Password { get; set; }
-        [NotNull,Unique]
+        [NotNull, Unique]
         public string Email { get; set; }
         public Gender Gender { get; set; }
-        public string phonenumber { get; set; }
+        public string Phonenumber { get; set; }
         public string Name { get; set; }
         public string UserPhoto { get; set; }
-        public UserAdmin useradmin { get; set; }
+        public UserAdmin Useradmin { get; set; }
 
     }
-
-    
 }

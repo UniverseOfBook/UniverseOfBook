@@ -10,9 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace UniverseOfBookApp.Pages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
 
-
     public partial class ActivityPage : ContentPage {
-
         DataAccess.UserBookDataAccess UserBookDataAccess = new DataAccess.UserBookDataAccess();
         DataAccess.BookDataAccess BookDataAccess = new DataAccess.BookDataAccess();
         BookClass book;
@@ -43,7 +41,7 @@ namespace UniverseOfBookApp.Pages {
                 StackLayout stackLayout = new StackLayout();
 
                 Label label1 = new Label() { FontSize = 18, HorizontalOptions = LayoutOptions.Start };
-                label1.Text = "Time added: " + userBooks[i].dateTime.ToString("dd/MM/yyyy");
+                label1.Text = "Time added: " + userBooks[i].DateTime.ToString("dd/MM/yyyy");
                 stackLayout.Children.Add(label1);
 
                 Label label = new Label() { FontSize = 20, HorizontalOptions = LayoutOptions.Start };
@@ -56,7 +54,7 @@ namespace UniverseOfBookApp.Pages {
 
                 stackLayout.Children.Add(label);
 
-                Image bookImage = new Image { Source = book.bookphoto, HorizontalOptions = LayoutOptions.Start };
+                Image bookImage = new Image { Source = book.Bookphoto, HorizontalOptions = LayoutOptions.Start };
                 stackLayout.Children.Add(bookImage);
 
                 frame.Content = stackLayout;

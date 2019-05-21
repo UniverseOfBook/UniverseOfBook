@@ -14,7 +14,6 @@ using Xamarin.Forms.Xaml;
 namespace UniverseOfBookApp.Pages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SignUp : ContentPage {
-
         public UserDataAccess UserDataAccess;
         public UserClass user;
 
@@ -31,7 +30,7 @@ namespace UniverseOfBookApp.Pages {
                 user.Email = Email.Text;
                 user.Password = Password.Text;
                 user.UserName = Name.Text;
-                user.useradmin = UserAdmin.User;
+                user.Useradmin = UserAdmin.User;
                 
                 int number = UserDataAccess.UserInsert(user);
                 if (number > 0) {

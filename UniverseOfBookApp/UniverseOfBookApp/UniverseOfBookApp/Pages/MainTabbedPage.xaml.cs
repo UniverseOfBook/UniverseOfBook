@@ -11,15 +11,15 @@ using Xamarin.Forms.Xaml;
 namespace UniverseOfBookApp.Pages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainTabbedPage : Xamarin.Forms.TabbedPage {
-
         public static MainTabbedPage mainTabbedPage;
 
         public MainTabbedPage() {
             InitializeComponent();
-            On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom)
-                                                             .SetBarItemColor(Color.FromHex("#6d6d6d"))
-                                                             .SetBarSelectedItemColor(Color.FromHex("#c62828"))
-                                                             .SetIsLegacyColorModeEnabled(true);
+            On<Xamarin.Forms.PlatformConfiguration.Android>()
+                .SetToolbarPlacement(ToolbarPlacement.Bottom)
+                .SetBarItemColor(Color.FromHex("#6d6d6d"))
+                .SetBarSelectedItemColor(Color.FromHex("#c62828"))
+                .SetIsLegacyColorModeEnabled(true);
 
             mainTabbedPage = this;
             var homePage = new HomePage() { Title = "Home", Icon = "homepage" };

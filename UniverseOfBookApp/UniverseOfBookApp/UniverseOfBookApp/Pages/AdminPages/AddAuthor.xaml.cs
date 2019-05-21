@@ -8,42 +8,35 @@ using UniverseOfBookApp.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace UniverseOfBookApp.Pages.AdminPages
-{
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AddAuthor : ContentPage
-	{
+namespace UniverseOfBookApp.Pages.AdminPages {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class AddAuthor : ContentPage {
         AuthorDataAccess DataAccess = new AuthorDataAccess();
-		public AddAuthor ()
-		{
-			InitializeComponent ();
+        public AddAuthor() {
+            InitializeComponent();
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
         }
+        private void AddButton_Clicked(object sender, EventArgs e) {
+            AuthorClass author = new AuthorClass {
+                AuthorDate = Date.Date,
+                AuthorName = AuthorName.Text,
+                AuthorDescription = AuthorInfo.Text,
+                AuthorPhoto = AuthorPhoto.Text
+            };
 
-        private void AddButton_Clicked(object sender, EventArgs e)
-        {
-         AuthorClass author = new AuthorClass();
-            author.AuthorDate = Date.Date;
-            author.AuthorName = AuthorName.Text;
-            author.AuthorDescription = AuthorInfo.Text;
-            author.AuthorPhoto = AuthorPhoto.Text;
-
-           int i= DataAccess.AuthorInsert(author);
-            if (i > 0)
-            {
+            int i = DataAccess.AuthorInsert(author);
+            if (i > 0) {
                 DisplayAlert("ADD", "Author was add", "OK");
 
                 AuthorName.Text = "";
                 AuthorInfo.Text = "";
             }
-            else
-            {
+            else {
                 DisplayAlert("ADD", "Author wasn't add", "OK");
             }
-           
+
         }
-        private void BackButton_Clicked(object sender, EventArgs e)
-        {
+        private void BackButton_Clicked(object sender, EventArgs e) {
 
         }
     }

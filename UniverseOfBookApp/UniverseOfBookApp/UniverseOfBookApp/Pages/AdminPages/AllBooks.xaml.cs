@@ -8,45 +8,33 @@ using UniverseOfBookApp.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace UniverseOfBookApp.Pages.AdminPages
-{
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AllBooks : ContentPage
-	{
-
+namespace UniverseOfBookApp.Pages.AdminPages {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class AllBooks : ContentPage {
         BookDataAccess bookDataAccess = new BookDataAccess();
         UserBookDataAccess UserBookDataAccess = new UserBookDataAccess();
-        
-		public AllBooks ()
-		{
-			InitializeComponent ();
+
+        public AllBooks() {
+            InitializeComponent();
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
-            List<BookClass> bookClasses = new List<BookClass>();
-            bookClasses = bookDataAccess.GetAllBook().ToList();
+            List<BookClass> bookClasses = bookDataAccess.GetAllBook().ToList();
             listView.BindingContext = bookClasses;
-            
         }
 
-        private async void DeleteBook_Clicked(object sender, EventArgs e)
-        {
-           
+        private async void DeleteBook_Clicked(object sender, EventArgs e) {
             var answer = await DisplayAlert("Question?", "Would you like to delete?", "Yes", "No");
-            if (answer)
-            {
-              BookClass bookClass = new BookClass();
-            bookClass = (BookClass)listView.SelectedItem;
-            bookDataAccess.DeleteBookName(bookClass.BookName);
+            if (answer) {
+                BookClass bookClass = new BookClass();
+                bookClass = (BookClass)listView.SelectedItem;
+                bookDataAccess.DeleteBookName(bookClass.BookName);
             }
-
             Navigation.InsertPageBefore(new AllBooks(), this);
             await Navigation.PopAsync();
         }
 
-        private async void AllBooksDelete_Clicked(object sender, EventArgs e)
-        {
+        private async void AllBooksDelete_Clicked(object sender, EventArgs e) {
             var answer = await DisplayAlert("Question?", "Would you like to delete all users ?", "Yes", "No");
-            if (answer)
-            {
+            if (answer) {
                 bookDataAccess.DeleteAllBook();
             }
         }

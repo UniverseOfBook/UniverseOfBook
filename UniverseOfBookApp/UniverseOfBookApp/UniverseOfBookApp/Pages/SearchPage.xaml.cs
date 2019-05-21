@@ -13,8 +13,7 @@ using Xamarin.Forms.Xaml;
 namespace UniverseOfBookApp.Pages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SearchPage : ContentPage {
-
-        DataAccess.BookDataAccess bookDataAccess = new DataAccess.BookDataAccess();
+        DataAccess.BookDataAccess bookDataAccess = new BookDataAccess();
         public SearchPage() {
             InitializeComponent();
         }
@@ -40,7 +39,7 @@ namespace UniverseOfBookApp.Pages {
                 return;
             }
             search.IsVisible = false;
-            searchImage.Source = bookClass.bookphoto;
+            searchImage.Source = bookClass.Bookphoto;
             searchImage.IsVisible = true;
         }
 

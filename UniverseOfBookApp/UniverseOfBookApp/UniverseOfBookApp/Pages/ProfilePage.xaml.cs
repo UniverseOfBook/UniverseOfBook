@@ -11,7 +11,6 @@ using Xamarin.Forms.Xaml;
 namespace UniverseOfBookApp.Pages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilePage : ContentPage {
-        
         public ProfilePage() {
             InitializeComponent();
             UserDataAccess userDataAccess = new UserDataAccess();
@@ -58,9 +57,8 @@ namespace UniverseOfBookApp.Pages {
             int row = 0;
 
             for (int a = 0; a < bookList.Count; a++) {
-
                 BookClass bookClass = bookDataAccess.GetBookByName(bookList[a]);
-                Image bookImage = new Image { HeightRequest = 300, Source = bookClass.bookphoto };
+                Image bookImage = new Image { HeightRequest = 300, Source = bookClass.Bookphoto };
                 var tapGestureRecognizer = new TapGestureRecognizer();
                 tapGestureRecognizer.Tapped += (s, e) => {
                     ImageTapped(bookImage.Source.ToString().Replace("Uri: ", ""));

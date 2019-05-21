@@ -44,7 +44,7 @@ namespace UniverseOfBookApp.Pages {
                     UserPhotoSource.Text = userClass.UserPhoto.Replace("Uri: ", "");
             }
 
-            PhoneNumber.Text = userClass.phonenumber;
+            PhoneNumber.Text = userClass.Phonenumber;
             NameUser.Text = userClass.Name;
             userNameLabel.Text = userClass.UserName;
             emailLabel.Text = userClass.Email;
@@ -59,7 +59,7 @@ namespace UniverseOfBookApp.Pages {
         {
             UserClass userClass = userDataAccess.GetUserByEmail(App.UserEmail);
             userClass.Name = NameUser.Text;
-            userClass.phonenumber = PhoneNumber.Text;
+            userClass.Phonenumber = PhoneNumber.Text;
           
             if(UserPhotoSource.Text != "")
             {

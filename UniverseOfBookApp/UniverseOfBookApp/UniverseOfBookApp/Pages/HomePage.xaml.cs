@@ -13,26 +13,23 @@ using Xamarin.Forms.Xaml;
 namespace UniverseOfBookApp.Pages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : Xamarin.Forms.ContentPage {
-        
         public HomePage() {
             InitializeComponent();
-
             try {
                 BookDataAccess bookDataAccess = new BookDataAccess();
                 List<BookClass> allBooks = bookDataAccess.GetAllBook().ToList();
 
                 for (int i = 0; i < allBooks.Count; i++) {
-                    string url = allBooks[i].bookphoto;
+                    string url = allBooks[i].Bookphoto;
                     Image bookImage = new Image { Source = url };
                     var tapGestureRecognizer = new TapGestureRecognizer();
-                    
+
                     tapGestureRecognizer.Tapped += (s, e) => {
                         ImageTapped(bookImage.Source.ToString().Replace("Uri: ", ""));
                     };
                     bookImage.GestureRecognizers.Add(tapGestureRecognizer);
                     BooksStacklayout.Children.Add(bookImage);
                 }
-                
             }
             catch (Exception ex) {
                 Debug.WriteLine(ex.Message);

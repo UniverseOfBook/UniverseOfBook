@@ -18,17 +18,14 @@ namespace UniverseOfBookApp.Pages.AdminPages {
         public Alluser() {
             InitializeComponent();
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
-            List<UserClass> users = new List<UserClass>();
-            users = userDataAccess.GetAllUsers().ToList();
+            List<UserClass> users = userDataAccess.GetAllUsers().ToList();
             listView.BindingContext = users;
         }
 
         private async void DeleteUser_Clicked(object sender, EventArgs e) {
-
             var answer = await DisplayAlert("Question?", "Would you like to delete?", "Yes", "No");
             if (answer) {
-                UserClass user = new UserClass();
-                user = (UserClass)listView.SelectedItem;
+                UserClass user = (UserClass)listView.SelectedItem;
                 userDataAccess.DeleteUserName(user.UserName);
                 UserBookDataAccess userBookDataAccess = new UserBookDataAccess();
                 userBookDataAccess.DeleteBookName(user.Email);
@@ -36,7 +33,6 @@ namespace UniverseOfBookApp.Pages.AdminPages {
             }
             Navigation.InsertPageBefore(new Alluser(), this);
             await Navigation.PopAsync();
-           
         }
 
         private async void AllUserDelete_Clicked(object sender, EventArgs e) {
@@ -48,13 +44,5 @@ namespace UniverseOfBookApp.Pages.AdminPages {
             Navigation.InsertPageBefore(new Alluser(), this);
             await Navigation.PopAsync();
         }
-
-        //public void Click()
-        // {
-
-        //     user = new User();
-        // user.Name  = userDataAccess.GetUser(2).Name;
-        //     Debug.WriteLine(user.Name);
-        // }
     }
 }

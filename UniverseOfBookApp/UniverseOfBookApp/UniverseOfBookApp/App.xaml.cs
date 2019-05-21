@@ -58,7 +58,7 @@ namespace UniverseOfBookApp {
             book.PageNumber = pageNumber;
             book.Category = categoryEnum;
             book.Publishers = publishers;
-            book.bookphoto = bookUrl;
+            book.Bookphoto = bookUrl;
             int addingbook = bookDataAccess.BookInsert(book);
             if (addingbook > 0)
                 Console.WriteLine("Book added: " + bookName);

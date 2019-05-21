@@ -12,7 +12,6 @@ using Xamarin.Forms.Xaml;
 namespace UniverseOfBookApp.Pages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage {
-
         public UserDataAccess userDataAccess;
         public UserClass user;
 
@@ -33,7 +32,7 @@ namespace UniverseOfBookApp.Pages {
             user = userDataAccess.Login(Email.Text, Password.Text);
 
             if (user != null) {
-                if (user.useradmin == UserAdmin.Admin) {
+                if (user.Useradmin == UserAdmin.Admin) {
 
                     Navigation.InsertPageBefore(new AdminPage(), this);
                     await Navigation.PopAsync();

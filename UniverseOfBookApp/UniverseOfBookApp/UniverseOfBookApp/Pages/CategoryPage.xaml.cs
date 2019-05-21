@@ -36,7 +36,7 @@ namespace UniverseOfBookApp.Pages {
 
             for (int a = 0; a < bookClass.Count; a++) {
                 categoryGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
-                Image bookImage = new Image { HeightRequest = 300, Source = bookClass[a].bookphoto };
+                Image bookImage = new Image { HeightRequest = 300, Source = bookClass[a].Bookphoto };
                 var tapGestureRecognizer = new TapGestureRecognizer();
                 tapGestureRecognizer.Tapped += (s, e) => {
                     ImageTapped(bookImage.Source.ToString().Replace("Uri: ", ""));
@@ -59,6 +59,5 @@ namespace UniverseOfBookApp.Pages {
             BookClass bookName = bookDataAccess.GetBookBySource(bookSource);
             await Navigation.PushAsync(new Book(bookName.BookName));
         }
-
     }
 }
