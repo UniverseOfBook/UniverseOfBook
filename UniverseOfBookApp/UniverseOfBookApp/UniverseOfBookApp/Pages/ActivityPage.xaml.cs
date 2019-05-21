@@ -11,13 +11,22 @@ namespace UniverseOfBookApp.Pages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
 
     public partial class ActivityPage : ContentPage {
+        DataAccess.UserFriendDataAccess userFriendataAccess = new DataAccess.UserFriendDataAccess();
         DataAccess.UserBookDataAccess UserBookDataAccess = new DataAccess.UserBookDataAccess();
         DataAccess.BookDataAccess BookDataAccess = new DataAccess.BookDataAccess();
         Book book;
+        static int num = 0;
 
+        Dictionary<String, String> map = new Dictionary<String,String>();
+        Frame frame = new Frame() { CornerRadius = 10 };
+        StackLayout stackLayout = new StackLayout();
         public ActivityPage() {
             InitializeComponent();
-            UpdatePage();
+            if(num != 0) {
+             UpdatePage();
+            }
+            
+            num++;
         }
 
         public async void ImageTapped(string bookSource) {
@@ -31,15 +40,13 @@ namespace UniverseOfBookApp.Pages {
             MyStackLayout.Children.Clear();
             UpdatePage();
         }
-
-        public void UpdatePage() {
-            List<UserBook> userBooks = UserBookDataAccess.GetAllBookUser(App.UserEmail);
+        public void addingActivity(List<UserBook> userBooks,string email) {
             for (int i = 0; i < userBooks.Count; i++) {
                 book = BookDataAccess.GetBookByName(userBooks[i].BookName);
-
-                Frame frame = new Frame() { CornerRadius = 10 };
-                StackLayout stackLayout = new StackLayout();
-
+                if(map.ContainsKey(email) && map[email].Equals(book.BookName)) {
+                    break;
+                }
+                map.Add(email, book.BookName);
                 Label label1 = new Label() { FontSize = 18, HorizontalOptions = LayoutOptions.Start };
                 label1.Text = "Time added: " + userBooks[i].DateTime.ToString("dd/MM/yyyy");
                 stackLayout.Children.Add(label1);
@@ -65,7 +72,25 @@ namespace UniverseOfBookApp.Pages {
                     ImageTapped(bookImage.Source.ToString().Replace("Uri: ", ""));
                 };
                 bookImage.GestureRecognizers.Add(tapGestureRecognizer);
+                
             }
+        }
+
+        public void UpdatePage() {
+            
+
+            List<UserFriends> users = userFriendataAccess.GetAllFriends(App.UserEmail);
+            for(int i = 0; i < users.Count; i++) {
+                List<UserBook> friendBooks = UserBookDataAccess.GetAllBookUser(users[i].FriendEmail);
+                addingActivity(friendBooks, users[i].FriendEmail);
+            }
+              List<UserBook> userBooks = UserBookDataAccess.GetAllBookUser(App.UserEmail);
+              
+               addingActivity(userBooks,App.UserEmail);
+               
+              
+
+
         }
     }
 }
