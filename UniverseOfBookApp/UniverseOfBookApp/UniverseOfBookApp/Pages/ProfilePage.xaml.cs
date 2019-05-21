@@ -14,13 +14,16 @@ namespace UniverseOfBookApp.Pages {
         public ProfilePage() {
             InitializeComponent();
             UserDataAccess userDataAccess = new UserDataAccess();
+            UserFriendDataAccess userFriendDataAccess = new UserFriendDataAccess();
             UserBookDataAccess userBookDataAccess = new UserBookDataAccess();
             User userClass = userDataAccess.GetUserByEmail(App.UserEmail);
             userName.Text = userClass.UserName;
             int wantBookCount = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWantEnum.Want);
             int readBookCount = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWantEnum.Read);
+            int friendsCount = userFriendDataAccess.countFriends(App.UserEmail);
             wantLabel.Text = wantBookCount.ToString();
             readLabel.Text = readBookCount.ToString();
+            FriendsLabel.Text = friendsCount.ToString();
 
             if(userClass.UserPhoto != "" && userClass.UserPhoto != null) {
                 if (userClass.UserPhoto.StartsWith("File"))
