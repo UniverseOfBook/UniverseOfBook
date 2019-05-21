@@ -129,5 +129,10 @@ namespace UniverseOfBookApp.Pages {
                 getAllBooksToProfilePage(readGrid, ReadWantEnum.Read);
             }
         }
+
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SeeAllUsers());
+        }
     }
 }

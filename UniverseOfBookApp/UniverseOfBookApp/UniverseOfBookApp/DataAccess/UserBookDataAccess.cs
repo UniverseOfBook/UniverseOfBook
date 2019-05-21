@@ -15,12 +15,8 @@ namespace UniverseOfBookApp.DataAccess {
             db = DependencyService.Get<ISqlConnection>().GetConnection();
             db.CreateTable<UserBook>();
         }
-        public List<UserBook> GetAllBook() {
-            return (from UserBook in db.Table<UserBook>() select UserBook).ToList();
-        }
-        public UserBook GetBook(string bookname) {
-            return db.Table<UserBook>().FirstOrDefault(i => i.BookName == bookname);
-        }
+       
+     
         public int GetUserReadorWantCountBook(string Email, ReadWantEnum readWant) {
             List<UserBook> userBooks = (from book in db.Table<UserBook>() where book.Email == Email && book.ReadWant == readWant select book).ToList();
             return userBooks.Count;
@@ -35,18 +31,14 @@ namespace UniverseOfBookApp.DataAccess {
         public List<UserBook> GetBookByEmailAndBookName(string email, string bookname) {
             return (from book in db.Table<UserBook>() where book.Email == email && book.BookName == bookname select book).ToList();
         }
-        public UserBook GetBookUser(string Email) {
-            return db.Table<UserBook>().FirstOrDefault(i => i.Email == Email);
-        }
+      
         public int DeleteBookName(string email) {
             return db.Table<UserBook>().Delete(x => x.Email == email);
         }
         public void UserInsert(UserBook userBook) {
             db.Insert(userBook);
         }
-        public void BookUserUpdate(UserBook userBook) {
-            db.Update(userBook);
-        }
+       
         public void BookUserUpdateReadOrWant(UserBook userBook) {
             db.Table<UserBook>().Delete(x => x.BookName == userBook.BookName && x.Email == userBook.Email);
             UserInsert(userBook);
