@@ -8,17 +8,14 @@ using UniverseOfBookApp.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace UniverseOfBookApp.Pages
-{
+namespace UniverseOfBookApp.Pages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SeeAllUsers : ContentPage
-    {
+    public partial class SeeAllUsers : ContentPage {
         public UserFriendDataAccess userFriendDataAccess = new UserFriendDataAccess();
         public UserDataAccess userDataAccess = new UserDataAccess();
         public User user;
         public UserFriends userFriends;
-        public SeeAllUsers()
-        {
+        public SeeAllUsers() {
             InitializeComponent();
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
             SeeALLFriends();
@@ -36,11 +33,10 @@ namespace UniverseOfBookApp.Pages
                 label1.Text = user.Name;
                 stackLayout.Children.Add(label1);
 
-
                 Image userPhoto = new Image { Source = user.UserPhoto, HorizontalOptions = LayoutOptions.End };
                 stackLayout.Children.Add(userPhoto);
 
-                Button button = new Button() { CornerRadius = 20 ,BackgroundColor=Color.Red};
+                Button button = new Button() { CornerRadius = 20, BackgroundColor = Color.Red };
                 button.Text = "Unfollow";
                 button.Clicked += UnfollowButtonClicked;
                 stackLayout.Children.Add(button);
@@ -49,14 +45,13 @@ namespace UniverseOfBookApp.Pages
 
             }
         }
-       private void UnfollowButtonClicked(object sender, EventArgs e) {
+        private void UnfollowButtonClicked(object sender, EventArgs e) {
             userFriendDataAccess.DeleteUserFriends(user.Email);
-          
+
         }
 
         private async void SeeAllUser_Clicked(object sender, EventArgs e) {
-            await Navigation.PushAsync(new FindFriends());
-
+            await Navigation.PushAsync(new FindFriendsPage());
         }
     }
 }

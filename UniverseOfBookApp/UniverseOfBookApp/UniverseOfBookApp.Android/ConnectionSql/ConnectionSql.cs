@@ -20,13 +20,14 @@ using System.IO;
 namespace UniverseOfBookApp.Droid.ConnectionSql {
     public class ConnectionSql : ISqlConnection {
         public SQLiteConnection GetConnection() {
-            string dbname = "UniverseOfBookApp.db3";
-
+            string dbname = "UniverseOfBookAppDatabase.db3";
             var document = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             var path = Path.Combine(document, dbname);
-            var db = new SQLiteConnection(path);
-            if (!File.Exists(path)) File.Create(path);
 
+            if (!File.Exists(path))
+                File.Create(path);
+
+            var db = new SQLiteConnection(path);
             return db;
         }
     }

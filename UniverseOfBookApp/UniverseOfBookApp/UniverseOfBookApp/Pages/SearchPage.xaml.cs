@@ -28,23 +28,31 @@ namespace UniverseOfBookApp.Pages {
             if (e.NewTextValue != null && e.NewTextValue.Length > 3) {
                 Searching(e.NewTextValue);
             }
+            else {
+                StackL.Children.Clear();
+                searchImages.Clear();
+                search.IsVisible = true;
+            }
         }
 
         private List<string> searchImages = new List<string>();
         private void Searching(string text) {
             List<string> bookNames = bookDataAccess.GetAllBooksName();
-            List<string> suggestionList = bookNames.Where(book => book.Contains(text)).ToList();
+            List<string> suggestionList = bookNames.Where(book => book.ToLower().Contains(text.ToLower())).ToList();
 
             List<Book> suggestedBooks = new List<Book>();
-            foreach(string suggestion in suggestionList) {
-                Book book = bookDataAccess.GetBookByName(suggestion);
-                suggestedBooks.Add(book);
-            }
 
-            if (suggestedBooks.Count == 0) {
+            if (suggestionList.Count == 0) {
+                searchImages.Clear();
                 search.IsVisible = true;
                 return;
             }
+
+            foreach (string suggestion in suggestionList) {
+                Book book = bookDataAccess.GetBookByName(suggestion);
+                suggestedBooks.Add(book);
+            }
+            
             search.IsVisible = false;
             foreach (Book suggestedBook in suggestedBooks) {
                 if (searchImages.Contains(suggestedBook.BookName))

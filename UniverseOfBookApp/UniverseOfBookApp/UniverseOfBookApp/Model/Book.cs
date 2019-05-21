@@ -8,7 +8,7 @@ namespace UniverseOfBookApp.Model {
         Crime, Dram, Biographies, History, Sport, Education, Kids, Cooking, Horror, Medical, Religion, Romance, ModernClassic, Psychology, ScienceFiction, SuspenseFiction, Fantastic
     }
     public enum PublishersEnum {
-        Can, Iletisim, IsBankası, YapıKredi, Domingo, Ithaki
+        Can, Iletisim, IsBankasi, YapiKredi, Domingo, Ithaki
     }
     [Table("Book")]
     public class Book {

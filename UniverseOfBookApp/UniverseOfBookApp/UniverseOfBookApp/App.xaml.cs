@@ -49,8 +49,23 @@ namespace UniverseOfBookApp {
                 userDataAccess.AddUser(user);
             }
 
+            user = userDataAccess.GetUserByEmail("berkgunseli@gmail.com");
+            if (user == null) {
+                user = new User {
+                    Email = "berkgunseli@gmail.com",
+                    Password = "123456",
+                    UserName = "bgunseli",
+                    UserType = UserAdmin.User
+                };
+                userDataAccess.AddUser(user);
+            }
+
             try {
-                //InsertAuthorToDatabase();
+                AuthorDataAccess authorDataAccess = new AuthorDataAccess();
+                authorDataAccess.DeleteAllAuthor();
+                BookDataAccess bookDataAccess = new BookDataAccess();
+                bookDataAccess.DeleteAllBook();
+                InsertAuthorToDatabase();
                 InsertBookToDatabase();
             }
             catch {
@@ -60,9 +75,7 @@ namespace UniverseOfBookApp {
         }
 
         public void InsertBookToDatabase() {
-            BookDataAccess bookDataAccess = new BookDataAccess();
-
-            Book book = new Book {
+            Book book1 = new Book {
                 BookName = "Değiştirilmiş Karbon",
                 AuthorName = "Richard K. Morgan",
                 PageNumber = 496,
@@ -93,7 +106,46 @@ Blade Runner ve Neuromancer gibi eserlerin izinden giden siberpunk türündeki D
 - Publishers Weekly –
 "
             };
-            bookDataAccess.BookInsert(book);
+
+            Book book2 = new Book {
+                BookName = "Fahrenheit 451",
+                AuthorName = "Ray Bradbury",
+                PageNumber = 208,
+                Category = CategoryEnum.ScienceFiction,
+                Publishers = PublishersEnum.Ithaki,
+                BookPhoto = "https://i.dr.com.tr/cache/600x600-0/originals/0001750151001-1.jpg",
+                Description =
+@"Yazılmış en iyi bilimkurgu romanı. İlk okuduğumda, yarattığı dünyayla kâbuslar görmeme sebep olmuştu. -Margaret Atwood
+Öyle bir eser ki, hakkında ne söylesem eksik kalır. -Neil Gaiman
+Hugo En İyi Roman Ödülü
+Prometheus Şeref Kürsüsü Ödülü
+Ray Bradbury sadece bilimkurgunun değil fantastik edebiyatın ve korkunun da yirminci yüzyıldaki ustalarından biri. Bilimkurgunun iyi edebiyat da olabileceğini kanıtlayan belki de ilk yazar. Yayımlandığı anda klasikleşen, distopya edebiyatının dört temel kitabından biri olan Fahrenheit 451 ise bir yirminci yüzyıl başyapıtı.
+Guy Montag bir itfaiyeciydi. Televizyonun hüküm sürdüğü bu dünyada kitaplar ise yok olmak üzereydi zira itfaiyeciler yangın söndürmek yerine ortalığı ateşe veriyordu. Montag'ın işi ise yasadışı olanların en tehlikelisini yakmaktı: Kitapları.
+Montag yaptığı işi tek bir gün dahi sorgulamamıştı ve tüm gününü televizyonla kaplı odalarda geçiren eşi Mildred'la beraber yaşıyordu. Ancak yeni komşusu Clarisse'le tanışmasıyla tüm hayatı değişti. Kitapların değerini kavramaya başlayan Montag artık tüm bildiklerini sorgulayacaktı.
+İnsanların uğruna canlarını feda etmeyi göze aldığı bu kitapların içinde ne vardı? Gerçeklerin farkına vardıktan sonra bu karanlık toplumda artık yaşanabilir miydi?
+Fahrenheit 451, yeryüzünde tek bir kitap kalacak olsa, o kitap olmaya aday.
+Mutlu olmamız için gerekli her şeye sahibiz, ama mutlu değiliz. Bir şey eksik. Etrafa bakındım. Ortadan kaybolduğunu kesinlikle bildiğim tek şey, on-on iki yıldır yaktığım kitaplardı."
+            };
+
+            Book book3 = new Book {
+                BookName = "Genetiği Değiştirilmiş Organizmalar",
+                AuthorName = "Aldous Huxley",
+                PageNumber = 104,
+                Category = CategoryEnum.Medical,
+                Publishers = PublishersEnum.YapiKredi,
+                BookPhoto = "https://i.dr.com.tr/cache/600x600-0/originals/0000000254539-1.jpg",
+                Description =
+@"Elinizdeki bu kitapta, gelişen teknolojiyle birlikte hayatımıza girmeye başlayan genetiği değiştirilmiş organizmalar hakkında temel bilgiler verilmiştir. Ayrıca genetiği değiştirilmiş organizmaların sağlık, tarım, çevre ve ekonomi üzerindeki faydaları, çevre ve gıda güvenliği üzerine olası olumsuz etkileri basitçe aktarılmaya çalışılmıştır."
+            };
+
+           BookDataAccess bookDataAccess = new BookDataAccess();
+            List<Book> books = new List<Book> {
+                book1, book2, book3
+            };
+
+            foreach (Book book in books) {
+                bookDataAccess.BookInsert(book);
+            }
         }
 
         public void InsertAuthorToDatabase() {

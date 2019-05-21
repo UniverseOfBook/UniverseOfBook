@@ -21,7 +21,10 @@ namespace UniverseOfBookApp.Pages {
 
                 for (int i = 0; i < allBooks.Count; i++) {
                     string url = allBooks[i].BookPhoto;
-                    Image bookImage = new Image { Source = url };
+                    Image bookImage = new Image {
+                        Source = url,
+                        HeightRequest = 200
+                    };
                     var tapGestureRecognizer = new TapGestureRecognizer();
 
                     tapGestureRecognizer.Tapped += (s, e) => {

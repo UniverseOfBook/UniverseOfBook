@@ -18,18 +18,18 @@ namespace UniverseOfBookApp.Pages {
             InitializeComponent();
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.White;
 
-            User userClass = userDataAccess.GetUserByEmail(App.UserEmail);
+            User user = userDataAccess.GetUserByEmail(App.UserEmail);
 
-            if ((userClass.UserPhoto != (null))) {
-                if (userClass.UserPhoto.Replace("File: ", "") != "" || userClass.UserPhoto.Replace("Uri: ", "") != "") {
-                    if (userClass.UserPhoto.StartsWith("File"))
-                        profilePhoto.Source = userClass.UserPhoto.Replace("File: ", "");
+            if ((user.UserPhoto != (null))) {
+                if (user.UserPhoto.Replace("File: ", "") != "" || user.UserPhoto.Replace("Uri: ", "") != "") {
+                    if (user.UserPhoto.StartsWith("File"))
+                        profilePhoto.Source = user.UserPhoto.Replace("File: ", "");
                     else
-                        profilePhoto.Source = userClass.UserPhoto.Replace("Uri: ", "");
+                        profilePhoto.Source = user.UserPhoto.Replace("Uri: ", "");
                 }
             }
 
-            if (userClass.Gender == GenderEnum.Male) {
+            if (user.Gender == GenderEnum.Male) {
                 MaleButton.TextColor = Color.FromHex("#c62828");
                 MaleButton.FontAttributes = FontAttributes.Bold;
             }
@@ -37,17 +37,17 @@ namespace UniverseOfBookApp.Pages {
                 FemaleButton.TextColor = Color.FromHex("#c62828");
                 FemaleButton.FontAttributes = FontAttributes.Bold;
             }
-            if ((userClass.UserPhoto != (null))) {
-                if (userClass.UserPhoto.StartsWith("File"))
-                    UserPhotoSource.Text = userClass.UserPhoto.Replace("File: ", "");
+            if ((user.UserPhoto != (null))) {
+                if (user.UserPhoto.StartsWith("File"))
+                    UserPhotoSource.Text = user.UserPhoto.Replace("File: ", "");
                 else
-                    UserPhotoSource.Text = userClass.UserPhoto.Replace("Uri: ", "");
+                    UserPhotoSource.Text = user.UserPhoto.Replace("Uri: ", "");
             }
 
-            PhoneNumber.Text = userClass.PhoneNumber;
-            NameUser.Text = userClass.Name;
-            userNameLabel.Text = userClass.UserName;
-            emailLabel.Text = userClass.Email;
+            PhoneNumber.Text = user.PhoneNumber;
+            NameUser.Text = user.Name;
+            userNameLabel.Text = user.UserName;
+            emailLabel.Text = user.Email;
         }
 
         private void SignOutButtonClicked(object sender, EventArgs e) {
@@ -56,15 +56,15 @@ namespace UniverseOfBookApp.Pages {
         }
 
         private void SubmitButton_Clicked(object sender, EventArgs e) {
-            User userClass = userDataAccess.GetUserByEmail(App.UserEmail);
-            userClass.Name = NameUser.Text;
-            userClass.PhoneNumber = PhoneNumber.Text;
+            User user = userDataAccess.GetUserByEmail(App.UserEmail);
+            user.Name = NameUser.Text;
+            user.PhoneNumber = PhoneNumber.Text;
 
             if (UserPhotoSource.Text != "") {
                 profilePhoto.Source = UserPhotoSource.Text;
-                userClass.UserPhoto = (profilePhoto.Source).ToString();
+                user.UserPhoto = (profilePhoto.Source).ToString();
             }
-            userDataAccess.UpdateUser(userClass);
+            userDataAccess.UpdateUser(user);
 
         }
 

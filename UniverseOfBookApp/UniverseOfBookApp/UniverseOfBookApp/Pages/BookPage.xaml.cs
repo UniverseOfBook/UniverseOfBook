@@ -14,6 +14,7 @@ namespace UniverseOfBookApp.Pages {
         BookDataAccess BookDataAccess = new BookDataAccess();
         AuthorDataAccess author = new AuthorDataAccess();
         UserBookDataAccess UserBookDataAccess = new UserBookDataAccess();
+        private static string nameOfPage;
 
         public BookPage() {
             InitializeComponent();
@@ -30,16 +31,62 @@ namespace UniverseOfBookApp.Pages {
             AuthorName.Text = book.AuthorName;
             Author authorClass = author.GetAuthorbyName(book.AuthorName);
             AuthorPhoto.Source = authorClass.AuthorPhoto;
+            nameOfPage = name;
+
+            CommentDataAccess commentDataAccess = new CommentDataAccess();
+            List<Comment> comments = commentDataAccess.GetCommentOfBook(name);
+            foreach(Comment comment in comments) {
+                AddCommentToPage(comment);
+            }
+        }
+
+        private void AddCommentToPage(Comment comment) {
+            noCommentLabel.IsVisible = false;
+            UserDataAccess userDataAccess = new UserDataAccess();
+            StackLayout stackLayoutUpper = new StackLayout() {
+                Orientation = StackOrientation.Horizontal
+            };
+            User user = userDataAccess.GetUserByEmail(comment.UserEmail);
+            if (user.UserPhoto == null)
+                user.UserPhoto = "@drawable/defaultuser";
+            Image image = new Image {
+                Source = user.UserPhoto,
+                HeightRequest = 20
+            };
+            Label userLabel = new Label {
+                Text = user.UserName,
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 17
+            };
+            stackLayoutUpper.Children.Add(image);
+            stackLayoutUpper.Children.Add(userLabel);
+
+            StackLayout stackLayoutLower = new StackLayout();
+            Label commentLabel = new Label() {
+                Text = comment.CommentOfBook,
+                FontSize = 13
+            };
+            stackLayoutLower.Children.Add(commentLabel);
+
+            StackLayout stackLayoutOuter = new StackLayout();
+            stackLayoutOuter.Children.Add(stackLayoutUpper);
+            stackLayoutOuter.Children.Add(stackLayoutLower);
+            Frame frame = new Frame {
+                Content = stackLayoutOuter,
+                CornerRadius = 20,
+                BorderColor = Color.FromHex("6d6d6d")
+            };
+            CommentStackLayout.Children.Add(frame);
         }
 
         private async void AuthorTapped(object sender, EventArgs e) {
             await Navigation.PushAsync(new AuthorPage(AuthorName.Text));
         }
 
-        private void Button_Clicked(object sender, EventArgs e) {
+        private void WantReadButtonClicked(object sender, EventArgs e) {
             Button button = (Button)sender;
             BookDataAccess bookDataAccess = new BookDataAccess();
-            Model.Book bookClass = bookDataAccess.GetBookBySource(Bookphoto.Source.ToString().Replace("Uri: ", ""));
+            Book bookClass = bookDataAccess.GetBookBySource(Bookphoto.Source.ToString().Replace("Uri: ", ""));
             List<UserBook> userBooks = UserBookDataAccess.GetBookByEmailAndBookName(App.UserEmail, bookClass.BookName);
 
             if (userBooks.Count != 0) {
@@ -82,6 +129,20 @@ namespace UniverseOfBookApp.Pages {
                 }
                 UserBookDataAccess.UserInsert(userBook);
             }
+        }
+
+        private void SubmitButtonClicked(object sender, EventArgs e) {
+            CommentDataAccess commentDataAccess = new CommentDataAccess();
+            Comment comment = new Comment() {
+                Bookname = nameOfPage,
+                Date = DateTime.Now,
+                CommentOfBook = commentEditor.Text,
+                UserEmail = App.UserEmail
+            };
+            commentDataAccess.AddComment(comment);
+            DisplayAlert("New Comment", "Comment sent.", "OK");
+            AddCommentToPage(comment);
+            commentEditor.Text = "";
         }
     }
 }

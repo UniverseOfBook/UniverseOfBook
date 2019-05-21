@@ -25,8 +25,8 @@
                             <Picker.Items>
                                 <x:String >Can</x:String>
                                 <x:String >Iletisim</x:String>
-                                <x:String >Yapı Kredi</x:String>
-                                <x:String >Is Bankası</x:String>
+                                <x:String >Yapi Kredi</x:String>
+                                <x:String >Is Bankasi</x:String>
                                 <x:String >Domingo</x:String>
                                 <x:String >Ithaki</x:String>
                             </Picker.Items>

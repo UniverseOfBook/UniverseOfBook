@@ -3,17 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UniverseOfBookApp.Pages.BookPage"
               xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin">
-    
+
     <ContentPage.Resources>
         <StyleSheet Source="../Styles/MyStyle.css" />
         <ResourceDictionary>
             <Style TargetType="Button">
                 <Setter Property="Margin" Value="5,5,5,5"   />
                 <Setter Property="BorderRadius" Value="20"/>
-            </Style>       
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-    
+
     <ContentPage.Content>
         <ScrollView>
             <StackLayout BackgroundColor="#efefef" Padding="10">
@@ -29,20 +29,31 @@
                             <Image Source="bookss" HorizontalOptions="End"/>
                         </StackLayout>
 
-                        <Button Text="Want" BackgroundColor="#d84141" Clicked="Button_Clicked" BorderRadius="20" />
-                        <Button Text="Read" Clicked="Button_Clicked" BorderRadius="20" />
+                        <Button Text="Want" BackgroundColor="#d84141" Clicked="WantReadButtonClicked" BorderRadius="20" />
+                        <Button Text="Read" Clicked="WantReadButtonClicked" BorderRadius="20" />
                         <Label x:Name="BookDescription" Margin="10,5,10,5"/>
                         <StackLayout>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="AuthorTapped" />
                             </StackLayout.GestureRecognizers>
                             <controls:CircleImage x:Name="AuthorPhoto"  HeightRequest="150" WidthRequest="150" HorizontalOptions="Center" VerticalOptions="Center" >
-                               
+
                             </controls:CircleImage>
                             <Label x:Name="AuthorName" HorizontalOptions="Center"/>
                             <Label Text="Writer" HorizontalOptions="Center"/>
                         </StackLayout>
 
+                        <StackLayout x:Name="CommentStackLayout" Margin="0,0,0,15">
+                            <Label Text="Comments" FontSize="20" FontFamily="{StaticResource BoldFont}" />
+                            <Label Text="No comment yet..." FontSize="15" x:Name="noCommentLabel"/>
+                        </StackLayout>
+
+                        <Frame Padding="5" CornerRadius="20" Margin="-10">
+                            <StackLayout>
+                                <Editor Placeholder="Comment here..." x:Name="commentEditor" FontSize="18" HeightRequest="100" HorizontalOptions="FillAndExpand" />
+                                <Button Text="Submit" Clicked="SubmitButtonClicked" HorizontalOptions="EndAndExpand" BorderRadius="8" Margin="5"/>
+                            </StackLayout>
+                        </Frame>
                     </StackLayout>
                 </Frame>
             </StackLayout>
