@@ -42,17 +42,21 @@ namespace UniverseOfBookApp.Pages
 
                 Button button = new Button() { CornerRadius = 20 ,BackgroundColor=Color.Red};
                 button.Text = "Unfollow";
+                button.Clicked += UnfollowButtonClicked;
                 stackLayout.Children.Add(button);
                 frame.Content = stackLayout;
                 MyStackLayout.Children.Add(frame);
 
             }
         }
-        private void AddFriend_Clicked(object sender, EventArgs e)
-        {
-
+       private void UnfollowButtonClicked(object sender, EventArgs e) {
+            userFriendDataAccess.DeleteUserFriends(user.Email);
+          
         }
 
+        private async void SeeAllUser_Clicked(object sender, EventArgs e) {
+            await Navigation.PushAsync(new FindFriends());
 
+        }
     }
 }
