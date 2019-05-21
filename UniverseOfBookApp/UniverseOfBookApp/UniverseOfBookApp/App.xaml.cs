@@ -21,11 +21,9 @@ namespace UniverseOfBookApp {
         }
 
         public App() {
-            UserFriendDataAccess userFriendDataAccess = new UserFriendDataAccess();
-            userFriendDataAccess.DeleteAllUserFriends();
             Console.WriteLine("Started");
             InitializeComponent();
-            UserEmail = "";
+
             if (UserEmail == "") {
                 MainPage = new NavigationPage(new LoginPage()) {
                     BarBackgroundColor = Color.FromHex("#efefef"),

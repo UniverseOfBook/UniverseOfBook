@@ -58,14 +58,14 @@ namespace UniverseOfBookApp.Pages {
                 Image bookImage = new Image { Source = book.BookPhoto, HorizontalOptions = LayoutOptions.Start };
                 stackLayout.Children.Add(bookImage);
 
-               
+                frame.Content = stackLayout;
+                MyStackLayout.Children.Add(frame);
 
                 var tapGestureRecognizer = new TapGestureRecognizer();
                 tapGestureRecognizer.Tapped += (s, e) => {
                     ImageTapped(bookImage.Source.ToString().Replace("Uri: ", ""));
                 };
                 bookImage.GestureRecognizers.Add(tapGestureRecognizer);
-
             }
         }
 
@@ -76,15 +76,6 @@ namespace UniverseOfBookApp.Pages {
                 AddingActivity(friendBooks, users[i].FriendEmail);
             }
             List<UserBook> userBooks = userBookDataAccess.GetAllBookUser(App.UserEmail);
-        public void UpdatePage() {
-            List<UserFriends> users = userFriendataAccess.GetAllFriends(App.UserEmail);
-            for(int i = 0; i < users.Count; i++) {
-                List<UserBook> friendBooks = UserBookDataAccess.GetAllBookUser(users[i].FriendEmail);
-                addingActivity(friendBooks);
-            }
-            List<UserBook> userBooks = UserBookDataAccess.GetAllBookUser(App.UserEmail);
-            addingActivity(userBooks);
-
             AddingActivity(userBooks, App.UserEmail);
         }
     }
