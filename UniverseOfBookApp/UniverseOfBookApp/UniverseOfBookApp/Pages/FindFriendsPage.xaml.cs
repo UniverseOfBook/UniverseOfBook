@@ -10,12 +10,12 @@ using Xamarin.Forms.Xaml;
 
 namespace UniverseOfBookApp.Pages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FindFriends : ContentPage {
+    public partial class FindFriendsPage : ContentPage {
         public UserFriendDataAccess userFriendDataAccess = new UserFriendDataAccess();
         public UserDataAccess userDataAccess = new UserDataAccess();
         public User user;
         public UserFriends userFriends;
-        public FindFriends() {
+        public FindFriendsPage() {
             InitializeComponent();
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
             List<User> users = userDataAccess.GetAllUsers().ToList();
@@ -23,10 +23,9 @@ namespace UniverseOfBookApp.Pages {
         }
 
         private void Follow_Clicked(object sender, EventArgs e) {
-
             user = (User)listView.SelectedItem;
-            userFriends = userFriendDataAccess.getUser(App.UserEmail, user.Email);
-            if(userFriends != null) {
+            userFriends = userFriendDataAccess.GetUser(App.UserEmail, user.Email);
+            if (userFriends != null) {
                 DisplayAlert("Warning", "You already follow this user", "Cancel");
             }
             else {
@@ -35,7 +34,7 @@ namespace UniverseOfBookApp.Pages {
                 userFriends1.FriendEmail = user.Email;
 
                 userFriendDataAccess.Insert(userFriends1);
-                DisplayAlert("Warning", "Now your are following "+user.Name, "Cancel");
+                DisplayAlert("Warning", "Now your are following " + user.Name, "Cancel");
             }
 
         }

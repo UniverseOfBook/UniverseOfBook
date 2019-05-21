@@ -49,7 +49,7 @@ namespace UniverseOfBookApp.Pages {
 
         public async void ImageTapped(string bookSource) {
             BookDataAccess bookDataAccess = new BookDataAccess();
-            Model.Book bookName = bookDataAccess.GetBookBySource(bookSource);
+            Book bookName = bookDataAccess.GetBookBySource(bookSource);
             await Navigation.PushAsync(new BookPage(bookName.BookName));
         }
     }

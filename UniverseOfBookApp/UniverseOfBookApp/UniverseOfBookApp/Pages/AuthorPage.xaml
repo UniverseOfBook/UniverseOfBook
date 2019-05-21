@@ -25,7 +25,7 @@
                 <controls:CircleImage  WidthRequest="160" HeightRequest="160" x:Name="AuthorImage"/>
                 <Frame CornerRadius="20" HasShadow="True">
                     <StackLayout BackgroundColor="White" >
-                        <Label  x:Name="AuthorInfo" FontSize="20" FontAttributes="Italic" Font="Satisfy-Regular.ttf#Satisfy,18"/>
+                        <Label x:Name="AuthorInfo"/>
                         <ScrollView Orientation="Both">
                             <StackLayout  HeightRequest="100" Orientation="Horizontal" x:Name="MyStackLayout">
                            

@@ -24,7 +24,7 @@
                     </StackLayout>
                 </Frame>
 
-                <Button Text="EXİT"  BorderRadius="8" HorizontalOptions="End" BackgroundColor="#6d6d6d" x:Name="Exit" Clicked="Exit_Clicked" Margin="0,5,15,0"/>
+                <Button Text="EXIT"  BorderRadius="8" HorizontalOptions="End" BackgroundColor="#6d6d6d" x:Name="Exit" Clicked="Exit_Clicked" Margin="0,5,15,0"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

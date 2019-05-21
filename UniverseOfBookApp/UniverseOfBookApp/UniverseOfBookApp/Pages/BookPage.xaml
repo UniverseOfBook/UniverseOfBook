@@ -25,12 +25,12 @@
                         </StackLayout>
 
                         <StackLayout Orientation="Horizontal">
-                            <Label x:Name="Bookname" HorizontalOptions="StartAndExpand" Margin="15" FontFamily="{StaticResource BoldFont}"/>
+                            <Label x:Name="Bookname" HorizontalOptions="StartAndExpand" Margin="15" FontSize="30" FontFamily="{StaticResource BoldFont}"/>
                             <Image Source="bookss" HorizontalOptions="End"/>
                         </StackLayout>
 
-                        <Button Text="Want"  Clicked="Button_Clicked" />
-                        <Button Text="Read"  Clicked="Button_Clicked"/>
+                        <Button Text="Want" BackgroundColor="#d84141" Clicked="Button_Clicked" BorderRadius="20" />
+                        <Button Text="Read" Clicked="Button_Clicked" BorderRadius="20" />
                         <Label x:Name="BookDescription" Margin="10,5,10,5"/>
                         <StackLayout>
                             <StackLayout.GestureRecognizers>

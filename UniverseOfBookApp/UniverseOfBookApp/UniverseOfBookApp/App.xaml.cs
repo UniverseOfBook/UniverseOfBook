@@ -50,7 +50,7 @@ namespace UniverseOfBookApp {
             }
 
             try {
-                InsertAuthorToDatabase();
+                //InsertAuthorToDatabase();
                 InsertBookToDatabase();
             }
             catch {
@@ -69,17 +69,29 @@ namespace UniverseOfBookApp {
                 Category = CategoryEnum.ScienceFiction,
                 Publishers = PublishersEnum.Ithaki,
                 Bookphoto = "https://i.dr.com.tr/cache/600x600-0/originals/0001740861001-1.jpg",
-                Description = 
-                @"Yazılmış en iyi bilimkurgu romanı. İlk okuduğumda, yarattığı dünyayla kâbuslar görmeme sebep olmuştu. -Margaret Atwood
-                Öyle bir eser ki, hakkında ne söylesem eksik kalır. -Neil Gaiman
-                Hugo En İyi Roman Ödülü
-                Prometheus Şeref Kürsüsü Ödülü
-                Ray Bradbury sadece bilimkurgunun değil fantastik edebiyatın ve korkunun da yirminci yüzyıldaki ustalarından biri. Bilimkurgunun iyi edebiyat da olabileceğini kanıtlayan belki de ilk yazar. Yayımlandığı anda klasikleşen, distopya edebiyatının dört temel kitabından biri olan Fahrenheit 451 ise bir yirminci yüzyıl başyapıtı.
-                Guy Montag bir itfaiyeciydi. Televizyonun hüküm sürdüğü bu dünyada kitaplar ise yok olmak üzereydi zira itfaiyeciler yangın söndürmek yerine ortalığı ateşe veriyordu. Montag'ın işi ise yasadışı olanların en tehlikelisini yakmaktı: Kitapları.
-                Montag yaptığı işi tek bir gün dahi sorgulamamıştı ve tüm gününü televizyonla kaplı odalarda geçiren eşi Mildred'la beraber yaşıyordu. Ancak yeni komşusu Clarisse'le tanışmasıyla tüm hayatı değişti. Kitapların değerini kavramaya başlayan Montag artık tüm bildiklerini sorgulayacaktı.
-                İnsanların uğruna canlarını feda etmeyi göze aldığı bu kitapların içinde ne vardı? Gerçeklerin farkına vardıktan sonra bu karanlık toplumda artık yaşanabilir miydi?
-                Fahrenheit 451, yeryüzünde tek bir kitap kalacak olsa, o kitap olmaya aday.
-                Mutlu olmamız için gerekli her şeye sahibiz, ama mutlu değiliz. Bir şey eksik. Etrafa bakındım. Ortadan kaybolduğunu kesinlikle bildiğim tek şey, on-on iki yıldır yaktığım kitaplardı."
+                Description =
+@"1. yüzyıl bilimkurgu edebiyatının en önemli eserlerinden biri olan Değiştirilmiş Karbon’dan uyarlanan ve Netflix’in yayımlayacağı distopik dizi Altered Carbon, 2018’in en çok seyredilecek projelerinden biri olmaya aday!
+
+Phılıp K. Dıck En İyi Roman Ödülü
+
+25. yüzyıl. İnsanlık BM’nin gözetimi altında tüm galakside hüküm sürmekte. Irk, inanç ve sınıf farklılıklarının hâlâ devam ettiği bu dönemde teknolojideki yükseliş hayatı âdeta baştan tanımladı. Bir insanın bilinci depolanarak yeni bir bedene (ya da “kılıf”a) kolayca indirilebilir hale geldi ve ölüm olgusu, ekrandaki bir bip sesine indirgendi.
+
+Eski bir asker ve BM elçisi olan Takeshi Kovacs daha önce de öldürülmesine rağmen son ölümü bilhassa acı vericiydi. Evinden 180 ışık yılı uzakta, eski adıyla San Francisco, yeni adıyla Bay City’de yeni bir bedende uyanan Kovacs kendini, “varoluş”u alınıp satılır şeyler olarak gören bir topluma göre bile karanlık ve büyük ölçekli bir komplonun tam merkezinde buldu. Dünyanın en güçlü insanlarından biri olan Laurens Bancroft bir ölümün sırrını açığa çıkarmak için Kovacs’ı tutmuştu: Kendi ölümünün.
+
+Blade Runner ve Neuromancer gibi eserlerin izinden giden siberpunk türündeki Değiştirilmiş Karbon, son zamanların en dikkat çeken bilimkurgu-distopya romanlarından biri.
+
+“Değiştirilmiş Karbon’un evreni özgün ve çarpıcı. Muazzam karakterler ve eşsiz bir gizem barındırıyor.”
+- Patrick Rothfuss -
+
+“Şahane bir iş. Mükemmel bir bilimkurgu. Değiştirilmiş Karbon, çok iyi bir giriş yapıyor ve hızını gittikçe arttırıyor. Eşit derecede merak uyandırıcı ve özgün bir eser; son sayfaya kadar elinizden düşüremiyorsunuz.”
+- Peter F. Hamilton -
+
+“Zekâ dolu bir kara noir, eşsiz bir kurgu ve hikâyesini dört gözle öğrenmek isteyeceğiniz bir karakter.”
+- Ken McLeod -
+
+“Bu hızlı okunan, etkileyici roman William Gibson’ın Neuromancer’ı ve Norman Spinrad’ın Deus X’inin merak uyandırıcı bir karışımı.”
+- Publishers Weekly –
+"
             };
             bookDataAccess.BookInsert(book);
         }
