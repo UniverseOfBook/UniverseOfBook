@@ -37,26 +37,44 @@ namespace UniverseOfBookApp.Pages {
             for (int i = 0; i < userBooks.Count; i++) {
                 Frame frame = new Frame() { CornerRadius = 10 };
                 Book book = bookDataAccess.GetBookByName(userBooks[i].BookName);
-                StackLayout stackLayout = new StackLayout();
+                StackLayout stackLayoutRight = new StackLayout();
+                StackLayout stackLayoutLeft = new StackLayout();
                 UserDataAccess userDataAccess = new UserDataAccess();
                 User user = userDataAccess.GetUserByEmail(email);
 
-                Label label1 = new Label() { FontSize = 18, HorizontalOptions = LayoutOptions.Start };
-                label1.Text = "Time added: " + userBooks[i].DateTime.ToString("dd/MM/yyyy");
-                stackLayout.Children.Add(label1);
+                stackLayoutLeft.Children.Add(new Image() {
+                    Source = user.UserPhoto,
+                    HeightRequest = 50
+                });
 
-                Label label = new Label() { FontSize = 20, HorizontalOptions = LayoutOptions.Start };
+                var formattedString = new FormattedString();
+                formattedString.Spans.Add(new Span { Text = user.UserName, FontAttributes = FontAttributes.Bold, FontSize=20 });
+
                 if ((userBooks[i].ReadWant).ToString() == "Read") {
-                    label.Text = user.UserName + " want to read this book";
+                    formattedString.Spans.Add(new Span { Text = " want to read this book" });
                 }
                 else {
-                    label.Text = user.UserName + " want this book";
+                    formattedString.Spans.Add(new Span { Text = " want this book" });
                 }
 
-                stackLayout.Children.Add(label);
+                stackLayoutRight.Children.Add(new Label {
+                    FormattedText = formattedString,
+                    FontSize = 20,
+                    HorizontalOptions = LayoutOptions.Start
+                });
+
+                Label timeLabel = new Label() { FontSize = 15, HorizontalOptions = LayoutOptions.Start };
+                timeLabel.Text = "Time added: " + userBooks[i].DateTime.ToString("dd/MM/yyyy");
+                stackLayoutRight.Children.Add(timeLabel);
 
                 Image bookImage = new Image { Source = book.BookPhoto, HorizontalOptions = LayoutOptions.Start };
-                stackLayout.Children.Add(bookImage);
+                stackLayoutRight.Children.Add(bookImage);
+
+                StackLayout stackLayout = new StackLayout() {
+                    Orientation = StackOrientation.Horizontal
+                };
+                stackLayout.Children.Add(stackLayoutLeft);
+                stackLayout.Children.Add(stackLayoutRight);
 
                 frame.Content = stackLayout;
                 MyStackLayout.Children.Add(frame);

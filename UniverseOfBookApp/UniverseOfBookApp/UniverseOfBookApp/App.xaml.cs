@@ -21,6 +21,16 @@ namespace UniverseOfBookApp {
         }
 
         public App() {
+            //UserDataAccess userDataAccess = new UserDataAccess();
+            //UserBookDataAccess userBookDataAccess = new UserBookDataAccess();
+            //CommentDataAccess commentDataAccess = new CommentDataAccess();
+            //UserFriendDataAccess userFriendDataAccess = new UserFriendDataAccess();
+
+            //userDataAccess.DeleteAllUser();
+            //userBookDataAccess.DeleteAllUserBooks();
+            //commentDataAccess.DeleteAllComment();
+            //userFriendDataAccess.DeleteAllUserFriends();
+
             Console.WriteLine("Started");
             InitializeComponent();
 
@@ -55,17 +65,19 @@ namespace UniverseOfBookApp {
                     Email = "berkgunseli@gmail.com",
                     Password = "123456",
                     UserName = "bgunseli",
-                    UserType = UserAdmin.User
+                    UserType = UserAdmin.User,
+                    UserPhoto = "@drawable/defaultuser"
                 };
                 userDataAccess.AddUser(user);
             }
-            user = userDataAccess.GetUserByEmail("rr");
+            user = userDataAccess.GetUserByEmail("ramazansen@gmail.com");
             if (user == null) {
                 user = new User {
-                    Email = "rr",
+                    Email = "ramazansen@gmail.com",
                     Password = "123",
-                    UserName = "rr",
-                    UserType = UserAdmin.User
+                    UserName = "rmznsen",
+                    UserType = UserAdmin.User,
+                    UserPhoto = "@drawable/defaultuser"
                 };
                 userDataAccess.AddUser(user);
             }

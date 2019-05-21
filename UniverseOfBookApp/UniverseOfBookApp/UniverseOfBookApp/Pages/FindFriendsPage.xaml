@@ -29,7 +29,7 @@
                                                 </Grid.ColumnDefinitions>
                                                 <Label Text="{Binding UserName}"  FontSize="15" Grid.Row="0" Grid.Column="0"/>
                                                 <Label Text="{Binding Email}" FontSize="15" VerticalOptions="End" Grid.Row="1" Grid.Column="0"/>
-                                                <controls:CircleImage Source="man" HorizontalOptions="End" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+                                                <controls:CircleImage Source="{Binding UserPhoto}" HorizontalOptions="End" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
                                             </Grid>
                                         </ViewCell>
                                     </DataTemplate>

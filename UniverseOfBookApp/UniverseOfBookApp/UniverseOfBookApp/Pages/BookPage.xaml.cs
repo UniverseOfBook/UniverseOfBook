@@ -74,7 +74,7 @@ namespace UniverseOfBookApp.Pages {
             Frame frame = new Frame {
                 Content = stackLayoutOuter,
                 CornerRadius = 20,
-                BorderColor = Color.FromHex("6d6d6d")
+                BorderColor = Color.FromHex("#6d6d6d")
             };
             CommentStackLayout.Children.Add(frame);
         }
