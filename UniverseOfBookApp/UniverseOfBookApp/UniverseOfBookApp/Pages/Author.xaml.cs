@@ -23,13 +23,13 @@ namespace UniverseOfBookApp.Pages {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, true);
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
-            AuthorClass authorClass = new AuthorClass();
+            Model.Author authorClass = new Model.Author();
             authorClass = authorData.GetAuthorbyName(name);
             AuthorImage.Source = authorClass.AuthorPhoto;
             AuthorInfo.Text = authorClass.AuthorDescription;
             AuthorNAME.Text = authorClass.AuthorName;
 
-            List<BookClass> BookList = authorData.GetBooks(name);
+            List<Model.Book> BookList = authorData.GetBooks(name);
 
             for (int i = 0; i < BookList.Count; i++) {
                 Image bookImage = new Image { Source = BookList[i].Bookphoto };
@@ -49,7 +49,7 @@ namespace UniverseOfBookApp.Pages {
 
         public async void ImageTapped(string bookSource) {
             BookDataAccess bookDataAccess = new BookDataAccess();
-            BookClass bookName = bookDataAccess.GetBookBySource(bookSource);
+            Model.Book bookName = bookDataAccess.GetBookBySource(bookSource);
             await Navigation.PushAsync(new Book(bookName.BookName));
         }
     }

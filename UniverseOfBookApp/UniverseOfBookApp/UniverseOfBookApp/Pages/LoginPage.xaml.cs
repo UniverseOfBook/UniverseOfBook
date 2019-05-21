@@ -13,7 +13,7 @@ namespace UniverseOfBookApp.Pages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage {
         public UserDataAccess userDataAccess;
-        public UserClass user;
+        public User user;
 
         public LoginPage() {
             InitializeComponent();
@@ -32,7 +32,7 @@ namespace UniverseOfBookApp.Pages {
             user = userDataAccess.Login(Email.Text, Password.Text);
 
             if (user != null) {
-                if (user.Useradmin == UserAdmin.Admin) {
+                if (user.UserType == UserAdmin.Admin) {
 
                     Navigation.InsertPageBefore(new AdminPage(), this);
                     await Navigation.PopAsync();

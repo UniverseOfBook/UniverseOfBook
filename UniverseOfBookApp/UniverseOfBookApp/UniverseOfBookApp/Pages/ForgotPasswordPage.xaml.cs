@@ -25,7 +25,7 @@ namespace UniverseOfBookApp.Pages {
         private async void SubmitButtonClicked(object sender, EventArgs e) {
 
             UserDataAccess userDataAccess = new UserDataAccess();
-            UserClass userClass = userDataAccess.GetUserByEmail(emailEntry.Text);
+            User userClass = userDataAccess.GetUserByEmail(emailEntry.Text);
 
             if (userClass == null) {
                 await DisplayAlert("No user", "There is no user in that email, please check your email", "OK");

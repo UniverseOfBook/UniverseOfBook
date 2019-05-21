@@ -18,7 +18,7 @@ namespace UniverseOfBookApp.Pages {
             InitializeComponent();
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.White;
 
-            UserClass userClass = userDataAccess.GetUserByEmail(App.UserEmail);
+            User userClass = userDataAccess.GetUserByEmail(App.UserEmail);
 
             if ((userClass.UserPhoto != (null))) {
                 if (userClass.UserPhoto.Replace("File: ", "") != "" || userClass.UserPhoto.Replace("Uri: ", "") != "") {
@@ -29,7 +29,7 @@ namespace UniverseOfBookApp.Pages {
                 }
             }
 
-            if (userClass.Gender == Gender.Male) {
+            if (userClass.Gender == GenderEnum.Male) {
                 MaleButton.TextColor = Color.FromHex("#c62828");
                 MaleButton.FontAttributes = FontAttributes.Bold;
             }
@@ -44,7 +44,7 @@ namespace UniverseOfBookApp.Pages {
                     UserPhotoSource.Text = userClass.UserPhoto.Replace("Uri: ", "");
             }
 
-            PhoneNumber.Text = userClass.Phonenumber;
+            PhoneNumber.Text = userClass.PhoneNumber;
             NameUser.Text = userClass.Name;
             userNameLabel.Text = userClass.UserName;
             emailLabel.Text = userClass.Email;
@@ -57,9 +57,9 @@ namespace UniverseOfBookApp.Pages {
 
         private void SubmitButton_Clicked(object sender, EventArgs e)
         {
-            UserClass userClass = userDataAccess.GetUserByEmail(App.UserEmail);
+            User userClass = userDataAccess.GetUserByEmail(App.UserEmail);
             userClass.Name = NameUser.Text;
-            userClass.Phonenumber = PhoneNumber.Text;
+            userClass.PhoneNumber = PhoneNumber.Text;
           
             if(UserPhotoSource.Text != "")
             {
@@ -72,10 +72,10 @@ namespace UniverseOfBookApp.Pages {
 
         private void MaleButton_Clicked(object sender, EventArgs e)
         {
-            UserClass userClass = userDataAccess.GetUserByEmail(App.UserEmail);
-            if (userClass.Gender == Gender.Male)
+            User userClass = userDataAccess.GetUserByEmail(App.UserEmail);
+            if (userClass.Gender == GenderEnum.Male)
                 return;
-            userClass.Gender = Gender.Male;
+            userClass.Gender = GenderEnum.Male;
             userDataAccess.UserUpdate(userClass);
             MaleButton.TextColor =Color.FromHex("#c62828");
             MaleButton.FontAttributes = FontAttributes.Bold;
@@ -86,10 +86,10 @@ namespace UniverseOfBookApp.Pages {
 
         private void FemaleButton_Clicked(object sender, EventArgs e)
         {
-            UserClass userClass = userDataAccess.GetUserByEmail(App.UserEmail);
-            if (userClass.Gender == Gender.Female)
+            User userClass = userDataAccess.GetUserByEmail(App.UserEmail);
+            if (userClass.Gender == GenderEnum.Female)
                 return;
-            userClass.Gender = Gender.Female;
+            userClass.Gender = GenderEnum.Female;
             userDataAccess.UserUpdate(userClass);
             FemaleButton.TextColor= Color.FromHex("#c62828");
             FemaleButton.FontAttributes = FontAttributes.Bold;

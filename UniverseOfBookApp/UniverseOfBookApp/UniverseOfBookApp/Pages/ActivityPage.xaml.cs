@@ -13,7 +13,7 @@ namespace UniverseOfBookApp.Pages {
     public partial class ActivityPage : ContentPage {
         DataAccess.UserBookDataAccess UserBookDataAccess = new DataAccess.UserBookDataAccess();
         DataAccess.BookDataAccess BookDataAccess = new DataAccess.BookDataAccess();
-        BookClass book;
+        Model.Book book;
 
         public ActivityPage() {
             InitializeComponent();
@@ -21,7 +21,7 @@ namespace UniverseOfBookApp.Pages {
         }
 
         public async void ImageTapped(string bookSource) {
-            BookClass bookName = BookDataAccess.GetBookBySource(bookSource);
+            Model.Book bookName = BookDataAccess.GetBookBySource(bookSource);
             await Navigation.PushAsync(new Book(bookName.BookName));
         }
 

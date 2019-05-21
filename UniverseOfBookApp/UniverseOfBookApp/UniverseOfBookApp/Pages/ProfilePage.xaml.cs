@@ -15,10 +15,10 @@ namespace UniverseOfBookApp.Pages {
             InitializeComponent();
             UserDataAccess userDataAccess = new UserDataAccess();
             UserBookDataAccess userBookDataAccess = new UserBookDataAccess();
-            UserClass userClass = userDataAccess.GetUserByEmail(App.UserEmail);
+            User userClass = userDataAccess.GetUserByEmail(App.UserEmail);
             userName.Text = userClass.UserName;
-            int wantBookCount = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWant.Want);
-            int readBookCount = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWant.Read);
+            int wantBookCount = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWantEnum.Want);
+            int readBookCount = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWantEnum.Read);
             wantLabel.Text = wantBookCount.ToString();
             readLabel.Text = readBookCount.ToString();
 
@@ -41,13 +41,13 @@ namespace UniverseOfBookApp.Pages {
             else {
                 GridStacklayout.IsVisible = true;
                 NoBookStacklayout.IsVisible = false;
-                getAllBooksToProfilePage(wantGrid, ReadWant.Want);
-                getAllBooksToProfilePage(readGrid, ReadWant.Read);
+                getAllBooksToProfilePage(wantGrid, ReadWantEnum.Want);
+                getAllBooksToProfilePage(readGrid, ReadWantEnum.Read);
             }
             
         }
 
-        public void getAllBooksToProfilePage(Grid grid, ReadWant readWant) {
+        public void getAllBooksToProfilePage(Grid grid, ReadWantEnum readWant) {
             //Console.WriteLine("UpdateBook: " + wantGrid.RowDefinitions.Count + " " + readGrid.RowDefinitions.Count);
             UserBookDataAccess userBookDataAccess = new UserBookDataAccess();
             BookDataAccess bookDataAccess = new BookDataAccess();
@@ -57,7 +57,7 @@ namespace UniverseOfBookApp.Pages {
             int row = 0;
 
             for (int a = 0; a < bookList.Count; a++) {
-                BookClass bookClass = bookDataAccess.GetBookByName(bookList[a]);
+                Model.Book bookClass = bookDataAccess.GetBookByName(bookList[a]);
                 Image bookImage = new Image { HeightRequest = 300, Source = bookClass.Bookphoto };
                 var tapGestureRecognizer = new TapGestureRecognizer();
                 tapGestureRecognizer.Tapped += (s, e) => {
@@ -82,7 +82,7 @@ namespace UniverseOfBookApp.Pages {
 
         public async void ImageTapped(string bookSource) {
             BookDataAccess bookDataAccess = new BookDataAccess();
-            BookClass bookName = bookDataAccess.GetBookBySource(bookSource);
+            Model.Book bookName = bookDataAccess.GetBookBySource(bookSource);
             await Navigation.PushAsync(new Book(bookName.BookName));
         }
 
@@ -92,7 +92,7 @@ namespace UniverseOfBookApp.Pages {
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
 
             UserDataAccess userDataAccess = new UserDataAccess();
-            UserClass userClass = userDataAccess.GetUserByEmail(App.UserEmail);
+            User userClass = userDataAccess.GetUserByEmail(App.UserEmail);
 
             if (userClass.UserPhoto != "" && userClass.UserPhoto != null) {
                 if (userClass.UserPhoto.StartsWith("File"))
@@ -105,8 +105,8 @@ namespace UniverseOfBookApp.Pages {
 
         public void UpdateBooks() {
             UserBookDataAccess userBookDataAccess = new UserBookDataAccess();
-            int wantBookCount = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWant.Want);
-            int readBookCount = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWant.Read);
+            int wantBookCount = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWantEnum.Want);
+            int readBookCount = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWantEnum.Read);
             wantLabel.Text = wantBookCount.ToString();
             readLabel.Text = readBookCount.ToString();
 
@@ -125,8 +125,8 @@ namespace UniverseOfBookApp.Pages {
                 for (int a = readGrid.RowDefinitions.Count - 1; a > 0; a--) {
                     readGrid.RowDefinitions.RemoveAt(a);
                 }
-                getAllBooksToProfilePage(wantGrid, ReadWant.Want);
-                getAllBooksToProfilePage(readGrid, ReadWant.Read);
+                getAllBooksToProfilePage(wantGrid, ReadWantEnum.Want);
+                getAllBooksToProfilePage(readGrid, ReadWantEnum.Read);
             }
         }
     }

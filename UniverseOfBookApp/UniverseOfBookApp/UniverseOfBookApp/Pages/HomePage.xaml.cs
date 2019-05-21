@@ -17,7 +17,7 @@ namespace UniverseOfBookApp.Pages {
             InitializeComponent();
             try {
                 BookDataAccess bookDataAccess = new BookDataAccess();
-                List<BookClass> allBooks = bookDataAccess.GetAllBook().ToList();
+                List<Model.Book> allBooks = bookDataAccess.GetAllBook().ToList();
 
                 for (int i = 0; i < allBooks.Count; i++) {
                     string url = allBooks[i].Bookphoto;
@@ -49,7 +49,7 @@ namespace UniverseOfBookApp.Pages {
 
         public async void ImageTapped(string bookSource) {
             BookDataAccess bookDataAccess = new BookDataAccess();
-            BookClass bookName = bookDataAccess.GetBookBySource(bookSource);
+            Model.Book bookName = bookDataAccess.GetBookBySource(bookSource);
             await Navigation.PushAsync(new Book(bookName.BookName));
         }
     }

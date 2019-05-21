@@ -13,30 +13,30 @@ namespace UniverseOfBookApp.DataAccess {
 
         public BookDataAccess() {
             db = DependencyService.Get<SqlConnection>().GetConnection();
-            db.CreateTable<BookClass>();
+            db.CreateTable<Book>();
         }
-        public List<BookClass> GetAllBook() {
-            return (from book in db.Table<BookClass>() select book).ToList();
+        public List<Book> GetAllBook() {
+            return (from book in db.Table<Book>() select book).ToList();
         }
-        public BookClass GetBookByName(string BookName) {
-            return db.Table<BookClass>().FirstOrDefault(i => i.BookName == BookName);
+        public Book GetBookByName(string BookName) {
+            return db.Table<Book>().FirstOrDefault(i => i.BookName == BookName);
         }
         public List<String> GetBookByAuthor(string AuthorName) {
-            return (from book in db.Table<BookClass>() where book.AuthorName == AuthorName select book.BookName).ToList();
+            return (from book in db.Table<Book>() where book.AuthorName == AuthorName select book.BookName).ToList();
         }
-        public BookClass GetBookBySource(string bookPhoto) {
-            return db.Table<BookClass>().FirstOrDefault(i => i.Bookphoto == bookPhoto);
+        public Book GetBookBySource(string bookPhoto) {
+            return db.Table<Book>().FirstOrDefault(i => i.Bookphoto == bookPhoto);
         }
-        public List<BookClass> GetAllBookByCategory(CategoryEnum category) {
-            return (from book in db.Table<BookClass>() where book.Category == category select book).ToList();
+        public List<Book> GetAllBookByCategory(CategoryEnum category) {
+            return (from book in db.Table<Book>() where book.Category == category select book).ToList();
         }
         public int DeleteBookName(String Bookname) {
-            return db.Table<BookClass>().Delete(x => x.BookName == Bookname);
+            return db.Table<Book>().Delete(x => x.BookName == Bookname);
         }
         public void DeleteAllBook() {
-            db.DeleteAll<BookClass>();
+            db.DeleteAll<Book>();
         }
-        public int BookInsert(BookClass book) {
+        public int BookInsert(Book book) {
             return db.Insert(book);
         }
     }

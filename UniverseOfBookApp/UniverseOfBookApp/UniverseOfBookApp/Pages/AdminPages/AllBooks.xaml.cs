@@ -17,15 +17,15 @@ namespace UniverseOfBookApp.Pages.AdminPages {
         public AllBooks() {
             InitializeComponent();
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
-            List<BookClass> bookClasses = bookDataAccess.GetAllBook().ToList();
+            List<Model.Book> bookClasses = bookDataAccess.GetAllBook().ToList();
             listView.BindingContext = bookClasses;
         }
 
         private async void DeleteBook_Clicked(object sender, EventArgs e) {
             var answer = await DisplayAlert("Question?", "Would you like to delete?", "Yes", "No");
             if (answer) {
-                BookClass bookClass = new BookClass();
-                bookClass = (BookClass)listView.SelectedItem;
+                Model.Book bookClass = new Model.Book();
+                bookClass = (Model.Book)listView.SelectedItem;
                 bookDataAccess.DeleteBookName(bookClass.BookName);
             }
             Navigation.InsertPageBefore(new AllBooks(), this);

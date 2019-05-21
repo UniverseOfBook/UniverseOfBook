@@ -36,7 +36,7 @@ namespace UniverseOfBookApp.Pages.AdminPages {
         }
 
         private void Button_Clicked(object sender, EventArgs e) {
-            BookClass book = new BookClass {
+            Model.Book book = new Model.Book {
                 AuthorName = AuthorPick.SelectedItem.ToString(),
                 PageNumber = Convert.ToInt32(PageNumber.Text),
                 PublishDate = PublishDate.Date
@@ -44,7 +44,7 @@ namespace UniverseOfBookApp.Pages.AdminPages {
 
             book.BookName = BookName.Text;
             CategoryEnum category = (CategoryEnum)Enum.Parse(typeof(CategoryEnum), CategoryPick.SelectedItem.ToString().Replace(" ", ""));
-            Publishers publishers = (Publishers)Enum.Parse(typeof(Publishers), PublishPick.SelectedItem.ToString().Replace(" ", ""));
+            PublishersEnum publishers = (PublishersEnum)Enum.Parse(typeof(PublishersEnum), PublishPick.SelectedItem.ToString().Replace(" ", ""));
             book.Category = category;
             book.Publishers = publishers;
             book.Bookphoto = BookPhoto.Text;

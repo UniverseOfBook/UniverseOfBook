@@ -17,7 +17,7 @@ namespace UniverseOfBookApp.Pages.AdminPages {
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
         }
         private void AddButton_Clicked(object sender, EventArgs e) {
-            AuthorClass author = new AuthorClass {
+            Model.Author author = new Model.Author {
                 AuthorDate = Date.Date,
                 AuthorName = AuthorName.Text,
                 AuthorDescription = AuthorInfo.Text,

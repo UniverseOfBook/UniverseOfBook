@@ -15,7 +15,7 @@ namespace UniverseOfBookApp.Pages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SignUp : ContentPage {
         public UserDataAccess UserDataAccess;
-        public UserClass user;
+        public User user;
 
         public SignUp() {
             InitializeComponent();
@@ -24,13 +24,13 @@ namespace UniverseOfBookApp.Pages {
         private async void Submit_Clicked(object sender, EventArgs e) {
             //We create new user here 
             if (Password.Text == PasswordAgain.Text && Email.Text != null && Name.Text != null) {
-                user = new UserClass();
+                user = new User();
                 UserDataAccess = new UserDataAccess();
 
                 user.Email = Email.Text;
                 user.Password = Password.Text;
                 user.UserName = Name.Text;
-                user.Useradmin = UserAdmin.User;
+                user.UserType = UserAdmin.User;
                 
                 int number = UserDataAccess.UserInsert(user);
                 if (number > 0) {

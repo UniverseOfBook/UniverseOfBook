@@ -16,7 +16,7 @@ namespace UniverseOfBookApp.Pages.AdminPages {
         public AllAuthor() {
             InitializeComponent();
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
-            List<AuthorClass> authorClasses = authorDataAccess.GetAllAuthor().ToList();
+            List<Model.Author> authorClasses = authorDataAccess.GetAllAuthor().ToList();
             listView.BindingContext = authorClasses;
             listView.IsRefreshing = false;
         }
@@ -24,7 +24,7 @@ namespace UniverseOfBookApp.Pages.AdminPages {
         private async void DeleteAuthor_Clicked(object sender, EventArgs e) {
             var answer = await DisplayAlert("Question?", "Would you like to delete?", "Yes", "No");
             if (answer) {
-                AuthorClass author = (AuthorClass)listView.SelectedItem;
+                Model.Author author = (Model.Author)listView.SelectedItem;
                 authorDataAccess.DeleteAuthorName(author.AuthorName);
             }
             Navigation.InsertPageBefore(new AllAuthor(), this);

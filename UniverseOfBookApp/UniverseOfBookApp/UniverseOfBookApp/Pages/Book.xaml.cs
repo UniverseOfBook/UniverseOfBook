@@ -24,12 +24,12 @@ namespace UniverseOfBookApp.Pages {
         public Book(string name) {
             InitializeComponent();
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
-            BookClass book = BookDataAccess.GetBookByName(name);
+            Model.Book book = BookDataAccess.GetBookByName(name);
             Bookphoto.Source = book.Bookphoto;
             Bookname.Text = book.BookName;
             BookDescription.Text = book.Description;
             AuthorName.Text = book.AuthorName;
-            AuthorClass authorClass = author.GetAuthorbyName(book.AuthorName);
+            Model.Author authorClass = author.GetAuthorbyName(book.AuthorName);
             AuthorPhoto.Source = authorClass.AuthorPhoto;
         }
 
@@ -40,13 +40,13 @@ namespace UniverseOfBookApp.Pages {
         private void Button_Clicked(object sender, EventArgs e) {
             Button button = (Button)sender;
             BookDataAccess bookDataAccess = new BookDataAccess();
-            BookClass bookClass = bookDataAccess.GetBookBySource(Bookphoto.Source.ToString().Replace("Uri: ", ""));
+            Model.Book bookClass = bookDataAccess.GetBookBySource(Bookphoto.Source.ToString().Replace("Uri: ", ""));
             List<UserBook> userBooks = UserBookDataAccess.GetBookByEmailAndBookName(App.UserEmail, bookClass.BookName);
 
             if (userBooks.Count != 0) {
-                if (userBooks[0].ReadWant == ReadWant.Want) {
+                if (userBooks[0].ReadWant == ReadWantEnum.Want) {
                     if (button.Text == "Read") {
-                        userBooks[0].ReadWant = ReadWant.Read;
+                        userBooks[0].ReadWant = ReadWantEnum.Read;
                         userBooks[0].DateTime = DateTime.Now;
                         UserBookDataAccess.BookUserUpdateReadOrWant(userBooks[0]);
                         DisplayAlert("Read Book", "You added this book to Read List", "Ok");
@@ -57,7 +57,7 @@ namespace UniverseOfBookApp.Pages {
                 }
                 else {
                     if (button.Text == "Want") {
-                        userBooks[0].ReadWant = ReadWant.Want;
+                        userBooks[0].ReadWant = ReadWantEnum.Want;
                         userBooks[0].DateTime = DateTime.Now;
                         UserBookDataAccess.BookUserUpdateReadOrWant(userBooks[0]);
                         DisplayAlert("Want Book", "You added this book to Want List", "Ok");
@@ -74,11 +74,11 @@ namespace UniverseOfBookApp.Pages {
                 userBook.DateTime = DateTime.Now;
                 if (button.Text == "Want") {
                     DisplayAlert("Want Book", "You added this book to Want List", "Ok");
-                    userBook.ReadWant = ReadWant.Want;
+                    userBook.ReadWant = ReadWantEnum.Want;
                 }
                 else {
                     DisplayAlert("Read Book", "You added this book to Read List", "Ok");
-                    userBook.ReadWant = ReadWant.Read;
+                    userBook.ReadWant = ReadWantEnum.Read;
                 }
                 UserBookDataAccess.UserInsert(userBook);
             }

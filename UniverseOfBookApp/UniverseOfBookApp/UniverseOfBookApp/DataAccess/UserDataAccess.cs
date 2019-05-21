@@ -13,31 +13,31 @@ namespace UniverseOfBookApp.DataAccess {
 
         public UserDataAccess() {
             db = DependencyService.Get<SqlConnection>().GetConnection();
-            db.CreateTable<UserClass>();
+            db.CreateTable<User>();
         }
-        public List<UserClass> GetAllUsers() {
-            return (from user in db.Table<UserClass>() where user.Useradmin == UserAdmin.User select user).ToList();
+        public List<User> GetAllUsers() {
+            return (from user in db.Table<User>() where user.UserType == UserAdmin.User select user).ToList();
         }
-        public UserClass GetUser(int Id) {
-            return db.Table<UserClass>().FirstOrDefault(i => i.UserId == Id);
+        public User GetUser(int Id) {
+            return db.Table<User>().FirstOrDefault(i => i.UserId == Id);
         }
-        public UserClass GetUserByEmail(string email) {
-            return db.Table<UserClass>().FirstOrDefault(i => i.Email == email);
+        public User GetUserByEmail(string email) {
+            return db.Table<User>().FirstOrDefault(i => i.Email == email);
         }
         public void DeleteAllUser() {
-            db.Table<UserClass>().Delete(x => x.Useradmin == UserAdmin.User);
+            db.Table<User>().Delete(x => x.UserType == UserAdmin.User);
         }
         public int DeleteUserName(String UserName) {
-            return db.Table<UserClass>().Delete(x => x.UserName == UserName);
+            return db.Table<User>().Delete(x => x.UserName == UserName);
         }
-        public int UserInsert(UserClass user) {
+        public int UserInsert(User user) {
             return db.Insert(user);
         }
-        public void UserUpdate(UserClass user) {
+        public void UserUpdate(User user) {
             db.Update(user);
         }
-        public UserClass Login(string Email, string password) {
-            return db.Table<UserClass>().FirstOrDefault(x => x.Email == Email && x.Password == password);
+        public User Login(string Email, string password) {
+            return db.Table<User>().FirstOrDefault(x => x.Email == Email && x.Password == password);
         }
     }
 }

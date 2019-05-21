@@ -7,11 +7,11 @@ namespace UniverseOfBookApp.Model {
     public enum UserAdmin {
         User, Admin
     }
-    public enum Gender {
+    public enum GenderEnum {
         Male, Female
     }
     [Table("User")]
-    public class UserClass {
+    public class User {
         [PrimaryKey, AutoIncrement]
         public int UserId { get; set; }
         [Unique, NotNull]
@@ -20,11 +20,11 @@ namespace UniverseOfBookApp.Model {
         public string Password { get; set; }
         [NotNull, Unique]
         public string Email { get; set; }
-        public Gender Gender { get; set; }
-        public string Phonenumber { get; set; }
+        public GenderEnum Gender { get; set; }
+        public string PhoneNumber { get; set; }
         public string Name { get; set; }
         public string UserPhoto { get; set; }
-        public UserAdmin Useradmin { get; set; }
+        public UserAdmin UserType { get; set; }
 
     }
 }

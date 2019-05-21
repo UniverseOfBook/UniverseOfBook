@@ -13,27 +13,27 @@ namespace UniverseOfBookApp.DataAccess {
 
         public AuthorDataAccess() {
             db = DependencyService.Get<SqlConnection>().GetConnection();
-            db.CreateTable<AuthorClass>();
+            db.CreateTable<Author>();
         }
-        public List<BookClass> GetBooks(string name) {
-            return (from book in db.Table<BookClass>() where book.AuthorName == name select book).ToList();
+        public List<Book> GetBooks(string name) {
+            return (from book in db.Table<Book>() where book.AuthorName == name select book).ToList();
         }
-        public List<AuthorClass> GetAllAuthor() {
-            return (from author in db.Table<AuthorClass>() select author).ToList();
+        public List<Author> GetAllAuthor() {
+            return (from author in db.Table<Author>() select author).ToList();
         }
         public List<String> Authors() {
-            return (from author in db.Table<AuthorClass>() select author.AuthorName).ToList();
+            return (from author in db.Table<Author>() select author.AuthorName).ToList();
         }
         public int DeleteAuthorName(String AuthorName) {
-            return db.Table<AuthorClass>().Delete(x => x.AuthorName == AuthorName);
+            return db.Table<Author>().Delete(x => x.AuthorName == AuthorName);
         }
-        public AuthorClass GetAuthorbyName(String name) {
-            return db.Table<AuthorClass>().FirstOrDefault(i => i.AuthorName == name);
+        public Author GetAuthorbyName(String name) {
+            return db.Table<Author>().FirstOrDefault(i => i.AuthorName == name);
         }
         public void DeleteAllAuthor() {
-            db.DeleteAll<AuthorClass>();
+            db.DeleteAll<Author>();
         }
-        public int AuthorInsert(AuthorClass author) {
+        public int AuthorInsert(Author author) {
             return db.Insert(author);
         }
     }

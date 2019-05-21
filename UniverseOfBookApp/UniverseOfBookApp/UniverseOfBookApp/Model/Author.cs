@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UniverseOfBookApp.Model {
     [Table("Author")]
-    public class AuthorClass {
+    public class Author {
         [NotNull, Unique]
         public string AuthorName { get; set; }
         public DateTime AuthorDate { get; set; }

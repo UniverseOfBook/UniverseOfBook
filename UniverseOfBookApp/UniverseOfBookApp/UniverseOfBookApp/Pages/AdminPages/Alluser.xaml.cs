@@ -13,19 +13,19 @@ namespace UniverseOfBookApp.Pages.AdminPages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Alluser : ContentPage {
         public UserDataAccess userDataAccess = new UserDataAccess();
-        public UserClass user;
+        public User user;
 
         public Alluser() {
             InitializeComponent();
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
-            List<UserClass> users = userDataAccess.GetAllUsers().ToList();
+            List<User> users = userDataAccess.GetAllUsers().ToList();
             listView.BindingContext = users;
         }
 
         private async void DeleteUser_Clicked(object sender, EventArgs e) {
             var answer = await DisplayAlert("Question?", "Would you like to delete?", "Yes", "No");
             if (answer) {
-                UserClass user = (UserClass)listView.SelectedItem;
+                User user = (User)listView.SelectedItem;
                 userDataAccess.DeleteUserName(user.UserName);
                 UserBookDataAccess userBookDataAccess = new UserBookDataAccess();
                 userBookDataAccess.DeleteBookName(user.Email);
