@@ -55,7 +55,7 @@ namespace UniverseOfBookApp.Pages
         }
 
         private async void SeeAllUser_Clicked(object sender, EventArgs e) {
-            await Navigation.PushAsync(new FindFriends());
+            await Navigation.PushAsync(new FindFriendsPage());
 
         }
     }
