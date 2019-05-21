@@ -25,6 +25,15 @@
                             <Label Text="Read Books: " FontAttributes="Bold" StyleClass="LabelClass"/>
                             <Label StyleClass="LabelClass" x:Name="readLabel" />
                         </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Friends: " FontAttributes="Bold" StyleClass="LabelClass">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="1"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                            <Label StyleClass="LabelClass" x:Name="FriendsLabel" />
+                        </StackLayout>
                     </StackLayout>
                 </StackLayout>
             </Frame>

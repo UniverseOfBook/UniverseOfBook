@@ -18,9 +18,7 @@ namespace UniverseOfBookApp.DataAccess {
         public List<User> GetAllUsers() {
             return (from user in db.Table<User>() where user.UserType == UserAdmin.User select user).ToList();
         }
-        public User GetUser(int Id) {
-            return db.Table<User>().FirstOrDefault(i => i.UserId == Id);
-        }
+      
         public User GetUserByEmail(string email) {
             return db.Table<User>().FirstOrDefault(i => i.Email == email);
         }
