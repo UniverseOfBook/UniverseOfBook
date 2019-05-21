@@ -29,9 +29,9 @@
                         </Label.GestureRecognizers>
                     </Label>
                 </StackLayout>
-                <Button Text="Login" BorderRadius="8" Clicked="LoginButtonClicked"/>
+                <Button Text="Login" BorderRadius="8" Clicked="LoginButtonClicked" />
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="10">
-                    <Label Text="Don't have an account?" />
+                    <Label Text="Don't have an account?"/>
                     <Label Text="Sign Up" FontAttributes="Bold" FontSize="Medium">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="SignupTappedAsynch" NumberOfTapsRequired="1"/>

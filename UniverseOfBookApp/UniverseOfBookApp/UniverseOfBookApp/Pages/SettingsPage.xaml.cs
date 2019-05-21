@@ -55,43 +55,39 @@ namespace UniverseOfBookApp.Pages {
             Application.Current.MainPage = new NavigationPage(new LoginPage());
         }
 
-        private void SubmitButton_Clicked(object sender, EventArgs e)
-        {
+        private void SubmitButton_Clicked(object sender, EventArgs e) {
             User userClass = userDataAccess.GetUserByEmail(App.UserEmail);
             userClass.Name = NameUser.Text;
             userClass.PhoneNumber = PhoneNumber.Text;
-          
-            if(UserPhotoSource.Text != "")
-            {
-             profilePhoto.Source = UserPhotoSource.Text;
-             userClass.UserPhoto = (profilePhoto.Source).ToString();
+
+            if (UserPhotoSource.Text != "") {
+                profilePhoto.Source = UserPhotoSource.Text;
+                userClass.UserPhoto = (profilePhoto.Source).ToString();
             }
-            userDataAccess.UserUpdate(userClass);
+            userDataAccess.UpdateUser(userClass);
 
         }
 
-        private void MaleButton_Clicked(object sender, EventArgs e)
-        {
+        private void MaleButton_Clicked(object sender, EventArgs e) {
             User userClass = userDataAccess.GetUserByEmail(App.UserEmail);
             if (userClass.Gender == GenderEnum.Male)
                 return;
             userClass.Gender = GenderEnum.Male;
-            userDataAccess.UserUpdate(userClass);
-            MaleButton.TextColor =Color.FromHex("#c62828");
+            userDataAccess.UpdateUser(userClass);
+            MaleButton.TextColor = Color.FromHex("#c62828");
             MaleButton.FontAttributes = FontAttributes.Bold;
 
             FemaleButton.TextColor = Color.FromHex("#6d6d6d");
             FemaleButton.FontAttributes = FontAttributes.None;
         }
 
-        private void FemaleButton_Clicked(object sender, EventArgs e)
-        {
+        private void FemaleButton_Clicked(object sender, EventArgs e) {
             User userClass = userDataAccess.GetUserByEmail(App.UserEmail);
             if (userClass.Gender == GenderEnum.Female)
                 return;
             userClass.Gender = GenderEnum.Female;
-            userDataAccess.UserUpdate(userClass);
-            FemaleButton.TextColor= Color.FromHex("#c62828");
+            userDataAccess.UpdateUser(userClass);
+            FemaleButton.TextColor = Color.FromHex("#c62828");
             FemaleButton.FontAttributes = FontAttributes.Bold;
 
             MaleButton.TextColor = Color.FromHex("#6d6d6d");

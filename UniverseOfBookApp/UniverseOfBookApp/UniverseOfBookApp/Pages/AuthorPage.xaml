@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="UniverseOfBookApp.Pages.Author"
+             x:Class="UniverseOfBookApp.Pages.AuthorPage"
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
@@ -21,7 +21,7 @@
                     <SwipeGestureRecognizer Swiped="SwipedToBack" Direction="Down" />
                 </StackLayout.GestureRecognizers>
 
-                <Label FontAttributes="Bold" FontSize="35" HorizontalOptions="Center" x:Name="AuthorNAME" Font="Satisfy-Regular.ttf#Satisfy,30"/>
+                <Label FontSize="35" HorizontalOptions="Center" x:Name="AuthorNAME" FontFamily="{StaticResource BoldFont}"/>
                 <controls:CircleImage  WidthRequest="160" HeightRequest="160" x:Name="AuthorImage"/>
                 <Frame CornerRadius="20" HasShadow="True">
                     <StackLayout BackgroundColor="White" >

@@ -10,25 +10,23 @@ using Xamarin.Forms.Xaml;
 
 namespace UniverseOfBookApp.Pages.AdminPages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AllBooks : ContentPage {
+    public partial class AllBooksPage : ContentPage {
         BookDataAccess bookDataAccess = new BookDataAccess();
-        UserBookDataAccess UserBookDataAccess = new UserBookDataAccess();
 
-        public AllBooks() {
+        public AllBooksPage() {
             InitializeComponent();
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
-            List<Model.Book> bookClasses = bookDataAccess.GetAllBook().ToList();
+            List<Book> bookClasses = bookDataAccess.GetAllBook().ToList();
             listView.BindingContext = bookClasses;
         }
 
         private async void DeleteBook_Clicked(object sender, EventArgs e) {
             var answer = await DisplayAlert("Question?", "Would you like to delete?", "Yes", "No");
             if (answer) {
-                Model.Book bookClass = new Model.Book();
-                bookClass = (Model.Book)listView.SelectedItem;
+                Book bookClass = (Book)listView.SelectedItem;
                 bookDataAccess.DeleteBookName(bookClass.BookName);
             }
-            Navigation.InsertPageBefore(new AllBooks(), this);
+            Navigation.InsertPageBefore(new AllBooksPage(), this);
             await Navigation.PopAsync();
         }
 

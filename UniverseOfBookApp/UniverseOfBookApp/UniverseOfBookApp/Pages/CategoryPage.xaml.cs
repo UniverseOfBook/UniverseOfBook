@@ -13,7 +13,6 @@ namespace UniverseOfBookApp.Pages {
     public partial class CategoryPage : ContentPage {
         public CategoryPage() {
             InitializeComponent();
-
         }
 
         public CategoryPage(string categoryName) {
@@ -29,7 +28,7 @@ namespace UniverseOfBookApp.Pages {
             categoryGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
 
             BookDataAccess bookDataAccess = new BookDataAccess();
-            List<Model.Book> bookClass = bookDataAccess.GetAllBookByCategory((CategoryEnum)Enum.Parse(typeof(CategoryEnum), categoryName.Replace(" ", "")));
+            List<Book> bookClass = bookDataAccess.GetAllBookByCategory((CategoryEnum)Enum.Parse(typeof(CategoryEnum), categoryName.Replace(" ", "")));
 
             int column = 0;
             int row = 0;
@@ -56,8 +55,8 @@ namespace UniverseOfBookApp.Pages {
 
         public async void ImageTapped(string bookSource) {
             BookDataAccess bookDataAccess = new BookDataAccess();
-            Model.Book bookName = bookDataAccess.GetBookBySource(bookSource);
-            await Navigation.PushAsync(new Book(bookName.BookName));
+            Book bookName = bookDataAccess.GetBookBySource(bookSource);
+            await Navigation.PushAsync(new BookPage(bookName.BookName));
         }
     }
 }

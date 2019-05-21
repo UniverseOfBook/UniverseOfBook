@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="UniverseOfBookApp.Pages.Book"
+             x:Class="UniverseOfBookApp.Pages.BookPage"
               xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin">
     
     <ContentPage.Resources>
@@ -25,13 +25,13 @@
                         </StackLayout>
 
                         <StackLayout Orientation="Horizontal">
-                            <Label x:Name="Bookname"  FontAttributes="Bold" HorizontalOptions="StartAndExpand" Margin="15" Font="Satisfy-Regular.ttf#Satisfy,30"/>
+                            <Label x:Name="Bookname" HorizontalOptions="StartAndExpand" Margin="15" FontFamily="{StaticResource BoldFont}"/>
                             <Image Source="bookss" HorizontalOptions="End"/>
                         </StackLayout>
 
                         <Button Text="Want"  Clicked="Button_Clicked" />
                         <Button Text="Read"  Clicked="Button_Clicked"/>
-                        <Label x:Name="BookDescription"  Font="Satisfy-Regular.ttf#Satisfy,22"  Margin="10,5,10,5"/>
+                        <Label x:Name="BookDescription" Margin="10,5,10,5"/>
                         <StackLayout>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="AuthorTapped" />

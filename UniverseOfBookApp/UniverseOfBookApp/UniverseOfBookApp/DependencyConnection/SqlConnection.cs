@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace UniverseOfBookApp.DependencyConnection {
-    public interface SqlConnection {
+    public interface ISqlConnection {
         SQLiteConnection GetConnection();
     }
 }

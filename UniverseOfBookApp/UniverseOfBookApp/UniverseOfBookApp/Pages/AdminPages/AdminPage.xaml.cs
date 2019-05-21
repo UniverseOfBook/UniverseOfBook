@@ -15,7 +15,7 @@ namespace UniverseOfBookApp.Pages.AdminPages {
         }
 
         private async void AddBook_Clicked(object sender, EventArgs e) {
-            await Navigation.PushAsync(new AddBook());
+            await Navigation.PushAsync(new AddBookPage());
         }
 
         private void Exit_Clicked(object sender, EventArgs e) {
@@ -24,19 +24,19 @@ namespace UniverseOfBookApp.Pages.AdminPages {
         }
 
         private async void AddAuthor_Clicked(object sender, EventArgs e) {
-            await Navigation.PushAsync(new AddAuthor());
+            await Navigation.PushAsync(new AddAuthorPage());
         }
 
         private async void SeeUser_Clicked(object sender, EventArgs e) {
-            await Navigation.PushAsync(new Alluser());
+            await Navigation.PushAsync(new AllUserPage());
         }
 
         private async void SeeBook_Clicked(object sender, EventArgs e) {
-            await Navigation.PushAsync(new AllBooks());
+            await Navigation.PushAsync(new AllBooksPage());
         }
 
         private async void SeeAuthor_Clicked(object sender, EventArgs e) {
-            await Navigation.PushAsync(new AllAuthor());
+            await Navigation.PushAsync(new AllAuthorPage());
         }
     }
 }

@@ -10,31 +10,30 @@ using Xamarin.Forms.Xaml;
 
 namespace UniverseOfBookApp.Pages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Book : ContentPage {
-        DataAccess.BookDataAccess BookDataAccess = new DataAccess.BookDataAccess();
-        DataAccess.AuthorDataAccess author = new DataAccess.AuthorDataAccess();
-        DataAccess.UserDataAccess UserDataAccess = new DataAccess.UserDataAccess();
+    public partial class BookPage : ContentPage {
+        BookDataAccess BookDataAccess = new BookDataAccess();
+        AuthorDataAccess author = new AuthorDataAccess();
         UserBookDataAccess UserBookDataAccess = new UserBookDataAccess();
 
-        public Book() {
+        public BookPage() {
             InitializeComponent();
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
         }
 
-        public Book(string name) {
+        public BookPage(string name) {
             InitializeComponent();
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
-            Model.Book book = BookDataAccess.GetBookByName(name);
+            Book book = BookDataAccess.GetBookByName(name);
             Bookphoto.Source = book.Bookphoto;
             Bookname.Text = book.BookName;
             BookDescription.Text = book.Description;
             AuthorName.Text = book.AuthorName;
-            Model.Author authorClass = author.GetAuthorbyName(book.AuthorName);
+            Author authorClass = author.GetAuthorbyName(book.AuthorName);
             AuthorPhoto.Source = authorClass.AuthorPhoto;
         }
 
         private async void AuthorTapped(object sender, EventArgs e) {
-            await Navigation.PushAsync(new Author(AuthorName.Text));
+            await Navigation.PushAsync(new AuthorPage(AuthorName.Text));
         }
 
         private void Button_Clicked(object sender, EventArgs e) {
@@ -68,10 +67,11 @@ namespace UniverseOfBookApp.Pages {
                 }
             }
             else {
-                UserBook userBook = new UserBook();
-                userBook.BookName = Bookname.Text;
-                userBook.Email = App.UserEmail;
-                userBook.DateTime = DateTime.Now;
+                UserBook userBook = new UserBook {
+                    BookName = Bookname.Text,
+                    Email = App.UserEmail,
+                    DateTime = DateTime.Now
+                };
                 if (button.Text == "Want") {
                     DisplayAlert("Want Book", "You added this book to Want List", "Ok");
                     userBook.ReadWant = ReadWantEnum.Want;

@@ -12,12 +12,12 @@ using Xamarin.Forms.Xaml;
 
 namespace UniverseOfBookApp.Pages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HomePage : Xamarin.Forms.ContentPage {
+    public partial class HomePage : ContentPage {
         public HomePage() {
             InitializeComponent();
             try {
                 BookDataAccess bookDataAccess = new BookDataAccess();
-                List<Model.Book> allBooks = bookDataAccess.GetAllBook().ToList();
+                List<Book> allBooks = bookDataAccess.GetAllBook().ToList();
 
                 for (int i = 0; i < allBooks.Count; i++) {
                     string url = allBooks[i].Bookphoto;
@@ -50,7 +50,7 @@ namespace UniverseOfBookApp.Pages {
         public async void ImageTapped(string bookSource) {
             BookDataAccess bookDataAccess = new BookDataAccess();
             Model.Book bookName = bookDataAccess.GetBookBySource(bookSource);
-            await Navigation.PushAsync(new Book(bookName.BookName));
+            await Navigation.PushAsync(new BookPage(bookName.BookName));
         }
     }
 }

@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>2.0.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -17,31 +18,58 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Pages\AdminPages\AddAuthorPage.xaml.cs">
+      <DependentUpon>AddAuthorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\AdminPages\AddBookPage.xaml.cs">
+      <DependentUpon>AddBookPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\AdminPages\AllAuthorPage.xaml.cs">
+      <DependentUpon>AllAuthorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\AdminPages\AllBooksPage.xaml.cs">
+      <DependentUpon>AllBooksPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\AdminPages\AllUserPage.xaml.cs">
+      <DependentUpon>AllUserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\AuthorPage.xaml.cs">
+      <DependentUpon>AuthorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\BookPage.xaml.cs">
+      <DependentUpon>BookPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\SignUpPage.xaml.cs">
+      <DependentUpon>SignUpPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="Pages\ActivityPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\AdminPages\AddAuthor.xaml">
+    <EmbeddedResource Update="Pages\AdminPages\AddAuthorPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\AdminPages\AddBook.xaml">
+    <EmbeddedResource Update="Pages\AdminPages\AddBookPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\AdminPages\AdminPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\AdminPages\AllAuthor.xaml">
+    <EmbeddedResource Update="Pages\AdminPages\AllAuthorPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\AdminPages\AllBooks.xaml">
+    <EmbeddedResource Update="Pages\AdminPages\AllBooksPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\AdminPages\Alluser.xaml">
+    <EmbeddedResource Update="Pages\AdminPages\AllUserPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\Author.xaml">
+    <EmbeddedResource Update="Pages\AuthorPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\Book.xaml">
+    <EmbeddedResource Update="Pages\BookPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\CategoryPage.xaml">

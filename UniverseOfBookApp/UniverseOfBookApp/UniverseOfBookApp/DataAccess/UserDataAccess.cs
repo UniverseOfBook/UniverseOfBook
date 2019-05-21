@@ -12,14 +12,11 @@ namespace UniverseOfBookApp.DataAccess {
         static SQLiteConnection db;
 
         public UserDataAccess() {
-            db = DependencyService.Get<SqlConnection>().GetConnection();
+            db = DependencyService.Get<ISqlConnection>().GetConnection();
             db.CreateTable<User>();
         }
         public List<User> GetAllUsers() {
             return (from user in db.Table<User>() where user.UserType == UserAdmin.User select user).ToList();
-        }
-        public User GetUser(int Id) {
-            return db.Table<User>().FirstOrDefault(i => i.UserId == Id);
         }
         public User GetUserByEmail(string email) {
             return db.Table<User>().FirstOrDefault(i => i.Email == email);
@@ -30,10 +27,10 @@ namespace UniverseOfBookApp.DataAccess {
         public int DeleteUserName(String UserName) {
             return db.Table<User>().Delete(x => x.UserName == UserName);
         }
-        public int UserInsert(User user) {
+        public int AddUser(User user) {
             return db.Insert(user);
         }
-        public void UserUpdate(User user) {
+        public void UpdateUser(User user) {
             db.Update(user);
         }
         public User Login(string Email, string password) {

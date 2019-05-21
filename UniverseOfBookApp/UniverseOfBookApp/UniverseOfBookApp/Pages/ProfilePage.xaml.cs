@@ -57,7 +57,7 @@ namespace UniverseOfBookApp.Pages {
             int row = 0;
 
             for (int a = 0; a < bookList.Count; a++) {
-                Model.Book bookClass = bookDataAccess.GetBookByName(bookList[a]);
+                Book bookClass = bookDataAccess.GetBookByName(bookList[a]);
                 Image bookImage = new Image { HeightRequest = 300, Source = bookClass.Bookphoto };
                 var tapGestureRecognizer = new TapGestureRecognizer();
                 tapGestureRecognizer.Tapped += (s, e) => {
@@ -83,7 +83,7 @@ namespace UniverseOfBookApp.Pages {
         public async void ImageTapped(string bookSource) {
             BookDataAccess bookDataAccess = new BookDataAccess();
             Model.Book bookName = bookDataAccess.GetBookBySource(bookSource);
-            await Navigation.PushAsync(new Book(bookName.BookName));
+            await Navigation.PushAsync(new BookPage(bookName.BookName));
         }
 
         protected override void OnAppearing() {

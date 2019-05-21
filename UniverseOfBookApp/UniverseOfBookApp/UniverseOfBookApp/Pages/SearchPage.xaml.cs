@@ -31,8 +31,7 @@ namespace UniverseOfBookApp.Pages {
         }
 
         private void Searching(string text) {
-            Model.Book bookClass = new Model.Book();
-            bookClass = bookDataAccess.GetBookByName(text);
+            Book bookClass = bookDataAccess.GetBookByName(text);
             if (bookClass == null) {
                 searchImage.IsVisible = false;
                 search.IsVisible = true;
@@ -46,8 +45,8 @@ namespace UniverseOfBookApp.Pages {
         private async void ImageTapped(object sender, EventArgs e) {
             Image image1 = (Image)sender;
             BookDataAccess bookDataAccess = new BookDataAccess();
-            Model.Book bookName = bookDataAccess.GetBookBySource(image1.Source.ToString().Replace("Uri: ", ""));
-            await Navigation.PushAsync(new Book(bookName.BookName));
+            Book bookName = bookDataAccess.GetBookBySource(image1.Source.ToString().Replace("Uri: ", ""));
+            await Navigation.PushAsync(new BookPage(bookName.BookName));
         }
     }
 }

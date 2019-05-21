@@ -12,7 +12,7 @@ namespace UniverseOfBookApp.DataAccess {
         static SQLiteConnection db;
 
         public AuthorDataAccess() {
-            db = DependencyService.Get<SqlConnection>().GetConnection();
+            db = DependencyService.Get<ISqlConnection>().GetConnection();
             db.CreateTable<Author>();
         }
         public List<Book> GetBooks(string name) {

@@ -10,14 +10,14 @@ using Xamarin.Forms.Xaml;
 
 namespace UniverseOfBookApp.Pages.AdminPages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AddAuthor : ContentPage {
+    public partial class AddAuthorPage : ContentPage {
         AuthorDataAccess DataAccess = new AuthorDataAccess();
-        public AddAuthor() {
+        public AddAuthorPage() {
             InitializeComponent();
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
         }
         private void AddButton_Clicked(object sender, EventArgs e) {
-            Model.Author author = new Model.Author {
+            Author author = new Author {
                 AuthorDate = Date.Date,
                 AuthorName = AuthorName.Text,
                 AuthorDescription = AuthorInfo.Text,

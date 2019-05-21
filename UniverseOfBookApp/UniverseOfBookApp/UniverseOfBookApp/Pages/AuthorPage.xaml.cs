@@ -10,20 +10,19 @@ using Xamarin.Forms.Xaml;
 
 namespace UniverseOfBookApp.Pages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Author : ContentPage {
-        DataAccess.AuthorDataAccess authorData = new DataAccess.AuthorDataAccess();
-        DataAccess.BookDataAccess BookDataAccess = new DataAccess.BookDataAccess();
-        public Author() {
+    public partial class AuthorPage : ContentPage {
+        AuthorDataAccess authorData = new AuthorDataAccess();
+        public AuthorPage() {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, true);
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
         }
 
-        public Author(string name) {
+        public AuthorPage(string name) {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, true);
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
-            Model.Author authorClass = new Model.Author();
+            Author authorClass = new Author();
             authorClass = authorData.GetAuthorbyName(name);
             AuthorImage.Source = authorClass.AuthorPhoto;
             AuthorInfo.Text = authorClass.AuthorDescription;
@@ -50,7 +49,7 @@ namespace UniverseOfBookApp.Pages {
         public async void ImageTapped(string bookSource) {
             BookDataAccess bookDataAccess = new BookDataAccess();
             Model.Book bookName = bookDataAccess.GetBookBySource(bookSource);
-            await Navigation.PushAsync(new Book(bookName.BookName));
+            await Navigation.PushAsync(new BookPage(bookName.BookName));
         }
     }
 }

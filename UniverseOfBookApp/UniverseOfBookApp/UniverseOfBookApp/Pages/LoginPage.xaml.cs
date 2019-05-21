@@ -24,7 +24,7 @@ namespace UniverseOfBookApp.Pages {
         }
 
         private async void SignupTappedAsynch(object sender, EventArgs e) {
-            await Navigation.PushAsync(new SignUp());
+            await Navigation.PushAsync(new SignUpPage());
         }
 
         private async void LoginButtonClicked(object sender, EventArgs e) {

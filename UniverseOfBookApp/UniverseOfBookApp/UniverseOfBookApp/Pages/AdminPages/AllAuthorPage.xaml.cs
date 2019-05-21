@@ -10,10 +10,10 @@ using Xamarin.Forms.Xaml;
 
 namespace UniverseOfBookApp.Pages.AdminPages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AllAuthor : ContentPage {
+    public partial class AllAuthorPage : ContentPage {
         AuthorDataAccess authorDataAccess = new AuthorDataAccess();
 
-        public AllAuthor() {
+        public AllAuthorPage() {
             InitializeComponent();
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
             List<Model.Author> authorClasses = authorDataAccess.GetAllAuthor().ToList();
@@ -24,10 +24,10 @@ namespace UniverseOfBookApp.Pages.AdminPages {
         private async void DeleteAuthor_Clicked(object sender, EventArgs e) {
             var answer = await DisplayAlert("Question?", "Would you like to delete?", "Yes", "No");
             if (answer) {
-                Model.Author author = (Model.Author)listView.SelectedItem;
+                Author author = (Author)listView.SelectedItem;
                 authorDataAccess.DeleteAuthorName(author.AuthorName);
             }
-            Navigation.InsertPageBefore(new AllAuthor(), this);
+            Navigation.InsertPageBefore(new AllAuthorPage(), this);
             await Navigation.PopAsync();
         }
 

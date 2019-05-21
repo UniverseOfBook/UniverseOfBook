@@ -11,11 +11,11 @@ using Xamarin.Forms.Xaml;
 
 namespace UniverseOfBookApp.Pages.AdminPages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Alluser : ContentPage {
+    public partial class AllUserPage : ContentPage {
         public UserDataAccess userDataAccess = new UserDataAccess();
         public User user;
 
-        public Alluser() {
+        public AllUserPage() {
             InitializeComponent();
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
             List<User> users = userDataAccess.GetAllUsers().ToList();
@@ -31,7 +31,7 @@ namespace UniverseOfBookApp.Pages.AdminPages {
                 userBookDataAccess.DeleteBookName(user.Email);
                 App.UserEmail = "";
             }
-            Navigation.InsertPageBefore(new Alluser(), this);
+            Navigation.InsertPageBefore(new AllUserPage(), this);
             await Navigation.PopAsync();
         }
 
@@ -41,7 +41,7 @@ namespace UniverseOfBookApp.Pages.AdminPages {
                 userDataAccess.DeleteAllUser();
                 App.UserEmail = "";
             }
-            Navigation.InsertPageBefore(new Alluser(), this);
+            Navigation.InsertPageBefore(new AllUserPage(), this);
             await Navigation.PopAsync();
         }
     }

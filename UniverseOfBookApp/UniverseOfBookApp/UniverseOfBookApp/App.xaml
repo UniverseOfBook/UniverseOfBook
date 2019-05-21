@@ -3,6 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UniverseOfBookApp.App">
     <Application.Resources>
-        
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto-Regular.ttf#Roboto"/>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="FontFamily" Value="Roboto-Regular.ttf#Roboto"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="Roboto-Regular.ttf#Roboto"/>
+            </Style>
+            <OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
+                <On Platform="Android" Value="RobotoSlab-Bold.ttf#Roboto Slab" />
+            </OnPlatform>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

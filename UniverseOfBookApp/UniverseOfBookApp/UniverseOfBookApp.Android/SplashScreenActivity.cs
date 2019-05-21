@@ -11,13 +11,10 @@ using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
 
-namespace UniverseOfBookApp.Droid
-{
-    [Activity(Label = "SplashScreenActivity", Theme = "@style/splashscreen", MainLauncher = true, NoHistory = true)]
-    public class SplashScreenActivity : AppCompatActivity
-    {
-        protected override void OnResume()
-        {
+namespace UniverseOfBookApp.Droid {
+    [Activity(Label = "Universe Of Book", Icon = "@drawable/solarsystem", Theme = "@style/splashscreen", MainLauncher = true, NoHistory = true)]
+    public class SplashScreenActivity : AppCompatActivity {
+        protected override void OnResume() {
             base.OnResume();
             StartActivity(typeof(MainActivity));
         }

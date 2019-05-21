@@ -13,26 +13,27 @@ using Xamarin.Forms.Xaml;
 
 namespace UniverseOfBookApp.Pages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SignUp : ContentPage {
+    public partial class SignUpPage : ContentPage {
         public UserDataAccess UserDataAccess;
         public User user;
 
-        public SignUp() {
+        public SignUpPage() {
             InitializeComponent();
         }
 
         private async void Submit_Clicked(object sender, EventArgs e) {
             //We create new user here 
             if (Password.Text == PasswordAgain.Text && Email.Text != null && Name.Text != null) {
-                user = new User();
                 UserDataAccess = new UserDataAccess();
 
-                user.Email = Email.Text;
-                user.Password = Password.Text;
-                user.UserName = Name.Text;
-                user.UserType = UserAdmin.User;
-                
-                int number = UserDataAccess.UserInsert(user);
+                user = new User {
+                    Email = Email.Text,
+                    Password = Password.Text,
+                    UserName = Name.Text,
+                    UserType = UserAdmin.User
+                };
+
+                int number = UserDataAccess.AddUser(user);
                 if (number > 0) {
                     await DisplayAlert("Sign Up", "Thanks for joining us " + Name.Text, "OK");
                     await Navigation.PopAsync();
