@@ -11,10 +11,12 @@ namespace UniverseOfBookApp.Pages {
     [XamlCompilation(XamlCompilationOptions.Compile)]
 
     public partial class ActivityPage : ContentPage {
+        DataAccess.UserFriendDataAccess userFriendataAccess = new DataAccess.UserFriendDataAccess();
         DataAccess.UserBookDataAccess UserBookDataAccess = new DataAccess.UserBookDataAccess();
         DataAccess.BookDataAccess BookDataAccess = new DataAccess.BookDataAccess();
         Book book;
-
+        Frame frame = new Frame() { CornerRadius = 10 };
+        StackLayout stackLayout = new StackLayout();
         public ActivityPage() {
             InitializeComponent();
             UpdatePage();
@@ -31,14 +33,9 @@ namespace UniverseOfBookApp.Pages {
             MyStackLayout.Children.Clear();
             UpdatePage();
         }
-
-        public void UpdatePage() {
-            List<UserBook> userBooks = UserBookDataAccess.GetAllBookUser(App.UserEmail);
+        public void addingActivity(List<UserBook> userBooks) {
             for (int i = 0; i < userBooks.Count; i++) {
                 book = BookDataAccess.GetBookByName(userBooks[i].BookName);
-
-                Frame frame = new Frame() { CornerRadius = 10 };
-                StackLayout stackLayout = new StackLayout();
 
                 Label label1 = new Label() { FontSize = 18, HorizontalOptions = LayoutOptions.Start };
                 label1.Text = "Time added: " + userBooks[i].DateTime.ToString("dd/MM/yyyy");
@@ -57,8 +54,7 @@ namespace UniverseOfBookApp.Pages {
                 Image bookImage = new Image { Source = book.BookPhoto, HorizontalOptions = LayoutOptions.Start };
                 stackLayout.Children.Add(bookImage);
 
-                frame.Content = stackLayout;
-                MyStackLayout.Children.Add(frame);
+               
 
                 var tapGestureRecognizer = new TapGestureRecognizer();
                 tapGestureRecognizer.Tapped += (s, e) => {
@@ -66,6 +62,19 @@ namespace UniverseOfBookApp.Pages {
                 };
                 bookImage.GestureRecognizers.Add(tapGestureRecognizer);
             }
+        }
+
+        public void UpdatePage() {
+            List<UserFriends> users = userFriendataAccess.GetAllFriends(App.UserEmail);
+            for(int i = 0; i < users.Count; i++) {
+                List<UserBook> friendBooks = UserBookDataAccess.GetAllBookUser(users[i].FriendEmail);
+                addingActivity(friendBooks);
+            }
+            List<UserBook> userBooks = UserBookDataAccess.GetAllBookUser(App.UserEmail);
+            addingActivity(userBooks);
+
+            frame.Content = stackLayout;
+            MyStackLayout.Children.Add(frame);
         }
     }
 }
