@@ -3,12 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UniverseOfBookApp.Pages.MainTabbedPage">
 
-    <NavigationPage.TitleView>
-        <ImageButton Source="settings" HorizontalOptions="Start" WidthRequest="24" Clicked="SettingsClicked" BackgroundColor="#efefef"/>
-    </NavigationPage.TitleView>
+  <ContentPage.Resources>
+    <StyleSheet Source="../Styles/MyStyle.css" />
+  </ContentPage.Resources>
 
-    <TabbedPage.Resources>
-        <StyleSheet Source="../Styles/MyStyle.css" />
-    </TabbedPage.Resources>
-    
+  <NavigationPage.TitleView>
+    <StackLayout Orientation="Horizontal">
+      <ImageButton Source="settings" HorizontalOptions="Start" WidthRequest="24" Clicked="SettingsClicked" BackgroundColor="#efefef"/>
+      <Button Text="Add Friend" Clicked="AddFriendClicked" BackgroundColor="#efefef" TextColor="#6d6d6d" HorizontalOptions="EndAndExpand" HeightRequest="60" FontFamily="{StaticResource BoldFont}"/>
+    </StackLayout>
+  </NavigationPage.TitleView>
+
+  <TabbedPage.Resources>
+    <StyleSheet Source="../Styles/MyStyle.css" />
+  </TabbedPage.Resources>
+
 </TabbedPage>

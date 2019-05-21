@@ -36,5 +36,9 @@ namespace UniverseOfBookApp.Pages {
         private async void SettingsClicked(object sender, EventArgs e) {
             await Navigation.PushAsync(new SettingsPage());
         }
+
+        private async void AddFriendClicked(object sender, EventArgs e) {
+            await Navigation.PushAsync(new FindFriendsPage());
+        }
     }
 }

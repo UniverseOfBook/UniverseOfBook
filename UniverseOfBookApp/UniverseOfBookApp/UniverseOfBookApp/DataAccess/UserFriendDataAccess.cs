@@ -22,12 +22,15 @@ namespace UniverseOfBookApp.DataAccess {
         public int Insert(UserFriends userFriends) {
             return db.Insert(userFriends);
         }
-        public int countFriends(string Email) {
+        public int CountFriends(string Email) {
             List<UserFriends> userFriends = (from users in db.Table < UserFriends >() where users.UserEmail == Email select users).ToList();
             return userFriends.Count;
         }
         public int DeleteUserFriends(string Email) {
             return db.Table<UserFriends>().Delete(x => x.FriendEmail == Email);
+        }
+        public void DeleteAllUserFriends() {
+            db.DeleteAll<UserFriends>();
         }
     }
 }

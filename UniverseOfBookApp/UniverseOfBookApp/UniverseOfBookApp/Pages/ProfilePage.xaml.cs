@@ -20,12 +20,12 @@ namespace UniverseOfBookApp.Pages {
             userName.Text = userClass.UserName;
             int wantBookCount = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWantEnum.Want);
             int readBookCount = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWantEnum.Read);
-            int friendsCount = userFriendDataAccess.countFriends(App.UserEmail);
+            int friendsCount = userFriendDataAccess.CountFriends(App.UserEmail);
             wantLabel.Text = wantBookCount.ToString();
             readLabel.Text = readBookCount.ToString();
             FriendsLabel.Text = friendsCount.ToString();
 
-            if(userClass.UserPhoto != "" && userClass.UserPhoto != null) {
+            if (userClass.UserPhoto != "" && userClass.UserPhoto != null) {
                 if (userClass.UserPhoto.StartsWith("File"))
                     ProfilePhotoImage.Source = userClass.UserPhoto.Replace("File: ", "");
                 else
@@ -37,20 +37,19 @@ namespace UniverseOfBookApp.Pages {
             readGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
             readGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
 
-            if(wantBookCount == 0 && readBookCount == 0) {
+            if (wantBookCount == 0 && readBookCount == 0) {
                 GridStacklayout.IsVisible = false;
                 NoBookStacklayout.IsVisible = true;
             }
             else {
                 GridStacklayout.IsVisible = true;
                 NoBookStacklayout.IsVisible = false;
-                getAllBooksToProfilePage(wantGrid, ReadWantEnum.Want);
-                getAllBooksToProfilePage(readGrid, ReadWantEnum.Read);
+                GetAllBooksToProfilePage(wantGrid, ReadWantEnum.Want);
+                GetAllBooksToProfilePage(readGrid, ReadWantEnum.Read);
             }
-            
         }
 
-        public void getAllBooksToProfilePage(Grid grid, ReadWantEnum readWant) {
+        public void GetAllBooksToProfilePage(Grid grid, ReadWantEnum readWant) {
             //Console.WriteLine("UpdateBook: " + wantGrid.RowDefinitions.Count + " " + readGrid.RowDefinitions.Count);
             UserBookDataAccess userBookDataAccess = new UserBookDataAccess();
             BookDataAccess bookDataAccess = new BookDataAccess();
@@ -68,7 +67,7 @@ namespace UniverseOfBookApp.Pages {
                 };
                 bookImage.GestureRecognizers.Add(tapGestureRecognizer);
                 if (column == 0) {
-                    if(row != 0) {
+                    if (row != 0) {
                         Console.WriteLine("Added Line " + grid.ToString());
                         grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
                     }
@@ -128,13 +127,12 @@ namespace UniverseOfBookApp.Pages {
                 for (int a = readGrid.RowDefinitions.Count - 1; a > 0; a--) {
                     readGrid.RowDefinitions.RemoveAt(a);
                 }
-                getAllBooksToProfilePage(wantGrid, ReadWantEnum.Want);
-                getAllBooksToProfilePage(readGrid, ReadWantEnum.Read);
+                GetAllBooksToProfilePage(wantGrid, ReadWantEnum.Want);
+                GetAllBooksToProfilePage(readGrid, ReadWantEnum.Read);
             }
         }
 
-        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e) {
             await Navigation.PushAsync(new SeeAllUsers());
         }
     }

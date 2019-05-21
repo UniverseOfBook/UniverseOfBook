@@ -16,7 +16,7 @@
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                     <controls:CircleImage Source="defaultuser" WidthRequest="100" x:Name="ProfilePhotoImage"/>
                     <StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand"  WidthRequest="200" Margin="20,0,0,0">
-                        <Label StyleClass="LabelClass" x:Name="userName"/>
+                        <Label StyleClass="LabelClass" x:Name="userName" FontFamily="{StaticResource BoldFont}"/>
                         <StackLayout Orientation="Horizontal">
                             <Label Text="Want Books: " FontAttributes="Bold" StyleClass="LabelClass"/>
                             <Label StyleClass="LabelClass" x:Name="wantLabel"/>

@@ -21,6 +21,8 @@ namespace UniverseOfBookApp {
         }
 
         public App() {
+            UserFriendDataAccess userFriendDataAccess = new UserFriendDataAccess();
+            userFriendDataAccess.DeleteAllUserFriends();
             Console.WriteLine("Started");
             InitializeComponent();
 

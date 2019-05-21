@@ -17,15 +17,24 @@ namespace UniverseOfBookApp.Pages {
         public UserFriends userFriends;
         public SeeAllUsers() {
             InitializeComponent();
-            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
-            SeeALLFriends();
+            SeeAllFriends();
         }
 
-
-        public void SeeALLFriends() {
-            List<UserFriends> userFriend = userFriendDataAccess.GetAllFriends(App.UserEmail).ToList();
-            for (int i = 0; i < userFriend.Count; i++) {
-                user = userDataAccess.GetUserByEmail(userFriend[i].FriendEmail);
+        public void SeeAllFriends() {
+            List<UserFriends> userFriends = userFriendDataAccess.GetAllFriends(App.UserEmail).ToList();
+            if(userFriends.Count == 0) {
+                Label label = new Label() {
+                    Text = "You don't have any friends yet",
+                    FontSize = 22,
+                    HorizontalOptions = LayoutOptions.CenterAndExpand,
+                    VerticalOptions = LayoutOptions.CenterAndExpand,
+                    Margin = new Thickness(0,0,0,200)
+                };
+                MyStackLayout.Children.Add(label);
+                return;
+            }
+            foreach (UserFriends userFriend in userFriends) {
+                user = userDataAccess.GetUserByEmail(userFriend.FriendEmail);
                 Frame frame = new Frame() { CornerRadius = 10 };
                 StackLayout stackLayout = new StackLayout();
 
@@ -42,12 +51,10 @@ namespace UniverseOfBookApp.Pages {
                 stackLayout.Children.Add(button);
                 frame.Content = stackLayout;
                 MyStackLayout.Children.Add(frame);
-
             }
         }
         private void UnfollowButtonClicked(object sender, EventArgs e) {
             userFriendDataAccess.DeleteUserFriends(user.Email);
-
         }
 
         private async void SeeAllUser_Clicked(object sender, EventArgs e) {
