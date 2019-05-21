@@ -21,6 +21,6 @@ namespace UniverseOfBookApp.Model {
         public string AuthorName { get; set; }
         public CategoryEnum Category { get; set; }
         public string Bookphoto { get; set; }
-
+       
     }
 }
