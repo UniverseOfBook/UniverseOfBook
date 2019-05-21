@@ -25,7 +25,7 @@ namespace UniverseOfBookApp {
             userFriendDataAccess.DeleteAllUserFriends();
             Console.WriteLine("Started");
             InitializeComponent();
-
+            UserEmail = "";
             if (UserEmail == "") {
                 MainPage = new NavigationPage(new LoginPage()) {
                     BarBackgroundColor = Color.FromHex("#efefef"),
@@ -61,7 +61,16 @@ namespace UniverseOfBookApp {
                 };
                 userDataAccess.AddUser(user);
             }
-
+            user = userDataAccess.GetUserByEmail("rr");
+            if (user == null) {
+                user = new User {
+                    Email = "rr",
+                    Password = "123",
+                    UserName = "rr",
+                    UserType = UserAdmin.User
+                };
+                userDataAccess.AddUser(user);
+            }
             try {
                 AuthorDataAccess authorDataAccess = new AuthorDataAccess();
                 authorDataAccess.DeleteAllAuthor();

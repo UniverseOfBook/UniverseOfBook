@@ -19,6 +19,11 @@ namespace UniverseOfBookApp.Pages {
             InitializeComponent();
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
             List<User> users = userDataAccess.GetAllUsers().ToList();
+            for(int i = 0; i < users.Count; i++) {
+                if (users[i].Email.Equals(App.UserEmail)) {
+                    users.Remove(users[i]);
+                }
+            }
             listView.BindingContext = users;
         }
 
