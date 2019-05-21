@@ -54,7 +54,7 @@ namespace UniverseOfBookApp.Pages {
 
                 stackLayout.Children.Add(label);
 
-                Image bookImage = new Image { Source = book.Bookphoto, HorizontalOptions = LayoutOptions.Start };
+                Image bookImage = new Image { Source = book.BookPhoto, HorizontalOptions = LayoutOptions.Start };
                 stackLayout.Children.Add(bookImage);
 
                 frame.Content = stackLayout;

@@ -25,28 +25,47 @@ namespace UniverseOfBookApp.Pages {
         }
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e) {
-            if (e.NewTextValue != null) {
+            if (e.NewTextValue != null && e.NewTextValue.Length > 3) {
                 Searching(e.NewTextValue);
             }
         }
 
+        private List<string> searchImages = new List<string>();
         private void Searching(string text) {
-            Book bookClass = bookDataAccess.GetBookByName(text);
-            if (bookClass == null) {
-                searchImage.IsVisible = false;
+            List<string> bookNames = bookDataAccess.GetAllBooksName();
+            List<string> suggestionList = bookNames.Where(book => book.Contains(text)).ToList();
+
+            List<Book> suggestedBooks = new List<Book>();
+            foreach(string suggestion in suggestionList) {
+                Book book = bookDataAccess.GetBookByName(suggestion);
+                suggestedBooks.Add(book);
+            }
+
+            if (suggestedBooks.Count == 0) {
                 search.IsVisible = true;
                 return;
             }
             search.IsVisible = false;
-            searchImage.Source = bookClass.Bookphoto;
-            searchImage.IsVisible = true;
-        }
+            foreach (Book suggestedBook in suggestedBooks) {
+                if (searchImages.Contains(suggestedBook.BookName))
+                    continue;
+                else
+                    searchImages.Add(suggestedBook.BookName);
 
-        private async void ImageTapped(object sender, EventArgs e) {
-            Image image1 = (Image)sender;
-            BookDataAccess bookDataAccess = new BookDataAccess();
-            Book bookName = bookDataAccess.GetBookBySource(image1.Source.ToString().Replace("Uri: ", ""));
-            await Navigation.PushAsync(new BookPage(bookName.BookName));
+                var tapGestureRecognizer = new TapGestureRecognizer();
+                tapGestureRecognizer.Tapped += async (sender, e) => {
+                    Image image1 = (Image)sender;
+                    BookDataAccess bookDataAccess = new BookDataAccess();
+                    Book bookName = bookDataAccess.GetBookBySource(image1.Source.ToString().Replace("Uri: ", ""));
+                    await Navigation.PushAsync(new BookPage(bookName.BookName));
+                };
+                Image image = new Image {
+                    HeightRequest = 300,
+                    Source = suggestedBook.BookPhoto
+                };
+                image.GestureRecognizers.Add(tapGestureRecognizer);
+                StackL.Children.Add(image);
+            }
         }
     }
 }

@@ -24,7 +24,7 @@ namespace UniverseOfBookApp.Pages {
             InitializeComponent();
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#efefef");
             Book book = BookDataAccess.GetBookByName(name);
-            Bookphoto.Source = book.Bookphoto;
+            Bookphoto.Source = book.BookPhoto;
             Bookname.Text = book.BookName;
             BookDescription.Text = book.Description;
             AuthorName.Text = book.AuthorName;

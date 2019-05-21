@@ -58,7 +58,7 @@ namespace UniverseOfBookApp.Pages {
 
             for (int a = 0; a < bookList.Count; a++) {
                 Book bookClass = bookDataAccess.GetBookByName(bookList[a]);
-                Image bookImage = new Image { HeightRequest = 300, Source = bookClass.Bookphoto };
+                Image bookImage = new Image { HeightRequest = 300, Source = bookClass.BookPhoto };
                 var tapGestureRecognizer = new TapGestureRecognizer();
                 tapGestureRecognizer.Tapped += (s, e) => {
                     ImageTapped(bookImage.Source.ToString().Replace("Uri: ", ""));

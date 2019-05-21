@@ -68,7 +68,7 @@ namespace UniverseOfBookApp {
                 PageNumber = 496,
                 Category = CategoryEnum.ScienceFiction,
                 Publishers = PublishersEnum.Ithaki,
-                Bookphoto = "https://i.dr.com.tr/cache/600x600-0/originals/0001740861001-1.jpg",
+                BookPhoto = "https://i.dr.com.tr/cache/600x600-0/originals/0001740861001-1.jpg",
                 Description =
 @"1. yüzyıl bilimkurgu edebiyatının en önemli eserlerinden biri olan Değiştirilmiş Karbon’dan uyarlanan ve Netflix’in yayımlayacağı distopik dizi Altered Carbon, 2018’in en çok seyredilecek projelerinden biri olmaya aday!
 

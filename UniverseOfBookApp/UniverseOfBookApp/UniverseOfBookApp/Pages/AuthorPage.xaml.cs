@@ -31,7 +31,7 @@ namespace UniverseOfBookApp.Pages {
             List<Model.Book> BookList = authorData.GetBooks(name);
 
             for (int i = 0; i < BookList.Count; i++) {
-                Image bookImage = new Image { Source = BookList[i].Bookphoto };
+                Image bookImage = new Image { Source = BookList[i].BookPhoto };
                 MyStackLayout.Children.Add(bookImage);
                 var tapGestureRecognizer = new TapGestureRecognizer();
                 tapGestureRecognizer.Tapped += (s, e) => {

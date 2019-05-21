@@ -20,7 +20,7 @@ namespace UniverseOfBookApp.Pages {
                 List<Book> allBooks = bookDataAccess.GetAllBook().ToList();
 
                 for (int i = 0; i < allBooks.Count; i++) {
-                    string url = allBooks[i].Bookphoto;
+                    string url = allBooks[i].BookPhoto;
                     Image bookImage = new Image { Source = url };
                     var tapGestureRecognizer = new TapGestureRecognizer();
 

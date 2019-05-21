@@ -20,7 +20,7 @@ namespace UniverseOfBookApp.Model {
         public int PageNumber { get; set; }
         public string AuthorName { get; set; }
         public CategoryEnum Category { get; set; }
-        public string Bookphoto { get; set; }
+        public string BookPhoto { get; set; }
 
     }
 }

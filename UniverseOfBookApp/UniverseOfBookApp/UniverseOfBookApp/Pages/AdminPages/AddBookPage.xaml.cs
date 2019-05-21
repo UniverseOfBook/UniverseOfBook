@@ -47,7 +47,7 @@ namespace UniverseOfBookApp.Pages.AdminPages {
             PublishersEnum publishers = (PublishersEnum)Enum.Parse(typeof(PublishersEnum), PublishPick.SelectedItem.ToString().Replace(" ", ""));
             book.Category = category;
             book.Publishers = publishers;
-            book.Bookphoto = BookPhoto.Text;
+            book.BookPhoto = BookPhoto.Text;
             int addingbook = bookDataAccess.BookInsert(book);
             if (addingbook > 0) {
                 DisplayAlert("ADD", "Book was add", "OK");
