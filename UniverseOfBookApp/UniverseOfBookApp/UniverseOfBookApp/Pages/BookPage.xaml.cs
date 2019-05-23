@@ -50,7 +50,7 @@ namespace UniverseOfBookApp.Pages {
             if (user.UserPhoto == null)
                 user.UserPhoto = "@drawable/defaultuser";
             ImageCircle.Forms.Plugin.Abstractions.CircleImage image = new ImageCircle.Forms.Plugin.Abstractions.CircleImage {
-                Source = user.UserPhoto,
+                Source = user.UserPhoto.Replace("Uri: ", ""),
                 HeightRequest = 20
             };
             Label userLabel = new Label {

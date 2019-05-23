@@ -69,9 +69,9 @@ namespace UniverseOfBookApp.Pages {
         private async void UnfollowButtonClicked(object sender, EventArgs e) {
             userFriendDataAccess.DeleteUserFriends(user.Email);
 
-            DisplayAlert("Warning", "You unfollowed now", "OK");
+            await DisplayAlert("Warning", "You unfollowed now", "OK");
 
-            await Navigation.PushAsync(new ProfilePage());
+            await Navigation.PopAsync();
         }
     }
 }
