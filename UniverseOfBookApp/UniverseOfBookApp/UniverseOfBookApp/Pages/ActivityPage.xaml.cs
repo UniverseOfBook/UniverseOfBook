@@ -34,24 +34,24 @@ namespace UniverseOfBookApp.Pages {
         }
 
         public void AddingActivity(List<UserBook> userBooks, string email) {
-            for (int i = 0; i < userBooks.Count; i++) {
+            foreach (UserBook userBook in userBooks) {
                 Frame frame = new Frame() { CornerRadius = 10 };
-                Book book = bookDataAccess.GetBookByName(userBooks[i].BookName);
+                Book book = bookDataAccess.GetBookByName(userBook.BookName);
                 StackLayout stackLayoutRight = new StackLayout();
                 StackLayout stackLayoutLeft = new StackLayout();
                 UserDataAccess userDataAccess = new UserDataAccess();
                 User user = userDataAccess.GetUserByEmail(email);
 
-                stackLayoutLeft.Children.Add(new Image() {
-                    Source = user.UserPhoto,
+                stackLayoutLeft.Children.Add(new ImageCircle.Forms.Plugin.Abstractions.CircleImage() {
+                    Source = user.UserPhoto.Replace("Uri: ", ""),
                     HeightRequest = 50
                 });
 
                 var formattedString = new FormattedString();
                 formattedString.Spans.Add(new Span { Text = user.UserName, FontAttributes = FontAttributes.Bold, FontSize=20 });
 
-                if ((userBooks[i].ReadWant).ToString() == "Read") {
-                    formattedString.Spans.Add(new Span { Text = " want to read this book" });
+                if ((userBook.ReadWant).ToString() == "Read") {
+                    formattedString.Spans.Add(new Span { Text = " read this book" });
                 }
                 else {
                     formattedString.Spans.Add(new Span { Text = " want this book" });
@@ -64,7 +64,7 @@ namespace UniverseOfBookApp.Pages {
                 });
 
                 Label timeLabel = new Label() { FontSize = 15, HorizontalOptions = LayoutOptions.Start };
-                timeLabel.Text = "Time added: " + userBooks[i].DateTime.ToString("dd/MM/yyyy");
+                timeLabel.Text = "Time added: " + userBook.DateTime.ToString("dd/MM/yyyy");
                 stackLayoutRight.Children.Add(timeLabel);
 
                 Image bookImage = new Image { Source = book.BookPhoto, HorizontalOptions = LayoutOptions.Start };

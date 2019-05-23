@@ -107,10 +107,13 @@ namespace UniverseOfBookApp.Pages {
 
         public void UpdateBooks() {
             UserBookDataAccess userBookDataAccess = new UserBookDataAccess();
+            UserFriendDataAccess userFriendDataAccess = new UserFriendDataAccess();
             int wantBookCount = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWantEnum.Want);
             int readBookCount = userBookDataAccess.GetUserReadorWantCountBook(App.UserEmail, ReadWantEnum.Read);
+            int friendsCount = userFriendDataAccess.CountFriends(App.UserEmail);
             wantLabel.Text = wantBookCount.ToString();
             readLabel.Text = readBookCount.ToString();
+            FriendsLabel.Text = friendsCount.ToString();
 
             if (wantBookCount == 0 && readBookCount == 0) {
                 GridStacklayout.IsVisible = false;

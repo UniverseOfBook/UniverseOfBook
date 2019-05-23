@@ -49,7 +49,7 @@ namespace UniverseOfBookApp.Pages {
             User user = userDataAccess.GetUserByEmail(comment.UserEmail);
             if (user.UserPhoto == null)
                 user.UserPhoto = "@drawable/defaultuser";
-            Image image = new Image {
+            ImageCircle.Forms.Plugin.Abstractions.CircleImage image = new ImageCircle.Forms.Plugin.Abstractions.CircleImage {
                 Source = user.UserPhoto,
                 HeightRequest = 20
             };
